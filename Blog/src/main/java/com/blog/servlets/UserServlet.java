@@ -1,4 +1,4 @@
-package com.blog;
+package com.blog.servlets;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
