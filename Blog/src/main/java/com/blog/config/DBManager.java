@@ -4,10 +4,12 @@ package com.blog.config;
 import com.blog.models.*;
 import jakarta.servlet.ServletContextEvent;
 import jakarta.servlet.ServletContextListener;
+import jakarta.servlet.annotation.WebListener;
 
 import java.sql.*;
 
 
+@WebListener
 public class DBManager implements ServletContextListener {
     private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
     private static final String URL = "jdbc:mysql://localhost:3306/blogapp";
@@ -34,10 +36,11 @@ public class DBManager implements ServletContextListener {
             Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
             return connection;
         } catch (SQLException e) {
-            throw new RuntimeException("Failed to create employee table.", e);
+            throw new RuntimeException("Failed to Load JDBC", e);
         }
     }
     public void contextInitialized(ServletContextEvent sce) {
+        System.out.println("============Creating tables==============");
         try  {
             Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
             PreparedStatement user = connection.prepareStatement(User.schema());
@@ -53,6 +56,7 @@ public class DBManager implements ServletContextListener {
             comment.execute();
             save.execute();
             connection.close();
+            System.out.println("=============Tables created.===============");
         } catch (SQLException e) {
             throw new RuntimeException("Failed to create tables.", e);
         }
