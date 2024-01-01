@@ -13,9 +13,9 @@ public class DBManager {
 	private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
 	private static final String URL = "jdbc:mysql://localhost:3306/blogapp";
 	private static final String USERNAME = "root";
-	private static final String PASSWORD = "241128";
+//	private static final String PASSWORD = "241128";
 
-//	private static final String BETSI = "241128";
+	private static final String PASSWORD = "mysql";
 
 	public static Connection connection;
 
@@ -27,9 +27,9 @@ public class DBManager {
         }
     }
 
-//	public static void main(String[] args) {
-//		contextInitialized();
-//	}
+	public static void main(String[] args) {
+		contextInitialized();
+	}
 
     public static Connection getConnection() {
         try {
@@ -43,26 +43,27 @@ public class DBManager {
 	public static void contextInitialized() {
 		try  {
 			System.out.println("============Creating tables==============");
-			PreparedStatement user = connection.prepareStatement(User.schema());
-			PreparedStatement blog = connection.prepareStatement(Blog.schema());
-			PreparedStatement readingList = connection.prepareStatement(ReadingList.schema());
-			PreparedStatement like = connection.prepareStatement(Like.schema());
-			PreparedStatement comment = connection.prepareStatement(Comment.schema());
-			PreparedStatement save = connection.prepareStatement(Save.schema());
+			Connection instance = getConnection();
+			PreparedStatement user = instance.prepareStatement(User.schema());
+			PreparedStatement blog = instance.prepareStatement(Blog.schema());
+			PreparedStatement readingList = instance.prepareStatement(ReadingList.schema());
+			PreparedStatement like = instance.prepareStatement(Like.schema());
+			PreparedStatement comment = instance.prepareStatement(Comment.schema());
+			PreparedStatement save = instance.prepareStatement(Save.schema());
 			user.execute();
-			System.out.println("============User table==============");
+			System.out.println("============User table created ==============");
 			blog.execute();
-			System.out.println("============Blog table==============");
+			System.out.println("============Blog table created ==============");
 			comment.execute();
-			System.out.println("============Comment table==============");
+			System.out.println("============Comment table created ==============");
 			like.execute();
-			System.out.println("============Like table==============");
+			System.out.println("============Like table created ==============");
 			readingList.execute();
-			System.out.println("============Reading List table==============");
+			System.out.println("============Reading List table created ==============");
 			save.execute();
-			System.out.println("============Save table==============");
+			System.out.println("============Save table created ==============");
 
-			System.out.println("=============Tables created.===============");
+			System.out.println("=============All Tables created.===============");
 		} catch (Exception e) {
 			throw new RuntimeException("Failed to create tables.", e);
 		}

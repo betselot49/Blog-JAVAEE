@@ -11,8 +11,7 @@ import java.util.Date;
 
 public class User {
     public int Id;
-    public String Fullname;
-    public String Username;
+    public String FullName;
     public  String Email;
     public String Password;
     public String Role;
@@ -25,7 +24,6 @@ public class User {
         String query = "CREATE TABLE IF NOT EXISTS users(" +
                 "Id INT AUTO_INCREMENT PRIMARY KEY," +
                 "Fullname VARCHAR(255)," +
-                "Username VARCHAR(255)," +
                 "Email VARCHAR(255)," +
                 "Password VARCHAR(255)," +
                 "Role Enum('admin', 'user')," +
@@ -37,8 +35,7 @@ public class User {
     public static User build(ResultSet result) throws SQLException {
         User user = new User();
         user.Id = result.getInt("Id");
-        user.Fullname = result.getString("Fullname");
-        user.Username = result.getString("Username");
+        user.FullName = result.getString("Fullname");
         user.Email = result.getString("Email");
         user.Password = result.getString("Password");
         user.Role = result.getString("Role");
@@ -50,23 +47,21 @@ public class User {
     public void create() throws SQLException {
         String query = "INSERT INTO users(Fullname, Username, Email, Password, Role) VALUES(?,?,?,?,?)";
         PreparedStatement stmt = connection.prepareStatement(query);
-        stmt.setString(1, this.Fullname);
-        stmt.setString(2, this.Username);
-        stmt.setString(3, this.Email);
-        stmt.setString(4, this.Password);
-        stmt.setString(5, this.Role);
+        stmt.setString(1, this.FullName);
+        stmt.setString(2, this.Email);
+        stmt.setString(3, this.Password);
+        stmt.setString(4, this.Role);
         stmt.executeUpdate();
     }
 
     public void update() throws SQLException {
         String query = "UPDATE users SET Fullname=?, Username=?, Email=?, Password=?, Role=? WHERE Id=?";
         PreparedStatement stmt = connection.prepareStatement(query);
-        stmt.setString(1, this.Fullname);
-        stmt.setString(2, this.Username);
-        stmt.setString(3, this.Email);
-        stmt.setString(4, this.Password);
-        stmt.setString(5, this.Role);
-        stmt.setInt(6, this.Id);
+        stmt.setString(1, this.FullName);
+        stmt.setString(2, this.Email);
+        stmt.setString(3, this.Password);
+        stmt.setString(4, this.Role);
+        stmt.setInt(5, this.Id);
         stmt.executeUpdate();
     }
 
@@ -99,18 +94,6 @@ public class User {
         }
         return null;
     }
-
-    public static User getByUsername(String username) throws SQLException {
-        String query = "SELECT * FROM users WHERE Username=?";
-        PreparedStatement stmt = connection.prepareStatement(query);
-        stmt.setString(1, username);
-        ResultSet result = stmt.executeQuery();
-        if (result.next()) {
-            return User.build(result);
-        }
-        return null;
-    }
-
 
 public static User getById(int id) throws SQLException {
         String query = "SELECT * FROM users WHERE Id=?";
