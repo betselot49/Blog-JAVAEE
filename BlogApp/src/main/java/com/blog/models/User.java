@@ -24,7 +24,7 @@ public class User {
         String query = "CREATE TABLE IF NOT EXISTS users(" +
                 "Id INT AUTO_INCREMENT PRIMARY KEY," +
                 "Fullname VARCHAR(255)," +
-                "Email VARCHAR(255)," +
+                "Email VARCHAR(255) UNIQUE," +
                 "Password VARCHAR(255)," +
                 "Role Enum('admin', 'user')," +
                 "CreatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP" +
@@ -44,14 +44,14 @@ public class User {
     }
 
 
-    public void create() throws SQLException {
+    public int create() throws SQLException {
         String query = "INSERT INTO users(Fullname, Username, Email, Password, Role) VALUES(?,?,?,?,?)";
         PreparedStatement stmt = connection.prepareStatement(query);
         stmt.setString(1, this.FullName);
         stmt.setString(2, this.Email);
         stmt.setString(3, this.Password);
         stmt.setString(4, this.Role);
-        stmt.executeUpdate();
+        return stmt.executeUpdate();
     }
 
     public void update() throws SQLException {

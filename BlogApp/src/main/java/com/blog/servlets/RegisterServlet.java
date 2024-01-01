@@ -1,5 +1,6 @@
 package com.blog.servlets;
 
+import com.blog.models.User;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -18,9 +19,28 @@ public class RegisterServlet extends HttpServlet {
         String fullName = request.getParameter("fullName");
         String email = request.getParameter("email");
         String password = request.getParameter("password");
-        String createdAt = request.getParameter("createdAt");
         String role = request.getParameter("role");
 
+        try {
+            User user = new User();
+
+            user.FullName = fullName;
+            user.Email = email;
+            user.Password = password;
+            user.Role = role;
+
+            int rowsAffected = user.create();
+            if (rowsAffected > 0) {
+                request.setAttribute("success", true);
+                response.sendRedirect("register.jsp");
+            } else {
+                request.setAttribute("error", true);
+                response.sendRedirect("register.jsp");
+            }
+        } catch (Exception e) {
+            request.setAttribute("error", true);
+            e.printStackTrace();
+        }
 
     }
 
