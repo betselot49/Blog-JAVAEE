@@ -15,16 +15,16 @@ public class ReadingList {
     public  String Name;
     public Date CreatedAt;
 
-    private static Connection connection = DBManager.getInstance();
+    private static Connection connection = DBManager.instance;
 
     public static String schema(){
-        String query = "CREATE TABLE IF NOT EXIST readinglists(" +
+        String query = "CREATE TABLE IF NOT EXISTS readinglists(" +
                 "Id INT AUTO_INCREMENT PRIMARY KEY," +
                 "UserId INT," +
                 "BlogCount INT," +
                 "Name VARCHAR(255)," +
                 "CreatedAt DATE," +
-                "FOREIGN KEY (UserId) REFERENCES users(UserId) ON DELETE CASCADE" +
+                "FOREIGN KEY (UserId) REFERENCES users(Id) ON DELETE CASCADE" +
                 ");";
         return  query;
     }

@@ -13,18 +13,18 @@ public class Save {
     public int BlogId;
     public Date CreatedAt;
 
-    private static Connection connection = DBManager.getInstance();
+    private static Connection connection = DBManager.instance;
 
     public static String schema(){
-        String query = "CREATE TABLE IF NOT EXIST saves(" +
+        String query = "CREATE TABLE IF NOT EXISTS saves(" +
                 "ReadingListId INT," +
                 "UserId INT," +
                 "BlogId INT," +
                 "CreatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP," +
                 "PRIMARY KEY (ReadingListId, UserId, BlogId)," +
-                "FOREIGN KEY (ReadingListId) REFERENCES readinglists(ReadingListId) ON DELETE CASCADE," +
-                "FOREIGN KEY (UserId) REFERENCES users(UserId) ON DELETE CASCADE," +
-                "FOREIGN KEY (BlogId) REFERENCES blogs(BlogId) ON DELETE CASCADE" +
+                "FOREIGN KEY (ReadingListId) REFERENCES readinglists(Id) ON DELETE CASCADE," +
+                "FOREIGN KEY (UserId) REFERENCES users(Id) ON DELETE CASCADE," +
+                "FOREIGN KEY (BlogId) REFERENCES blogs(Id) ON DELETE CASCADE" +
                 ");";
         return  query;
     }

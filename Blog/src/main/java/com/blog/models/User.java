@@ -19,10 +19,10 @@ public class User {
     public Date CreatedAt;
 
 
-    private static Connection connection = DBManager.getInstance();
+    private static Connection connection = DBManager.instance;
 
     public static  String schema(){
-        String query = "CREATE TABLE IF NOT EXIST users(" +
+        String query = "CREATE TABLE IF NOT EXISTS users(" +
                 "Id INT AUTO_INCREMENT PRIMARY KEY," +
                 "Fullname VARCHAR(255)," +
                 "Username VARCHAR(255)," +

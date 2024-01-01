@@ -2,7 +2,6 @@ package com.blog.models;
 
 import com.blog.config.DBManager;
 
-import java.lang.reflect.Array;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -21,11 +20,11 @@ public class Blog {
 
     public Date CreatedAt;
 
-    private static Connection connection = DBManager.getInstance();
+    private static Connection connection = DBManager.instance;
 
 
     public static String schema(){
-        String query = "CREATE TABLE IF NOT EXIST blogs (" +
+        String query = "CREATE TABLE IF NOT EXISTS blogs (" +
                 "Id INT AUTO_INCREMENT PRIMARY KEY," +
                 "Content TEXT," +
                 "UserId INT," +
@@ -33,7 +32,7 @@ public class Blog {
                 "LikeCount INT," +
                 "CreatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP," +
                 "CommentCount INT," +
-                "FOREIGN KEY (UserId) REFERENCES users(UserId) ON DELETE CASCADE" +
+                "FOREIGN KEY (UserId) REFERENCES users(Id) ON DELETE CASCADE" +
                 ");";
         return query;
     }

@@ -15,15 +15,15 @@ public class Like {
     public Date CreatedAt;
 
 
-    private static Connection connection = DBManager.getInstance();
+    private static Connection connection = DBManager.instance;
     public static String schema(){
-        String query = "CREATE TABLE IF NOT EXIST likes(" +
+        String query = "CREATE TABLE IF NOT EXISTS likes(" +
                 "UserId INT," +
                 "BlogId INT," +
                 "CreatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP," +
                 "PRIMARY KEY (UserId, BlogId)," +
-                "FOREIGN KEY (UserId) REFERENCES users(UserId) ON DELETE CASCADE," +
-                "FOREIGN KEY (BlogId) REFERENCES blogs(BlogId) ON DELETE CASCADE" +
+                "FOREIGN KEY (UserId) REFERENCES users(Id) ON DELETE CASCADE," +
+                "FOREIGN KEY (BlogId) REFERENCES blogs(Id) ON DELETE CASCADE" +
                 ");";
         return  query;
     }

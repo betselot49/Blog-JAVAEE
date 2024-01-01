@@ -9,7 +9,7 @@
     <welcome-file>default.jsp</welcome-file>
     <welcome-file>default.htm</welcome-file>
   </welcome-file-list>
-  <listener>
-    <listener-class>com.blog.config.DBManager</listener-class>
-  </listener>
+<!--  <listener>-->
+<!--    <listener-class>com.blog.config.DBManager</listener-class>-->
+<!--  </listener>-->
 </web-app>
