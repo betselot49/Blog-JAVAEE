@@ -30,12 +30,11 @@ public class LoginServlet extends HttpServlet {
 			String password = loggedInUser.Password;
 			if (Objects.equals(password, newPassword)) {
 				request.getSession().setAttribute("loggedInUser", loggedInUser);
-				request.getRequestDispatcher("blog?userId="+loggedInUser.Id).forward(request, response);
+				response.sendRedirect("blog?userId="+loggedInUser.Id);
 			} else {
 				request.setAttribute("error", "Invalid credentials. Please try again.");
 				request.getRequestDispatcher("login.jsp").forward(request, response);
 			}
-
 		} catch (Exception e) {
 			request.setAttribute("error", true);
 			e.printStackTrace();
