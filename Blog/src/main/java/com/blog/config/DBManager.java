@@ -9,7 +9,7 @@ import jakarta.servlet.annotation.WebListener;
 import java.sql.*;
 
 
-@WebListener
+//@WebListener
 public class DBManager implements ServletContextListener {
     private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
     private static final String URL = "jdbc:mysql://localhost:3306/blogapp";
@@ -17,7 +17,7 @@ public class DBManager implements ServletContextListener {
     private static final String PASSWORD = "mysql";
 //    private static final String PASSWORD = "241128";
 
-    private static Connection instance = (new DBManager()).getConnection();
+    private static final Connection instance = getConnection();
 
     static {
         try {
@@ -34,15 +34,14 @@ public class DBManager implements ServletContextListener {
 
     public static Connection getConnection() {
         try {
-            Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-            return connection;
-        } catch (SQLException e) {
+            return DriverManager.getConnection(URL, USERNAME, PASSWORD);
+        } catch (Exception e) {
             throw new RuntimeException("Failed to Load JDBC", e);
         }
     }
     public void contextInitialized(ServletContextEvent sce) {
-        System.out.println("============Creating tables==============");
         try  {
+            System.out.println("============Creating tables==============");
             Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
             PreparedStatement user = connection.prepareStatement(User.schema());
             PreparedStatement blog = connection.prepareStatement(Blog.schema());
@@ -58,7 +57,7 @@ public class DBManager implements ServletContextListener {
             save.execute();
             connection.close();
             System.out.println("=============Tables created.===============");
-        } catch (SQLException e) {
+        } catch (Exception e) {
             throw new RuntimeException("Failed to create tables.", e);
         }
 
