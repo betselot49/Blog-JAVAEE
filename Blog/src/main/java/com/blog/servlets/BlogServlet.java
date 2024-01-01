@@ -8,12 +8,11 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet("/users")
-public class UserServlet extends HttpServlet {
-
+@WebServlet("/*")
+public class BlogServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // get all users
-
+		System.out.println("=========Blog Servlet==============");
+		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
 
 }

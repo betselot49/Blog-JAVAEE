@@ -1,6 +1,6 @@
 package com.blog.models;
 
-import com.blog.config.DBManager;
+import com.blog.config.*;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -19,7 +19,7 @@ public class User {
     public Date CreatedAt;
 
 
-    private static Connection connection = DBManager.instance;
+    private static final Connection connection = DBManager.getConnection();
 
     public static  String schema(){
         String query = "CREATE TABLE IF NOT EXISTS users(" +
@@ -82,7 +82,7 @@ public class User {
         PreparedStatement stmt = connection.prepareStatement(query);
         stmt.setString(1, "%" + param + "%");
         stmt.setString(2, "%" + param + "%");
-        var result = stmt.executeQuery();
+        ResultSet result = stmt.executeQuery();
         ArrayList<User> users = new ArrayList<User>();
         while (result.next()) {
             users.add(User.build(result));
@@ -93,7 +93,7 @@ public class User {
         String query = "SELECT * FROM users WHERE Email=?";
         PreparedStatement stmt = connection.prepareStatement(query);
         stmt.setString(1, email);
-        var result = stmt.executeQuery();
+        ResultSet result = stmt.executeQuery();
         if (result.next()) {
             return User.build(result);
         }
@@ -104,7 +104,7 @@ public class User {
         String query = "SELECT * FROM users WHERE Username=?";
         PreparedStatement stmt = connection.prepareStatement(query);
         stmt.setString(1, username);
-        var result = stmt.executeQuery();
+        ResultSet result = stmt.executeQuery();
         if (result.next()) {
             return User.build(result);
         }
@@ -112,11 +112,11 @@ public class User {
     }
 
 
-public static User findById(int id) throws SQLException {
+public static User getById(int id) throws SQLException {
         String query = "SELECT * FROM users WHERE Id=?";
         PreparedStatement stmt = connection.prepareStatement(query);
         stmt.setInt(1, id);
-        var result = stmt.executeQuery();
+        ResultSet result = stmt.executeQuery();
         if (result.next()) {
             return User.build(result);
         }
