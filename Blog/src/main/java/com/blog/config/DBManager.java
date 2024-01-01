@@ -4,9 +4,11 @@ package com.blog.config;
 import com.blog.models.*;
 import jakarta.servlet.ServletContextEvent;
 import jakarta.servlet.ServletContextListener;
-import jakarta.servlet.annotation.WebListener;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 
 //@WebListener
@@ -42,20 +44,19 @@ public class DBManager implements ServletContextListener {
     public void contextInitialized(ServletContextEvent sce) {
         try  {
             System.out.println("============Creating tables==============");
-            Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-            PreparedStatement user = connection.prepareStatement(User.schema());
-            PreparedStatement blog = connection.prepareStatement(Blog.schema());
-            PreparedStatement readingList = connection.prepareStatement(ReadingList.schema());
-            PreparedStatement like = connection.prepareStatement(Like.schema());
-            PreparedStatement comment = connection.prepareStatement(Comment.schema());
-            PreparedStatement save = connection.prepareStatement(Save.schema());
+            PreparedStatement user = instance.prepareStatement(User.schema());
+            PreparedStatement blog = instance.prepareStatement(Blog.schema());
+            PreparedStatement readingList = instance.prepareStatement(ReadingList.schema());
+            PreparedStatement like = instance.prepareStatement(Like.schema());
+            PreparedStatement comment = instance.prepareStatement(Comment.schema());
+            PreparedStatement save = instance.prepareStatement(Save.schema());
             user.execute();
             blog.execute();
             readingList.execute();
             like.execute();
             comment.execute();
             save.execute();
-            connection.close();
+            instance.close();
             System.out.println("=============Tables created.===============");
         } catch (Exception e) {
             throw new RuntimeException("Failed to create tables.", e);
