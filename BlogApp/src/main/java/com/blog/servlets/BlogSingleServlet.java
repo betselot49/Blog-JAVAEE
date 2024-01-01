@@ -8,13 +8,12 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.ArrayList;
 
-@WebServlet("/blog")
-public class BlogServlet extends HttpServlet {
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("=========Blog Servlet==============");
+@WebServlet("/blog/:id")
+public class BlogSingleServlet extends HttpServlet {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        System.out.println("=========Blog Servlet==============");
         String queryParam = request.getParameter("search");
         if (queryParam == null)  {
             queryParam = "";
@@ -23,8 +22,8 @@ public class BlogServlet extends HttpServlet {
             ArrayList<Blog> blogs = Blog.search(queryParam);
             request.setAttribute("blogs", Blog.search(queryParam));
         }catch (Exception exception){
-            request.setAttribute("error", exception.getMessage());
+            throw new RuntimeException(exception);
         }
-		request.getRequestDispatcher("blog.jsp").forward(request, response);
-	}
+        request.getRequestDispatcher("blog.jsp").forward(request, response);
+    }
 }
