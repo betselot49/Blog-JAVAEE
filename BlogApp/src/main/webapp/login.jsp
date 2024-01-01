@@ -10,7 +10,7 @@
 <%@ include file="header.jsp" %>
 <h1>Welcome To Our Login Page.</h1>
 <h2>Registration Form</h2>
-<form action="Login" method="POST">
+<form action="login" method="POST">
 	<label> Email: </label>
 	<input type="text" name="email" />
 	<br />
@@ -19,14 +19,14 @@
 	<br />
 	<button type="submit">Log In</button>
 </form>
-<p>Don't have an account? <a href="/TaskManagment/Registration">Create an account</a></p>
+<p>Don't have an account? <a href="/blog/register">Create an account</a></p>
 <%
 	// Check for an error condition
-	String error = (String) request.getAttribute("Error");
+	String error = (String) request.getAttribute("error");
 
 	if (error != null && !error.isEmpty()) {
 %>
-<div style="color: red;">a
+<div style="color: red;">
 	<!-- Display the error message -->
 	<%= error %>
 </div>

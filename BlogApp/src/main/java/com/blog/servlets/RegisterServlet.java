@@ -13,16 +13,14 @@ import java.io.IOException;
 public class RegisterServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         System.out.println("=========Register Servlet==============");
-//        request.getRequestDispatcher("register.jsp").forward(request, response);
-        request.getRequestDispatcher("/login").forward(request, response);
+        request.getRequestDispatcher("register.jsp").forward(request, response);
     }
-
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String fullName = request.getParameter("fullName");
         String email = request.getParameter("email");
         String password = request.getParameter("password");
-        String role = request.getParameter("role");
+        String role = "user";
 
         try {
             User user = new User();
@@ -33,15 +31,17 @@ public class RegisterServlet extends HttpServlet {
             user.Role = role;
 
             int rowsAffected = user.create();
+            System.out.println("==============="+rowsAffected);
             if (rowsAffected > 0) {
-                request.setAttribute("success", true);
-                response.sendRedirect("register.jsp");
+                request.setAttribute("success", "Successfully registered. Please login to continue.");
+                request.getRequestDispatcher("register.jsp").forward(request, response);
             } else {
-                request.setAttribute("error", true);
-                response.sendRedirect("register.jsp");
+                request.setAttribute("error", "Something went wrong. Please try again.");
+                request.getRequestDispatcher("register.jsp").forward(request, response);
             }
         } catch (Exception e) {
-            request.setAttribute("error", true);
+            System.out.println("==============="+ "Exception Throwed");
+            request.setAttribute("error", "User already exists. Please Use another email.");
             e.printStackTrace();
         }
 

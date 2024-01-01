@@ -26,16 +26,16 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "history": [
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;history&quot;: [
     {
-      "assignee": "betselot49"
+      &quot;assignee&quot;: &quot;betselot49&quot;
     }
   ],
-  "lastFilter": {
-    "assignee": "betselot49"
+  &quot;lastFilter&quot;: {
+    &quot;assignee&quot;: &quot;betselot49&quot;
   }
-}]]></component>
+}</component>
   <component name="GithubPullRequestsUISettings">
     <option name="selectedUrlAndAccountId">
       <UrlAndAccount>

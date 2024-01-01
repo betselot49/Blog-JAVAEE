@@ -45,7 +45,7 @@ public class User {
 
 
     public int create() throws SQLException {
-        String query = "INSERT INTO users(Fullname, Username, Email, Password, Role) VALUES(?,?,?,?,?)";
+        String query = "INSERT INTO users(Fullname, Email, Password, Role) VALUES(?,?,?,?)";
         PreparedStatement stmt = connection.prepareStatement(query);
         stmt.setString(1, this.FullName);
         stmt.setString(2, this.Email);
@@ -55,7 +55,7 @@ public class User {
     }
 
     public void update() throws SQLException {
-        String query = "UPDATE users SET Fullname=?, Username=?, Email=?, Password=?, Role=? WHERE Id=?";
+        String query = "UPDATE users SET Fullname=?, Email=?, Password=?, Role=? WHERE Id=?";
         PreparedStatement stmt = connection.prepareStatement(query);
         stmt.setString(1, this.FullName);
         stmt.setString(2, this.Email);
@@ -73,7 +73,7 @@ public class User {
     }
 
     public  static ArrayList<User> search(String param) throws SQLException {
-        String query = "SELECT * FROM users WHERE Fullname LIKE ? OR Username LIKE ?";
+        String query = "SELECT * FROM users WHERE Fullname LIKE";
         PreparedStatement stmt = connection.prepareStatement(query);
         stmt.setString(1, "%" + param + "%");
         stmt.setString(2, "%" + param + "%");
