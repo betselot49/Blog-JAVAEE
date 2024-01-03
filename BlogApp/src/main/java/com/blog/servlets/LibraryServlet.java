@@ -11,10 +11,10 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-@WebServlet("/blog")
-public class BlogServlet extends HttpServlet {
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("=========Blog Servlet==============");
+@WebServlet("/library")
+public class LibraryServlet extends HttpServlet {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        System.out.println("=========Blog Servlet==============");
         String queryParam = request.getParameter("search");
         if (queryParam == null)  {
             queryParam = "";
@@ -25,6 +25,6 @@ public class BlogServlet extends HttpServlet {
         }catch (Exception exception){
             request.setAttribute("error", exception.getMessage());
         }
-		request.getRequestDispatcher("blog.jsp").forward(request, response);
-	}
+        request.getRequestDispatcher("blog.jsp").forward(request, response);
+    }
 }

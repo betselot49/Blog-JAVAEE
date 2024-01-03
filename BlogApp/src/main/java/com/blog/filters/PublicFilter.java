@@ -17,14 +17,13 @@ public class PublicFilter implements Filter {
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain filter)
             throws IOException, ServletException {
-        System.out.println("=========Public Filter==============");
         HttpServletRequest httpRequest = (HttpServletRequest) request;
         HttpServletResponse httpResponse = (HttpServletResponse) response;
         HttpSession session =httpRequest.getSession();
         String path = httpRequest.getRequestURI().substring(httpRequest.getContextPath().length());
         User user = (User) httpRequest.getAttribute("user");
         if (user != null ) {
-            httpResponse.sendRedirect(URLConfig.rootUrl + "/blog");
+            httpResponse.sendRedirect("blog");
         }else{
             filter.doFilter(httpRequest, httpResponse);
         }
