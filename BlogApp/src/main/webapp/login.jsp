@@ -7,9 +7,8 @@
 <title>Login</title>
 </head>
 <body>
-<%@ include file="header.jsp" %>
-<h1>Welcome To Our Login Page.</h1>
-<h2>Registration Form</h2>
+<%@ include file="components/header.jsp" %>
+<h2>Login Here</h2>
 <form action="login" method="POST">
 	<label> Email: </label>
 	<input type="text" name="email" />

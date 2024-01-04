@@ -10,20 +10,17 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 
-@WebServlet("/blog/:id")
+@WebServlet("/:id")
 public class BlogSingleServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("=========Blog Servlet==============");
-        String queryParam = request.getParameter("search");
-        if (queryParam == null)  {
-            queryParam = "";
-        }
+        System.out.println("=========Blog Single Servlet==============");
+        int blogId = 0;
         try {
-            ArrayList<Blog> blogs = Blog.search(queryParam);
-            request.setAttribute("blogs", Blog.search(queryParam));
+            request.setAttribute("blog", Blog.getById(blogId));
+
         }catch (Exception exception){
             throw new RuntimeException(exception);
         }
-        request.getRequestDispatcher("blog.jsp").forward(request, response);
+        request.getRequestDispatcher("blogs.jsp").forward(request, response);
     }
 }

@@ -12,6 +12,8 @@ import java.util.Date;
 public class Blog {
     public int Id;
     public String Content;
+
+    public String Title;
     public int UserId;
 
     public String[] Tags = {};
@@ -30,6 +32,7 @@ public class Blog {
                 "UserId INT," +
                 "Tags VARCHAR(255)," +
                 "LikeCount INT," +
+                "Title VARCHAR(255)," +
                 "CreatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP," +
                 "CommentCount INT," +
                 "FOREIGN KEY (UserId) REFERENCES users(Id) ON DELETE CASCADE" +
@@ -42,6 +45,7 @@ public class Blog {
     public static Blog build(ResultSet result) throws Exception {
         Blog blog = new Blog();
         blog.Id = result.getInt("Id");
+        blog.Title = result.getString("Title");
         blog.Content = result.getString("Content");
         blog.UserId = result.getInt("UserId");
         blog.LikeCount = result.getInt("LikeCount");
@@ -54,23 +58,25 @@ public class Blog {
 
 
     public void create() throws Exception {
-        String query = "INSERT INTO blogs(Content, UserId, Tags, LikeCount, CommentCount) VALUES(?,?,?,?,?)";
+        String query = "INSERT INTO blogs(Title, Content, UserId, Tags, LikeCount, CommentCount) VALUES(?,?,?,?,?,?)";
         PreparedStatement stmt = connection.prepareStatement(query);
-        stmt.setString(1, this.Content);
-        stmt.setInt(2, this.UserId);
-        stmt.setString(3, String.join(",", this.Tags));
-        stmt.setInt(4, this.LikeCount);
-        stmt.setInt(5, this.CommentCount);
+        stmt.setString(1, this.Title);
+        stmt.setString(2, this.Content);
+        stmt.setInt(3, this.UserId);
+        stmt.setString(4, String.join(",", this.Tags));
+        stmt.setInt(5, this.LikeCount);
+        stmt.setInt(6, this.CommentCount);
         stmt.executeUpdate(query);
         stmt.close();
     }
 
 
     public void update() throws Exception {
-        String query = "UPDATE blogs SET Content=?, Tags=? WHERE Id=?";
+        String query = "UPDATE blogs SET Title=?, Content=?, Tags=? WHERE Id=?";
         PreparedStatement stmt = connection.prepareStatement(query);
-        stmt.setString(1, this.Content);
-        stmt.setString(2, String.join(",", this.Tags));
+        stmt.setString(1, this.Title);
+        stmt.setString(2, this.Content);
+        stmt.setString(3, String.join(",", this.Tags));
         stmt.executeUpdate(query);
         stmt.close();
     }
@@ -121,6 +127,7 @@ public class Blog {
     }
 
     public static ArrayList<Blog> search(String param) throws Exception {
+        System.out.println("=========Blog Model Search==============");
         String query = "SELECT * FROM blogs WHERE Content LIKE ? OR Tags LIKE ?";
         PreparedStatement stmt = connection.prepareStatement(query);
         stmt.setString(1, "%" + param + "%");

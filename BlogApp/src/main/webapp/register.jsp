@@ -7,12 +7,11 @@
 <title>Register</title>
 </head>
 <body>
-<%@ include file="header.jsp" %>
+<%@ include file="components/header.jsp" %>
 <%
 	String error = (String) request.getAttribute("error");
 	String success = (String) request.getAttribute("success");
 %>
-<h1>Welcome To Our Registrarion Page.</h1>
 <h2>Registration Form</h2>
 <form action="register" method="POST">
 	<label> Name: </label>

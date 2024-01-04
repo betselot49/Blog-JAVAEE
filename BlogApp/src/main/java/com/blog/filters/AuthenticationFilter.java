@@ -22,10 +22,12 @@ public class AuthenticationFilter implements Filter {
         User user;
         try {
             user = User.getByEmail((String) session.getAttribute("email"));
+            System.out.println("===========" + user.Role + "===========");
             request.setAttribute("user", user);
         }
         catch (Exception ignored) {
         }
+        System.out.println("=========Authentication Filter==============");
         filter.doFilter(httpRequest, httpResponse);
     }
 }
