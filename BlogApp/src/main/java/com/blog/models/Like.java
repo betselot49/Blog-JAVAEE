@@ -18,8 +18,8 @@ public class Like {
     private static final Connection connection = DBManager.getConnection();
     public static String schema(){
         String query = "CREATE TABLE IF NOT EXISTS likes(" +
-                "UserId INT," +
-                "BlogId INT," +
+                "UserId INT NOT NULL," +
+                "BlogId INT NOT NULL," +
                 "CreatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP," +
                 "PRIMARY KEY (UserId, BlogId)," +
                 "FOREIGN KEY (UserId) REFERENCES users(Id) ON DELETE CASCADE," +

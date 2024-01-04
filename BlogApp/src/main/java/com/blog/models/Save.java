@@ -17,9 +17,9 @@ public class Save {
 
     public static String schema(){
         String query = "CREATE TABLE IF NOT EXISTS saves(" +
-                "ReadingListId INT," +
-                "UserId INT," +
-                "BlogId INT," +
+                "ReadingListId INT NOT NULL," +
+                "UserId INT NOT NULL," +
+                "BlogId INT NOT NULL," +
                 "CreatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP," +
                 "PRIMARY KEY (ReadingListId, UserId, BlogId)," +
                 "FOREIGN KEY (ReadingListId) REFERENCES readinglists(Id) ON DELETE CASCADE," +

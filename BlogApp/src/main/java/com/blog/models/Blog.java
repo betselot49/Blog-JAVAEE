@@ -14,6 +14,8 @@ public class Blog {
     public String Content;
 
     public String Title;
+
+    public byte[] BlogPicture = null;
     public int UserId;
 
     public String[] Tags = {};
@@ -28,13 +30,13 @@ public class Blog {
     public static String schema(){
         String query = "CREATE TABLE IF NOT EXISTS blogs (" +
                 "Id INT AUTO_INCREMENT PRIMARY KEY," +
-                "Content TEXT," +
-                "UserId INT," +
+                "Content TEXT NOT NULL," +
+                "UserId INT NOT NULL," +
                 "Tags VARCHAR(255)," +
-                "LikeCount INT," +
-                "Title VARCHAR(255)," +
+                "LikeCount INT DEFAULT 0," +
+                "Title VARCHAR(255) NOT NULL," +
                 "CreatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP," +
-                "CommentCount INT," +
+                "CommentCount INT DEFAULT 0," +
                 "FOREIGN KEY (UserId) REFERENCES users(Id) ON DELETE CASCADE" +
                 ");";
         return query;
@@ -51,14 +53,15 @@ public class Blog {
         blog.LikeCount = result.getInt("LikeCount");
         blog.CommentCount = result.getInt("CommentCount");
         blog.CreatedAt = result.getDate("CreatedAt");
-        blog.Tags = result.getString("Tags").split(",");
+        if (result.getString("Tags") != null)  blog.Tags = result.getString("Tags").split(",");
+        if (result.getBytes("BlogPicture") != null) blog.BlogPicture = result.getBytes("BlogPicture");
 
         return blog;
     }
 
 
     public void create() throws Exception {
-        String query = "INSERT INTO blogs(Title, Content, UserId, Tags, LikeCount, CommentCount) VALUES(?,?,?,?,?,?)";
+        String query = "INSERT INTO blogs(Title, Content, UserId, Tags, LikeCount, CommentCount, BlogPicture) VALUES(?,?,?,?,?,?,?)";
         PreparedStatement stmt = connection.prepareStatement(query);
         stmt.setString(1, this.Title);
         stmt.setString(2, this.Content);
@@ -66,20 +69,22 @@ public class Blog {
         stmt.setString(4, String.join(",", this.Tags));
         stmt.setInt(5, this.LikeCount);
         stmt.setInt(6, this.CommentCount);
+        stmt.setBytes(7, this.BlogPicture);
         stmt.executeUpdate(query);
         stmt.close();
     }
 
 
-    public void update() throws Exception {
-        String query = "UPDATE blogs SET Title=?, Content=?, Tags=? WHERE Id=?";
-        PreparedStatement stmt = connection.prepareStatement(query);
-        stmt.setString(1, this.Title);
-        stmt.setString(2, this.Content);
-        stmt.setString(3, String.join(",", this.Tags));
-        stmt.executeUpdate(query);
-        stmt.close();
-    }
+//    public void update() throws Exception {
+//        String query = "UPDATE blogs SET Title=?, Content=?, Tags=?, BlogPicture=? WHERE Id=?";
+//        PreparedStatement stmt = connection.prepareStatement(query);
+//        stmt.setString(1, this.Title);
+//        stmt.setString(2, this.Content);
+//        stmt.setString(3, String.join(",", this.Tags));
+//        stmt.setBytes(4, this.BlogPicture);
+//        stmt.executeUpdate(query);
+//        stmt.close();
+//    }
 
     public void delete() throws Exception {
         String query = "DELETE FROM blogs WHERE Id=?";

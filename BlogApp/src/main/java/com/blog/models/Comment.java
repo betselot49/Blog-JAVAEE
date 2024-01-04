@@ -19,9 +19,9 @@ public class Comment {
     public  static String schema(){
         String query = "CREATE TABLE IF NOT EXISTS comments (" +
                 "Id INT AUTO_INCREMENT PRIMARY KEY," +
-                "UserId INT," +
-                "BlogId INT," +
-                "Content TEXT," +
+                "UserId INT NOT NULL," +
+                "BlogId INT NOT NULL," +
+                "Content TEXT NOT NULL," +
                 "CreatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP," +
                 "FOREIGN KEY (UserId) REFERENCES users(Id) ON DELETE CASCADE," +
                 "FOREIGN KEY (BlogId) REFERENCES blogs(Id) ON DELETE CASCADE" +

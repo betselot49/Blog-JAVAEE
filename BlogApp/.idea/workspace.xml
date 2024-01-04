@@ -86,7 +86,7 @@
       <recent name="C:\Users\fikre\OneDrive\Desktop\Blog-JAVAEE\BlogApp\src\main\webapp\Components" />
     </key>
   </component>
-  <component name="RunManager" selected="Tomcat Server.Tomcat 10.1.15">
+  <component name="RunManager" selected="Application.DBManager">
     <configuration name="DBManager" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.blog.config.DBManager" />
       <module name="BlogApp" />
@@ -214,7 +214,7 @@
       <workItem from="1704132640088" duration="5031000" />
       <workItem from="1704279514182" duration="4060000" />
       <workItem from="1704368046147" duration="871000" />
-      <workItem from="1704369146785" duration="3187000" />
+      <workItem from="1704369146785" duration="5635000" />
     </task>
     <task id="LOCAL-00001" summary="User table updated">
       <option name="closed" value="true" />

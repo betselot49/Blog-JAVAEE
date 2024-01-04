@@ -20,10 +20,10 @@ public class ReadingList {
     public static String schema(){
         String query = "CREATE TABLE IF NOT EXISTS readinglists(" +
                 "Id INT AUTO_INCREMENT PRIMARY KEY," +
-                "UserId INT," +
-                "BlogCount INT," +
-                "Name VARCHAR(255)," +
-                "CreatedAt DATE," +
+                "UserId INT NOT NULL," +
+                "BlogCount INT DEFAULT 0," +
+                "Name VARCHAR(255) NOT NULL," +
+                "CreatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP," +
                 "FOREIGN KEY (UserId) REFERENCES users(Id) ON DELETE CASCADE" +
                 ");";
         return  query;

@@ -14,6 +14,7 @@ public class User {
     public String FullName;
     public  String Email;
     public String Password;
+    public byte[] ProfilePicture;
     public String Role;
     public Date CreatedAt;
 
@@ -23,10 +24,11 @@ public class User {
     public static  String schema(){
         String query = "CREATE TABLE IF NOT EXISTS users(" +
                 "Id INT AUTO_INCREMENT PRIMARY KEY," +
-                "Fullname VARCHAR(255)," +
-                "Email VARCHAR(255) UNIQUE," +
-                "Password VARCHAR(255)," +
-                "Role Enum('admin', 'user')," +
+                "Fullname VARCHAR(255) NOT NULL," +
+                "Email VARCHAR(255) NOT NULL UNIQUE," +
+                "ProfilePicture LONGBLOB," +
+                "Password VARCHAR(255) NOT NULL," +
+                "Role ENUM('admin', 'user') DEFAULT 'user'," +
                 "CreatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP" +
                 ");";
         return  query;
@@ -38,6 +40,7 @@ public class User {
         user.FullName = result.getString("Fullname");
         user.Email = result.getString("Email");
         user.Password = result.getString("Password");
+        if(result.getBytes("ProfilePicture") != null)  user.ProfilePicture = result.getBytes("ProfilePicture");
         user.Role = result.getString("Role");
         user.CreatedAt = result.getDate("CreatedAt");
         return user;
@@ -45,25 +48,26 @@ public class User {
 
 
     public int create() throws SQLException {
-        String query = "INSERT INTO users(Fullname, Email, Password, Role) VALUES(?,?,?,?)";
+        String query = "INSERT INTO users(Fullname, Email, Password, Role, ProfilePicture) VALUES(?,?,?,?,?)";
         PreparedStatement stmt = connection.prepareStatement(query);
         stmt.setString(1, this.FullName);
         stmt.setString(2, this.Email);
         stmt.setString(3, this.Password);
         stmt.setString(4, this.Role);
+        stmt.setBytes(5, this.ProfilePicture);
         return stmt.executeUpdate();
     }
 
-    public void update() throws SQLException {
-        String query = "UPDATE users SET Fullname=?, Email=?, Password=?, Role=? WHERE Id=?";
-        PreparedStatement stmt = connection.prepareStatement(query);
-        stmt.setString(1, this.FullName);
-        stmt.setString(2, this.Email);
-        stmt.setString(3, this.Password);
-        stmt.setString(4, this.Role);
-        stmt.setInt(5, this.Id);
-        stmt.executeUpdate();
-    }
+//    public void update() throws SQLException {
+//        String query = "UPDATE users SET Fullname=?, Email=?, Password=?, ProfilePicture=?  WHERE Id=?";
+//        PreparedStatement stmt = connection.prepareStatement(query);
+//        stmt.setString(1, this.FullName);
+//        stmt.setString(2, this.Email);
+//        stmt.setString(3, this.Password);
+//        stmt.setBytes(4, this.ProfilePicture);
+//        stmt.setInt(5, this.Id);
+//        stmt.executeUpdate();
+//    }
 
     public void delete() throws SQLException {
         String query = "DELETE FROM users WHERE Id=?";
