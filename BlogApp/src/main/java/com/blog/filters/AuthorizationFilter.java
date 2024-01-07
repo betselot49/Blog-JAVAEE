@@ -13,22 +13,15 @@ import jakarta.servlet.http.HttpSession;
 
 @WebFilter("/admin/*")
 public class AuthorizationFilter implements Filter {
-//    public void init(FilterConfig config) throws ServletException {
-//    }
-//    public void destroy() {
-//    }
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain filter)
             throws IOException, ServletException {
-        System.out.println("=========Admin Authorization Filter==============");
         HttpServletRequest httpRequest = (HttpServletRequest) request;
         HttpServletResponse httpResponse = (HttpServletResponse) response;
-        HttpSession session =httpRequest.getSession();
-        String path = httpRequest.getRequestURI().substring(httpRequest.getContextPath().length());
         User user = (User) httpRequest.getAttribute("user");
         if (user == null || !user.Role.equals("admin")) {
-            httpResponse.sendRedirect(URLConfig.rootUrl + "/blog");
+            httpResponse.sendRedirect("/blog");
         }else{
             filter.doFilter(httpRequest, httpResponse);
         }

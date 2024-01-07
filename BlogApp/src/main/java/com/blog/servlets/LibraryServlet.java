@@ -8,18 +8,22 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
-@WebServlet("/:id")
-public class BlogSingleServlet extends HttpServlet {
+@WebServlet("/library")
+public class LibraryServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("=========Blog Single Servlet==============");
-        int blogId = 0;
+        System.out.println("=========Blog Servlet==============");
+        String queryParam = request.getParameter("search");
+        if (queryParam == null)  {
+            queryParam = "";
+        }
         try {
-            request.setAttribute("blog", Blog.getById(blogId));
-
+            ArrayList<Blog> blogs = Blog.search(queryParam);
+            request.setAttribute("success", Blog.search(queryParam));
         }catch (Exception exception){
-            throw new RuntimeException(exception);
+            request.setAttribute("error", exception.getMessage());
         }
         request.getRequestDispatcher("blogs.jsp").forward(request, response);
     }

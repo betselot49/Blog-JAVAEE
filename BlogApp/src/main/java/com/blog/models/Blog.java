@@ -11,10 +11,13 @@ import java.util.Date;
 
 public class Blog {
     public int Id;
-    public String Title;
     public String Content;
+
+    public String Title;
+
+    public byte[] BlogPicture = null;
     public int UserId;
-    public String ImageUrl;
+
     public String[] Tags = {};
     public int LikeCount = 0;
     public int CommentCount = 0;
@@ -27,14 +30,13 @@ public class Blog {
     public static String schema(){
         String query = "CREATE TABLE IF NOT EXISTS blogs (" +
                 "Id INT AUTO_INCREMENT PRIMARY KEY," +
-                "Title VARCHAR(255)," +
-                "Content TEXT," +
-                "UserId INT," +
-                "ImageUrl VARCHAR(255)," +
+                "Content TEXT NOT NULL," +
+                "UserId INT NOT NULL," +
                 "Tags VARCHAR(255)," +
-                "LikeCount INT," +
+                "LikeCount INT DEFAULT 0," +
+                "Title VARCHAR(255) NOT NULL," +
                 "CreatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP," +
-                "CommentCount INT," +
+                "CommentCount INT DEFAULT 0," +
                 "FOREIGN KEY (UserId) REFERENCES users(Id) ON DELETE CASCADE" +
                 ");";
         return query;
@@ -45,39 +47,44 @@ public class Blog {
     public static Blog build(ResultSet result) throws Exception {
         Blog blog = new Blog();
         blog.Id = result.getInt("Id");
+        blog.Title = result.getString("Title");
         blog.Content = result.getString("Content");
         blog.UserId = result.getInt("UserId");
         blog.LikeCount = result.getInt("LikeCount");
         blog.CommentCount = result.getInt("CommentCount");
         blog.CreatedAt = result.getDate("CreatedAt");
-        blog.Tags = result.getString("Tags").split(",");
+        if (result.getString("Tags") != null)  blog.Tags = result.getString("Tags").split(",");
+        if (result.getBytes("BlogPicture") != null) blog.BlogPicture = result.getBytes("BlogPicture");
 
         return blog;
     }
 
 
-    public int create() throws Exception {
-        String query = "INSERT INTO blogs(Content, UserId, Tags, LikeCount, CommentCount) VALUES(?,?,?,?,?)";
+    public void create() throws Exception {
+        String query = "INSERT INTO blogs(Title, Content, UserId, Tags, LikeCount, CommentCount, BlogPicture) VALUES(?,?,?,?,?,?,?)";
         PreparedStatement stmt = connection.prepareStatement(query);
-        stmt.setString(1, this.Content);
-        stmt.setInt(2, this.UserId);
-        stmt.setString(3, String.join(",", this.Tags));
-        stmt.setInt(4, this.LikeCount);
-        stmt.setInt(5, this.CommentCount);
-        int rowsAffected = stmt.executeUpdate(query);
-        stmt.close();
-        return  rowsAffected;
-    }
-
-
-    public void update() throws Exception {
-        String query = "UPDATE blogs SET Content=?, Tags=? WHERE Id=?";
-        PreparedStatement stmt = connection.prepareStatement(query);
-        stmt.setString(1, this.Content);
-        stmt.setString(2, String.join(",", this.Tags));
+        stmt.setString(1, this.Title);
+        stmt.setString(2, this.Content);
+        stmt.setInt(3, this.UserId);
+        stmt.setString(4, String.join(",", this.Tags));
+        stmt.setInt(5, this.LikeCount);
+        stmt.setInt(6, this.CommentCount);
+        stmt.setBytes(7, this.BlogPicture);
         stmt.executeUpdate(query);
         stmt.close();
     }
+
+
+//    public void update() throws Exception {
+//        String query = "UPDATE blogs SET Title=?, Content=?, Tags=?, BlogPicture=? WHERE Id=?";
+//        PreparedStatement stmt = connection.prepareStatement(query);
+//        stmt.setString(1, this.Title);
+//        stmt.setString(2, this.Content);
+//        stmt.setString(3, String.join(",", this.Tags));
+//        stmt.setBytes(4, this.BlogPicture);
+//        stmt.executeUpdate(query);
+//        stmt.close();
+//    }
 
     public void delete() throws Exception {
         String query = "DELETE FROM blogs WHERE Id=?";
@@ -125,6 +132,7 @@ public class Blog {
     }
 
     public static ArrayList<Blog> search(String param) throws Exception {
+        System.out.println("=========Blog Model Search==============");
         String query = "SELECT * FROM blogs WHERE Content LIKE ? OR Tags LIKE ?";
         PreparedStatement stmt = connection.prepareStatement(query);
         stmt.setString(1, "%" + param + "%");

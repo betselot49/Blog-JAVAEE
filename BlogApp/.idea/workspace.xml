@@ -80,7 +80,13 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected="Tomcat Server.Tomcat 10.1.15">
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\fikre\OneDrive\Desktop\Blog-JAVAEE\BlogApp\src\main\webapp\components" />
+      <recent name="C:\Users\fikre\OneDrive\Desktop\Blog-JAVAEE\BlogApp\src\main\webapp\Components" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.DBManager">
     <configuration name="DBManager" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.blog.config.DBManager" />
       <module name="BlogApp" />
@@ -206,6 +212,9 @@
       <workItem from="1704124017641" duration="767000" />
       <workItem from="1704132551742" duration="67000" />
       <workItem from="1704132640088" duration="5031000" />
+      <workItem from="1704279514182" duration="4060000" />
+      <workItem from="1704368046147" duration="871000" />
+      <workItem from="1704369146785" duration="5635000" />
     </task>
     <task id="LOCAL-00001" summary="User table updated">
       <option name="closed" value="true" />
@@ -224,5 +233,66 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="User table updated" />
     <option name="LAST_COMMIT_MESSAGE" value="User table updated" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/blog/servlets/LoginServlet.java</url>
+          <line>24</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/blog/servlets/LoginServlet.java</url>
+          <line>26</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/blog/servlets/LoginServlet.java</url>
+          <line>33</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/blog/servlets/LoginServlet.java</url>
+          <line>36</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/blog/servlets/LoginServlet.java</url>
+          <line>40</line>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/blog/servlets/BlogServlet.java</url>
+          <line>37</line>
+          <option name="timeStamp" value="20" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/blog/servlets/BlogServlet.java</url>
+          <line>38</line>
+          <option name="timeStamp" value="21" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/blog/servlets/BlogServlet.java</url>
+          <line>39</line>
+          <option name="timeStamp" value="22" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/blog/servlets/BlogServlet.java</url>
+          <line>41</line>
+          <option name="timeStamp" value="23" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/blog/servlets/BlogServlet.java</url>
+          <line>42</line>
+          <option name="timeStamp" value="24" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/blog/servlets/BlogServlet.java</url>
+          <line>40</line>
+          <option name="timeStamp" value="25" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
