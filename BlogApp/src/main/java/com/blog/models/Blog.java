@@ -11,9 +11,10 @@ import java.util.Date;
 
 public class Blog {
     public int Id;
+    public String Title;
     public String Content;
     public int UserId;
-
+    public String ImageUrl;
     public String[] Tags = {};
     public int LikeCount = 0;
     public int CommentCount = 0;
@@ -26,8 +27,10 @@ public class Blog {
     public static String schema(){
         String query = "CREATE TABLE IF NOT EXISTS blogs (" +
                 "Id INT AUTO_INCREMENT PRIMARY KEY," +
+                "Title VARCHAR(255)," +
                 "Content TEXT," +
                 "UserId INT," +
+                "ImageUrl VARCHAR(255)," +
                 "Tags VARCHAR(255)," +
                 "LikeCount INT," +
                 "CreatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP," +
@@ -53,7 +56,7 @@ public class Blog {
     }
 
 
-    public void create() throws Exception {
+    public int create() throws Exception {
         String query = "INSERT INTO blogs(Content, UserId, Tags, LikeCount, CommentCount) VALUES(?,?,?,?,?)";
         PreparedStatement stmt = connection.prepareStatement(query);
         stmt.setString(1, this.Content);
@@ -61,8 +64,9 @@ public class Blog {
         stmt.setString(3, String.join(",", this.Tags));
         stmt.setInt(4, this.LikeCount);
         stmt.setInt(5, this.CommentCount);
-        stmt.executeUpdate(query);
+        int rowsAffected = stmt.executeUpdate(query);
         stmt.close();
+        return  rowsAffected;
     }
 
 

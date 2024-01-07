@@ -12,7 +12,8 @@ import java.io.IOException;
 @WebServlet("/register")
 public class RegisterServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        System.out.println("=========Register Servlet==============");
+        request.getRequestDispatcher("register.jsp").forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -30,15 +31,17 @@ public class RegisterServlet extends HttpServlet {
             user.Role = role;
 
             int rowsAffected = user.create();
+            System.out.println("==============="+rowsAffected);
             if (rowsAffected > 0) {
-                request.setAttribute("success", true);
-                response.sendRedirect("register.jsp");
+                request.setAttribute("success", "Successfully registered. Please login to continue.");
+                request.getRequestDispatcher("register.jsp").forward(request, response);
             } else {
-                request.setAttribute("error", true);
-                response.sendRedirect("register.jsp");
+                request.setAttribute("error", "Something went wrong. Please try again.");
+                request.getRequestDispatcher("register.jsp").forward(request, response);
             }
         } catch (Exception e) {
-            request.setAttribute("error", true);
+            System.out.println("==============="+ "Exception Throwed");
+            request.setAttribute("error", "User already exists. Please Use another email.");
             e.printStackTrace();
         }
 

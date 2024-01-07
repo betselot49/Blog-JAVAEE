@@ -13,6 +13,8 @@ import java.util.Objects;
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("=========Login Servlet==============");
+		request.getRequestDispatcher("login.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -23,13 +25,13 @@ public class LoginServlet extends HttpServlet {
 			User loggedInUser = User.getByEmail(email);
 			if (loggedInUser == null) {
 				request.setAttribute("error", "User not found. Please register first.");
-				response.sendRedirect("login.jsp");
+				request.getRequestDispatcher("login.jsp").forward(request, response);
 				return;
 			}
 
 			String password = loggedInUser.Password;
 			if (Objects.equals(password, newPassword)) {
-				request.getSession().setAttribute("email", loggedInUser.Email);
+				request.getSession().setAttribute("loggedInUser", loggedInUser);
 				response.sendRedirect("blog");
 			} else {
 				request.setAttribute("error", "Invalid credentials. Please try again.");
