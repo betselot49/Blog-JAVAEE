@@ -16,6 +16,8 @@ public class User {
     public String Password;
     public byte[] ProfilePicture;
     public String Role;
+
+    public int BlogCount = 0;
     public Date CreatedAt;
 
 
@@ -30,6 +32,7 @@ public class User {
                 "Password VARCHAR(255) NOT NULL," +
                 "Role ENUM('admin', 'user') DEFAULT 'user'," +
                 "CreatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP" +
+                "BlogCount INT DEFAULT 0" +
                 ");";
         return  query;
     }
@@ -42,7 +45,9 @@ public class User {
         user.Password = result.getString("Password");
         if(result.getBytes("ProfilePicture") != null)  user.ProfilePicture = result.getBytes("ProfilePicture");
         user.Role = result.getString("Role");
+        user.BlogCount = result.getInt("BlogCount");
         user.CreatedAt = result.getDate("CreatedAt");
+
         return user;
     }
 
@@ -76,11 +81,11 @@ public class User {
         stmt.executeUpdate();
     }
 
-    public  static ArrayList<User> search(String param) throws SQLException {
-        String query = "SELECT * FROM users WHERE Fullname LIKE";
+    public  static ArrayList<User> search(String search, int pageNumber, int pageSize) throws SQLException {
+        String query = "SELECT * FROM users WHERE Fullname LIKE ? OR Email LIKE ? LIMIT ? OFFSET ? ORDER BY BlogCount DESC";
         PreparedStatement stmt = connection.prepareStatement(query);
-        stmt.setString(1, "%" + param + "%");
-        stmt.setString(2, "%" + param + "%");
+        stmt.setString(1, "%" + search + "%");
+        stmt.setString(2, "%" + search + "%");
         ResultSet result = stmt.executeQuery();
         ArrayList<User> users = new ArrayList<User>();
         while (result.next()) {
