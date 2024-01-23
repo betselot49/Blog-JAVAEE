@@ -24,6 +24,8 @@ public class Blog {
 
     public Date CreatedAt;
 
+    public User Poster = null;
+
     private static Connection connection = DBManager.connection;
 
 
@@ -54,9 +56,9 @@ public class Blog {
         blog.LikeCount = result.getInt("LikeCount");
         blog.CommentCount = result.getInt("CommentCount");
         blog.CreatedAt = result.getDate("CreatedAt");
+        blog.Poster = User.getById(blog.UserId);
         if (result.getString("Tags") != null)  blog.Tags = result.getString("Tags");
         if (result.getBytes("BlogPicture") != null) blog.BlogPicture = result.getBytes("BlogPicture");
-
         return blog;
     }
 
@@ -108,7 +110,8 @@ public class Blog {
 
     public static ArrayList<Blog> getByUserId(int userId) throws Exception {
         String query = "SELECT * FROM blogs WHERE UserId=?";
-        Statement stmt = connection.createStatement();
+        PreparedStatement stmt = connection.prepareStatement(query);
+        stmt.setInt(1,userId);
         ResultSet result = stmt.executeQuery(query);
         ArrayList<Blog> blogs = new ArrayList<>();
         while (result.next()) {

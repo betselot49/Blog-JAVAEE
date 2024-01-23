@@ -1,6 +1,7 @@
 package com.blog.servlets;
 
 import com.blog.models.Blog;
+import com.blog.utils.Helpers;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -14,12 +15,13 @@ import java.util.ArrayList;
 public class BlogSingleServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         System.out.println("=========Blog Single Servlet==============");
-        int blogId = 0;
         try {
+            int blogId = Integer.parseInt(Helpers.getLastPathSegment(request));
+            Blog blog = Blog.getById(blogId);
             request.setAttribute("blog", Blog.getById(blogId));
-
+            request.getRequestDispatcher("blog.jsp").forward(request, response);
         }catch (Exception exception){
-            throw new RuntimeException(exception);
+            request.setAttribute("error", exception.getMessage());
         }
         request.getRequestDispatcher("blogs.jsp").forward(request, response);
     }

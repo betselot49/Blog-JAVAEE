@@ -13,10 +13,12 @@
         Blog blog = (Blog) request.getAttribute("blog");
         String img = Base64.getEncoder().encodeToString(blog.BlogPicture);
     %>
+    <a href=blog/<%= blog.Id %>>
     <h1><%=blog.Title%></h1>
     <p><%=blog.Content%></p>
     <p><%=blog.CreatedAt%></p>
     <p><%=blog.LikeCount%></p>
     <p><%=blog.CommentCount%></p>
     <img src="data:image/png;base64,<%=img%>" alt="">
+    </a>
 </div>
