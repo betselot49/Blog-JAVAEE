@@ -31,7 +31,7 @@ public class User {
                 "ProfilePicture LONGBLOB," +
                 "Password VARCHAR(255) NOT NULL," +
                 "Role ENUM('admin', 'user') DEFAULT 'user'," +
-                "CreatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP" +
+                "CreatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP," +
                 "BlogCount INT DEFAULT 0" +
                 ");";
         return  query;

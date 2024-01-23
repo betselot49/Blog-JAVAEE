@@ -22,6 +22,8 @@ public class RegisterServlet extends HttpServlet {
         String password = request.getParameter("password");
         String role = "user";
 
+        System.out.println("=========Register Servlet==============" + fullName + " " + email + " " + password);
+
         try {
             User user = new User();
 

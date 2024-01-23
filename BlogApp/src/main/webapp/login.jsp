@@ -158,7 +158,7 @@
 
 					<div class="form-group">
 						<label for="email">Email</label> <input type="text"
-																   class="form-control" id="email" name="username" required>
+																   class="form-control" id="email" name="email" required>
 					</div>
 					<div class="form-group">
 						<label for="password">Password</label> <input type="password"
