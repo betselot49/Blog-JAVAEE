@@ -156,7 +156,7 @@
 			<h2 class="display-4">Registration</h2>
 		</div>
 		<div class="card-body">
-			<form class="register-form" action="register" method="POST" >
+			<form class="register-form" action="register" method="POST" enctype="multipart/form-data">
 				<h3 class="register-title">Create an Account</h3>
 				<div class="form-group">
 					<label for="fullName">Full Name</label>
@@ -170,10 +170,8 @@
 					<label for="password">Password</label>
 					<input type="password" class="form-control" id="password" name="password" required>
 				</div>
-<%--				<div class="form-group">--%>
-<%--					<label for="profilePicture" class="custom-file-label">Choose Profile Picture</label>--%>
-<%--					<input type="file" class="custom-file-input" id="profilePicture" name="profilePicture" accept="image/*">--%>
-<%--				</div>--%>
+				<label> Picture: </label>
+				<input type="file" name="profilePicture" accept="image/*" />
 				<button type="submit" class="btn btn-primary">Register</button>
 				<div class="login-link">
 					<p>
