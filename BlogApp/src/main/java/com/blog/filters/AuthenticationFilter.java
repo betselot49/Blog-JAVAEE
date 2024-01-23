@@ -18,7 +18,7 @@ public class AuthenticationFilter implements Filter {
             throws IOException, ServletException {
         HttpServletRequest httpRequest = (HttpServletRequest) request;
         HttpServletResponse httpResponse = (HttpServletResponse) response;
-        HttpSession session =httpRequest.getSession();
+        HttpSession session = httpRequest.getSession();
         User user;
         try {
             user = User.getByEmail((String) session.getAttribute("email"));

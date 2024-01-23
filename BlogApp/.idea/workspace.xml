@@ -10,11 +10,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b658c3e2-27bf-48d6-90f6-572987491378" name="Changes" comment="User table updated">
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/../.idea/Blog-JAVAEE.iml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../.idea/modules.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../.idea/vcs.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" />
+=======
+      <change afterPath="$PROJECT_DIR$/../.idea/artifacts/Blog.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
+    </list>
+    <list default="true" id="b658c3e2-27bf-48d6-90f6-572987491378" name="Changes" comment="User table updated">
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/webContexts.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/blog/servlets/UsersSingleServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/components/pagination.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/components/toastify.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/components/usercard.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/components/viewblog.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+>>>>>>> 7b9ea3191ffe065e90ba2d0d8bcf035f5b0abee8
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/blog/models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blog/models/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/blog/servlets/RegisterServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blog/servlets/RegisterServlet.java" afterDir="false" />
@@ -111,7 +127,7 @@
       <recent name="C:\Users\fikre\OneDrive\Desktop\Blog-JAVAEE\BlogApp\src\main\webapp\Components" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.DBManager">
+  <component name="RunManager" selected="Tomcat Server.Tomcat 10.1.15">
     <configuration name="DBManager" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.blog.config.DBManager" />
       <module name="BlogApp" />
@@ -215,6 +231,10 @@
         </option>
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.DBManager" />
+      <item itemvalue="Tomcat Server.Tomcat 10.1.15" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.DBManager" />
@@ -239,6 +259,7 @@
       <workItem from="1704132640088" duration="5031000" />
       <workItem from="1704279514182" duration="4060000" />
       <workItem from="1704368046147" duration="871000" />
+<<<<<<< HEAD
       <workItem from="1704369146785" duration="6582000" />
       <workItem from="1704699879512" duration="1441000" />
       <workItem from="1704723865050" duration="10840000" />
@@ -248,6 +269,9 @@
       <workItem from="1704881252871" duration="148000" />
       <workItem from="1704881478319" duration="716000" />
       <workItem from="1706033157392" duration="726000" />
+=======
+      <workItem from="1704369146785" duration="5635000" />
+>>>>>>> 7b9ea3191ffe065e90ba2d0d8bcf035f5b0abee8
     </task>
     <task id="LOCAL-00001" summary="User table updated">
       <option name="closed" value="true" />
@@ -273,31 +297,6 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/blog/servlets/LoginServlet.java</url>
-          <line>24</line>
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/blog/servlets/LoginServlet.java</url>
-          <line>26</line>
-          <option name="timeStamp" value="10" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/blog/servlets/LoginServlet.java</url>
-          <line>33</line>
-          <option name="timeStamp" value="11" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/blog/servlets/LoginServlet.java</url>
-          <line>36</line>
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/blog/servlets/LoginServlet.java</url>
-          <line>40</line>
-          <option name="timeStamp" value="13" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/blog/servlets/BlogServlet.java</url>
           <line>55</line>
