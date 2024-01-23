@@ -27,9 +27,6 @@ public class RegisterServlet extends HttpServlet {
         InputStream fileContent = filePart.getInputStream();
         byte[] profilePicture = fileContent.readAllBytes();
         String role = "user";
-
-        System.out.println("=========Register Servlet==============" + fullName + " " + email + " " + password);
-
         try {
             User user = new User();
             user.FullName = fullName;
