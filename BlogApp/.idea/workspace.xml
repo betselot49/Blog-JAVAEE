@@ -9,7 +9,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b658c3e2-27bf-48d6-90f6-572987491378" name="Changes" comment="User table updated" />
+    <list default="true" id="b658c3e2-27bf-48d6-90f6-572987491378" name="Changes" comment="User table updated">
+      <change afterPath="$PROJECT_DIR$/../.idea/artifacts/Blog.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -86,7 +89,7 @@
       <recent name="C:\Users\fikre\OneDrive\Desktop\Blog-JAVAEE\BlogApp\src\main\webapp\Components" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.DBManager">
+  <component name="RunManager" selected="Tomcat Server.Tomcat 10.1.15">
     <configuration name="DBManager" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.blog.config.DBManager" />
       <module name="BlogApp" />
@@ -100,7 +103,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Tomcat 10.1.15" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 10.1.15" ALTERNATIVE_JRE_ENABLED="true" ALTERNATIVE_JRE_PATH="$USER_HOME$/Program Files/Java/jdk-21" nameIsGenerated="true">
+    <configuration name="Tomcat 10.1.15" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 10.1.15" ALTERNATIVE_JRE_ENABLED="true" ALTERNATIVE_JRE_PATH="21" nameIsGenerated="true">
       <option name="UPDATE_ON_FRAME_DEACTIVATION" value="true" />
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
@@ -190,6 +193,10 @@
         </option>
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.DBManager" />
+      <item itemvalue="Tomcat Server.Tomcat 10.1.15" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.DBManager" />
@@ -215,6 +222,15 @@
       <workItem from="1704279514182" duration="4060000" />
       <workItem from="1704368046147" duration="871000" />
       <workItem from="1704369146785" duration="5635000" />
+      <workItem from="1704659412850" duration="431000" />
+      <workItem from="1704659863963" duration="1075000" />
+      <workItem from="1704708065809" duration="1591000" />
+      <workItem from="1704709964360" duration="1935000" />
+      <workItem from="1704712176407" duration="9000" />
+      <workItem from="1704712912961" duration="3135000" />
+      <workItem from="1704740535505" duration="540000" />
+      <workItem from="1704880666505" duration="2152000" />
+      <workItem from="1704884644708" duration="290000" />
     </task>
     <task id="LOCAL-00001" summary="User table updated">
       <option name="closed" value="true" />
@@ -237,31 +253,6 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/blog/servlets/LoginServlet.java</url>
-          <line>24</line>
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/blog/servlets/LoginServlet.java</url>
-          <line>26</line>
-          <option name="timeStamp" value="10" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/blog/servlets/LoginServlet.java</url>
-          <line>33</line>
-          <option name="timeStamp" value="11" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/blog/servlets/LoginServlet.java</url>
-          <line>36</line>
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/blog/servlets/LoginServlet.java</url>
-          <line>40</line>
-          <option name="timeStamp" value="13" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/blog/servlets/BlogServlet.java</url>
           <line>37</line>

@@ -41,7 +41,8 @@ public class RegisterServlet extends HttpServlet {
             }
         } catch (Exception e) {
             System.out.println("==============="+ "Exception Throwed");
-            request.setAttribute("error", "User already exists. Please Use another email.");
+            request.setAttribute("error", e.getMessage());
+            request.getRequestDispatcher("register.jsp").forward(request, response);
             e.printStackTrace();
         }
 
