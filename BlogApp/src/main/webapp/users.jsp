@@ -1,4 +1,4 @@
-<%--
+<%@ page import="java.util.ArrayList" %><%--
   Created by IntelliJ IDEA.
   User: fikre
   Date: 1/4/2024
@@ -11,6 +11,13 @@
     <title>Title</title>
 </head>
 <body>
- Users
+<%@include file="components/header.jsp"%>
+<%
+        ArrayList<User> peoples = (ArrayList<User>) request.getAttribute("peoples");
+        for (User people : peoples) {
+            request.setAttribute("people", people);
+            request.getRequestDispatcher("components/usercard.jsp").include(request, response);
+        }
+%>
 </body>
 </html>

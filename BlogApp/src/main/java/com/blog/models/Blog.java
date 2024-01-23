@@ -18,7 +18,7 @@ public class Blog {
     public byte[] BlogPicture = null;
     public int UserId;
 
-    public String[] Tags = {};
+    public String Tags;
     public int LikeCount = 0;
     public int CommentCount = 0;
 
@@ -37,6 +37,7 @@ public class Blog {
                 "Title VARCHAR(255) NOT NULL," +
                 "CreatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP," +
                 "CommentCount INT DEFAULT 0," +
+                "BlogPicture LONGBLOB," +
                 "FOREIGN KEY (UserId) REFERENCES users(Id) ON DELETE CASCADE" +
                 ");";
         return query;
@@ -53,25 +54,24 @@ public class Blog {
         blog.LikeCount = result.getInt("LikeCount");
         blog.CommentCount = result.getInt("CommentCount");
         blog.CreatedAt = result.getDate("CreatedAt");
-        if (result.getString("Tags") != null)  blog.Tags = result.getString("Tags").split(",");
+        if (result.getString("Tags") != null)  blog.Tags = result.getString("Tags");
         if (result.getBytes("BlogPicture") != null) blog.BlogPicture = result.getBytes("BlogPicture");
 
         return blog;
     }
 
 
-    public void create() throws Exception {
+    public int create() throws Exception {
         String query = "INSERT INTO blogs(Title, Content, UserId, Tags, LikeCount, CommentCount, BlogPicture) VALUES(?,?,?,?,?,?,?)";
         PreparedStatement stmt = connection.prepareStatement(query);
         stmt.setString(1, this.Title);
         stmt.setString(2, this.Content);
         stmt.setInt(3, this.UserId);
-        stmt.setString(4, String.join(",", this.Tags));
+        stmt.setString(4, this.Tags);
         stmt.setInt(5, this.LikeCount);
         stmt.setInt(6, this.CommentCount);
         stmt.setBytes(7, this.BlogPicture);
-        stmt.executeUpdate(query);
-        stmt.close();
+        return stmt.executeUpdate();
     }
 
 

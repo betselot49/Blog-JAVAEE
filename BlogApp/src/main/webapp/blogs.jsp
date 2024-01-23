@@ -1,4 +1,5 @@
-<%--
+<%@ page import="com.blog.models.Blog" %>
+<%@ page import="java.util.ArrayList" %><%--
   Created by IntelliJ IDEA.
   User: fikre
   Date: 1/1/2024
@@ -14,7 +15,16 @@
 </head>
 <body>
 <%@ include file="components/header.jsp" %>
+<%@ include file="components/toastify.jsp" %>
 <%@ include file="components/addblog.jsp" %>
-<h1>hello Blog page</h1>
+
+<%
+    int currentPage = (request.getParameter("page") != null) ? Integer.parseInt(request.getParameter("page")) : 1;
+    ArrayList<Blog> items = (ArrayList<Blog>) request.getAttribute("blogs");
+    for (Blog blog : items) {
+        request.setAttribute("blog", blog);
+        request.getRequestDispatcher("components/viewblog.jsp").include(request, response);
+    }
+%>
 </body>
 </html>
