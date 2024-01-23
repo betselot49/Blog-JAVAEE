@@ -58,12 +58,13 @@
 </head>
 <body>
 <div class="container">
-    <div class="card">
+    <%
+        Blog blog = (Blog) request.getAttribute("blog");
+        String img = Base64.getEncoder().encodeToString(blog.BlogPicture);
+    %>
+    <a class="card" href="blog/<%=blog.Id%>">
         <div class="card-body">
-            <%
-                Blog blog = (Blog) request.getAttribute("blog");
-                String img = Base64.getEncoder().encodeToString(blog.BlogPicture);
-            %>
+
             <h2 class="card-title"><%= blog.Title %></h2>
             <img src="data:image/png;base64,<%= img %>" class="card-img-top blog-image" alt="Blog Image">
             <p class="card-text"><%= blog.Content %></p>
@@ -78,5 +79,5 @@
                 </div>
             </div>
         </div>
-    </div>
+    </a>
 </div>
