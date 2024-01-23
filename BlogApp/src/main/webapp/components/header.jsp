@@ -5,7 +5,7 @@
 <header>
 	<ul>
 		<li><a href="blog">Home</a></li>
-		<li><a href="user">Users</a></li>
+		<li><a href="users">Users</a></li>
 		<%
 			User user = (User)request.getAttribute("user");
 			if(user == null){ %>

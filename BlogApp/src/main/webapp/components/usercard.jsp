@@ -8,12 +8,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <div>
     <%
-    User user = (User) request.getAttribute("user");
+    User people = (User) request.getAttribute("people");
     %>
-    <img src="data:image/png;base64,<%=user.ProfilePicture%>"/>
+    <img src="data:image/png;base64,<%=people.ProfilePicture%>"/>
     <div>
-        <h1><%=user.FullName%></h1>
-        <h2>Posted: <%=user.BlogCount%> blogs</h2>
+        <h1><%=people.FullName%></h1>
+        <h2>Posted: <%=people.BlogCount%> blogs</h2>
     </div>
 </div>
 

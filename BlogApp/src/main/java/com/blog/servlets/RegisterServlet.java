@@ -6,8 +6,10 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.Part;
 
 import java.io.IOException;
+import java.io.InputStream;
 
 @WebServlet("/register")
 public class RegisterServlet extends HttpServlet {
@@ -20,6 +22,10 @@ public class RegisterServlet extends HttpServlet {
         String fullName = request.getParameter("fullName");
         String email = request.getParameter("email");
         String password = request.getParameter("password");
+        String password = request.getParameter("password");
+        Part filePart = request.getPart("profilePicture");
+        InputStream fileContent = filePart.getInputStream();
+        blog.BlogPicture = fileContent.readAllBytes();
         String role = "user";
 
         try {

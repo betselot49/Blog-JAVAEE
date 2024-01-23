@@ -31,7 +31,7 @@ public class User {
                 "ProfilePicture LONGBLOB," +
                 "Password VARCHAR(255) NOT NULL," +
                 "Role ENUM('admin', 'user') DEFAULT 'user'," +
-                "CreatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP" +
+                "CreatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP," +
                 "BlogCount INT DEFAULT 0" +
                 ");";
         return  query;
@@ -91,6 +91,7 @@ public class User {
         while (result.next()) {
             users.add(User.build(result));
         }
+        System.out.print(users.size() + "=====================");
         return users;
     }
     public static User getByEmail(String email) throws SQLException {
