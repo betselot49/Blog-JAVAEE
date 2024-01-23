@@ -91,6 +91,7 @@ public class User {
         while (result.next()) {
             users.add(User.build(result));
         }
+        System.out.print(users.size() + "=====================");
         return users;
     }
     public static User getByEmail(String email) throws SQLException {

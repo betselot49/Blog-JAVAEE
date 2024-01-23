@@ -14,11 +14,16 @@
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/025c99b9-2cf2-472d-84e4-66f18281cf98.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/025c99b9-2cf2-472d-84e4-66f18281cf98.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/blog/config/DBManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blog/config/DBManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/blog/models/Blog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blog/models/Blog.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/blog/models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blog/models/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/blog/servlets/RegisterServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blog/servlets/RegisterServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/login.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/register.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/register.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/blog/servlets/BlogServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blog/servlets/BlogServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/blog/servlets/BlogSingleServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blog/servlets/BlogSingleServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/blog/servlets/UsersServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blog/servlets/UsersServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/blogs.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/blogs.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/components/addblog.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/components/addblog.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/components/header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/components/header.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/users.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/users.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,7 +97,7 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
   &quot;keyToStringList&quot;: {
@@ -239,7 +244,15 @@
       <workItem from="1704132640088" duration="5031000" />
       <workItem from="1704279514182" duration="4060000" />
       <workItem from="1704368046147" duration="871000" />
-      <workItem from="1704369146785" duration="5635000" />
+      <workItem from="1704369146785" duration="6582000" />
+      <workItem from="1704699879512" duration="1441000" />
+      <workItem from="1704723865050" duration="10840000" />
+      <workItem from="1704788191508" duration="1777000" />
+      <workItem from="1704799729670" duration="7829000" />
+      <workItem from="1704821365870" duration="170000" />
+      <workItem from="1704881252871" duration="148000" />
+      <workItem from="1704881478319" duration="716000" />
+      <workItem from="1706033157392" duration="726000" />
     </task>
     <task id="LOCAL-00001" summary="User table updated">
       <option name="closed" value="true" />
