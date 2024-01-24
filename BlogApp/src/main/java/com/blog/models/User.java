@@ -63,16 +63,16 @@ public class User {
         return stmt.executeUpdate();
     }
 
-//    public void update() throws SQLException {
-//        String query = "UPDATE users SET Fullname=?, Email=?, Password=?, ProfilePicture=?  WHERE Id=?";
-//        PreparedStatement stmt = connection.prepareStatement(query);
-//        stmt.setString(1, this.FullName);
-//        stmt.setString(2, this.Email);
-//        stmt.setString(3, this.Password);
-//        stmt.setBytes(4, this.ProfilePicture);
-//        stmt.setInt(5, this.Id);
-//        stmt.executeUpdate();
-//    }
+    public int update() throws SQLException {
+        String query = "UPDATE users SET Fullname=?, Email=?, Password=?, ProfilePicture=?  WHERE Id=?";
+        PreparedStatement stmt = connection.prepareStatement(query);
+        stmt.setString(1, this.FullName);
+        stmt.setString(2, this.Email);
+        stmt.setString(3, this.Password);
+        stmt.setBytes(4, this.ProfilePicture);
+        stmt.setInt(5, this.Id);
+        return  stmt.executeUpdate();
+    }
 
     public void delete() throws SQLException {
         String query = "DELETE FROM users WHERE Id=?";

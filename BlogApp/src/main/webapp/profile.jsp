@@ -160,12 +160,12 @@
             </div>
             <div class="modal-body">
                 <!-- Add your input fields for profile picture, name, and password here -->
-                <form action="EditProfileServlet" method="post">
+                <form action="EditProfileServlet" method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="userId" value="<%= user.Id %>">
                     <input type="hidden" name="currentEmail" value="<%= user.Email %>">
                     <div class="form-group">
                         <label for="profilePicture">Upload Profile Picture:</label>
-                        <input type="file" class="form-control-file" id="profilePicture" name="profilePicture">
+                        <input type="file" class="form-control-file" id="profilePicture" name="profilePicture" type="image/*">
                     </div>
                     <div class="form-group">
                         <label for="newName">Change Name:</label>

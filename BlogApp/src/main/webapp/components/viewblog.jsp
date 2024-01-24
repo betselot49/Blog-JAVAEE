@@ -62,7 +62,7 @@
         Blog blog = (Blog) request.getAttribute("blog");
         String img = Base64.getEncoder().encodeToString(blog.BlogPicture);
     %>
-    <a class="card" href="blog/details/<%=blog.Id%>">
+    <a class="card" href="blog/details?id=<%=blog.Id%>">
         <div class="card-body">
 
             <h2 class="card-title"><%= blog.Title %></h2>

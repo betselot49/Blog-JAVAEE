@@ -39,7 +39,7 @@ public class Like {
         return like;
     }
 
-    public void create() throws SQLException, SQLException {
+    public int create() throws SQLException, SQLException {
         String query = "INSERT INTO likes(UserId, BlogId) VALUES(?,?)";
         PreparedStatement stmt = connection.prepareStatement(query);
         stmt.setInt(1, this.UserId);
@@ -48,12 +48,11 @@ public class Like {
         String query2 = "UPDATE blogs SET LikeCount = LikeCount + 1 WHERE BlogId = ?";
         PreparedStatement stmt2 = connection.prepareStatement(query2);
         stmt2.setInt(1, this.BlogId);
-        stmt2.executeUpdate();
-        stmt.close();
-        stmt2.close();
+        return stmt2.executeUpdate();
+
     }
 
-    public void delete() throws SQLException {
+    public int delete() throws SQLException {
         String query = "DELETE FROM likes WHERE UserId = ? AND BlogId = ?";
         PreparedStatement stmt = connection.prepareStatement(query);
         stmt.setInt(1, this.UserId);
@@ -62,9 +61,7 @@ public class Like {
         String query2 = "UPDATE blogs SET LikeCount = LikeCount - 1 WHERE BlogId = ?";
         PreparedStatement stmt2 = connection.prepareStatement(query2);
         stmt2.setInt(1, this.BlogId);
-        stmt2.executeUpdate();
-        stmt2.close();
-        stmt.close();
+        return  stmt2.executeUpdate();
     }
     public static boolean isLiked(int userId, int blogId) throws SQLException {
         String query = "SELECT * FROM likes WHERE UserId = ? AND BlogId = ?";

@@ -14,12 +14,12 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 
-@WebServlet("/blog/details/*")
+@WebServlet("/blog/details")
 public class BlogSingleServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         System.out.println("=========Blog Single Servlet==============");
         try {
-            int blogId = Integer.parseInt(Helpers.getLastPathSegment(request));
+            int blogId = Integer.parseInt(request.getParameter("id"));
             User user = (User) request.getSession().getAttribute("user");
             boolean isLiked = user != null ? Like.isLiked(user.Id, blogId) : false;
             request.setAttribute("blog", Blog.getById(blogId));
@@ -30,6 +30,6 @@ public class BlogSingleServlet extends HttpServlet {
         }catch (Exception exception){
             request.setAttribute("error", exception.getMessage());
         }
-        request.getRequestDispatcher("blog.jsp").forward(request, response);
+        request.getRequestDispatcher("../blog.jsp").forward(request, response);
     }
 }
