@@ -1020,8 +1020,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
     </schema>
     <schema id="296" parent="1" name="blogapp">
       <Current>1</Current>
-      <IntrospectionTimestamp>2024-01-08.23:28:58</IntrospectionTimestamp>
-      <LocalIntrospectionTimestamp>2024-01-08.17:28:58</LocalIntrospectionTimestamp>
+      <LastIntrospectionLocalTimestamp>2024-01-08.17:28:58</LastIntrospectionLocalTimestamp>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </schema>
     <user id="297" parent="1" name="mysql.infoschema">
