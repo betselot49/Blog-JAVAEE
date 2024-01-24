@@ -111,8 +111,8 @@ public class Blog {
     public static ArrayList<Blog> getByUserId(int userId) throws Exception {
         String query = "SELECT * FROM blogs WHERE UserId=?";
         PreparedStatement stmt = connection.prepareStatement(query);
-        stmt.setInt(1,userId);
-        ResultSet result = stmt.executeQuery(query);
+        stmt.setInt(1, userId);
+        ResultSet result = stmt.executeQuery();
         ArrayList<Blog> blogs = new ArrayList<>();
         while (result.next()) {
             blogs.add(Blog.build(result));

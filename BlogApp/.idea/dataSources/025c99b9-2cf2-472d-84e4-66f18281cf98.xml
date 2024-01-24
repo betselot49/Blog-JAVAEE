@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataSource name="@localhost:3306">
-  <database-model serializer="dbm" dbms="MYSQL" family-id="MYSQL" format-version="4.49">
+  <database-model serializer="dbm" dbms="MYSQL" family-id="MYSQL" format-version="4.51">
     <root id="1"/>
     <collation id="2" parent="1" name="armscii8_general_ci">
       <Charset>armscii8</Charset>
@@ -927,8 +927,7 @@
     </schema>
     <schema id="296" parent="1" name="blogapp">
       <Current>1</Current>
-      <IntrospectionTimestamp>2024-01-08.23:28:58</IntrospectionTimestamp>
-      <LocalIntrospectionTimestamp>2024-01-08.17:28:58</LocalIntrospectionTimestamp>
+      <LastIntrospectionLocalTimestamp>2024-01-08.17:28:58</LastIntrospectionLocalTimestamp>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </schema>
     <user id="297" parent="1" name="mysql.infoschema">
