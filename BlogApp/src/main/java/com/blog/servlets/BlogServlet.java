@@ -51,7 +51,7 @@ public class BlogServlet extends HttpServlet {
         }
         buffer.flush();
         blog.BlogPicture = buffer.toByteArray();
-        
+
         String queryParam = request.getParameter("search") == null ? "" : request.getParameter("search");
         try {
             int rowsAffected = blog.create();

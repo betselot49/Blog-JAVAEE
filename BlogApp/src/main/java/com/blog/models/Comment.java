@@ -15,6 +15,7 @@ public class Comment {
     public int BlogId;
     public String Content;
     public Date CreatedAt;
+    public User Commenter = null;
     private static final Connection connection = DBManager.getConnection();
     public  static String schema(){
         String query = "CREATE TABLE IF NOT EXISTS comments (" +
@@ -36,6 +37,7 @@ public class Comment {
         comment.BlogId = result.getInt("BlogId");
         comment.Content = result.getString("Content");
         comment.CreatedAt = result.getDate("CreatedAt");
+        comment.Commenter = User.getById(comment.UserId);
         return comment;
     }
     public void create() throws SQLException {

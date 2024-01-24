@@ -14,6 +14,8 @@ public class Like {
 
     public Date CreatedAt;
 
+    public User Liker = null;
+
 
     private static final Connection connection = DBManager.getConnection();
     public static String schema(){
@@ -26,6 +28,15 @@ public class Like {
                 "FOREIGN KEY (BlogId) REFERENCES blogs(Id) ON DELETE CASCADE" +
                 ");";
         return  query;
+    }
+
+    public static Like build(java.sql.ResultSet result) throws SQLException {
+        Like like = new Like();
+        like.UserId = result.getInt("UserId");
+        like.BlogId = result.getInt("BlogId");
+        like.CreatedAt = result.getDate("CreatedAt");
+        like.Liker = User.getById(like.UserId);
+        return like;
     }
 
     public void create() throws SQLException, SQLException {
