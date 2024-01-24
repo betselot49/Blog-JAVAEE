@@ -39,5 +39,5 @@ build/
 ### Mac OS ###
 .DS_Store
 
-/BlogApp/src/main/java/com/blog/config/DBManager.java
-/BlogApp/.idea/
+BlogApp/src/main/java/com/blog/config/DBManager.java
+BlogApp/.idea/
