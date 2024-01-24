@@ -18,7 +18,7 @@ public class ProfileServlet extends HttpServlet {
             throws ServletException, IOException {
         System.out.println("=========Profile Servlet==============");
         // Assuming you have a User class with the necessary fields
-        User user = (User) Objects.requireNonNull(request.getAttribute("user"));
+        User user = (User) request.getAttribute("user");
 
         // Set user details as request attributes for JSP to access
         request.setAttribute("userName", user.FullName);
@@ -29,7 +29,7 @@ public class ProfileServlet extends HttpServlet {
             ArrayList<Blog> userBlogs = Blog.getByUserId(user.Id);
             request.setAttribute("blogs", userBlogs);
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            request.setAttribute("error", e.getMessage());
         }
 
         // Forward the request to the profile.jsp page
