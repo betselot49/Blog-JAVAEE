@@ -1,5 +1,6 @@
 package com.blog.servlets;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -20,12 +21,21 @@ public class RegisterServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        System.out.println("=========Register Servlet==============");
         String fullName = request.getParameter("fullName");
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         Part filePart = request.getPart("profilePicture");
         InputStream fileContent = filePart.getInputStream();
-        byte[] profilePicture = fileContent.readAllBytes();
+
+        ByteArrayOutputStream buffer = new ByteArrayOutputStream();
+        int nRead;
+        byte[] data = new byte[1024];
+        while ((nRead = fileContent.read(data, 0, data.length)) != -1) {
+            buffer.write(data, 0, nRead);
+        }
+        buffer.flush();
+
         String role = "user";
         try {
             User user = new User();
@@ -33,7 +43,7 @@ public class RegisterServlet extends HttpServlet {
             user.Email = email;
             user.Password = password;
             user.Role = role;
-            user.ProfilePicture = profilePicture;
+            user.ProfilePicture = buffer.toByteArray();
             int rowsAffected = user.create();
             System.out.println("==============="+rowsAffected);
             if (rowsAffected > 0) {

@@ -10,6 +10,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.Part;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -40,7 +41,17 @@ public class BlogServlet extends HttpServlet {
         blog.Tags = request.getParameter("tags");
         Part filePart = request.getPart("picture");
         InputStream fileContent = filePart.getInputStream();
-        blog.BlogPicture = fileContent.readAllBytes();
+//        blog.BlogPicture = fileContent.readAllBytes();
+
+        ByteArrayOutputStream buffer = new ByteArrayOutputStream();
+        int nRead;
+        byte[] data = new byte[1024];
+        while ((nRead = fileContent.read(data, 0, data.length)) != -1) {
+            buffer.write(data, 0, nRead);
+        }
+        buffer.flush();
+        blog.BlogPicture = buffer.toByteArray();
+        
         String queryParam = request.getParameter("search") == null ? "" : request.getParameter("search");
         try {
             int rowsAffected = blog.create();
