@@ -15,6 +15,7 @@ public class Comment {
     public int BlogId;
     public String Content;
     public Date CreatedAt;
+    public User Commenter = null;
     private static final Connection connection = DBManager.getConnection();
     public  static String schema(){
         String query = "CREATE TABLE IF NOT EXISTS comments (" +
@@ -36,9 +37,10 @@ public class Comment {
         comment.BlogId = result.getInt("BlogId");
         comment.Content = result.getString("Content");
         comment.CreatedAt = result.getDate("CreatedAt");
+        comment.Commenter = User.getById(comment.UserId);
         return comment;
     }
-    public void create() throws SQLException {
+    public int create() throws SQLException {
         String query = "INSERT INTO comments(UserId, BlogId, Content) VALUES(?,?,?)";
         PreparedStatement stmt = connection.prepareStatement(query);
         stmt.setInt(1, this.UserId);
@@ -48,9 +50,7 @@ public class Comment {
         String query2 = "UPDATE blogs SET CommentCount = CommentCount + 1 WHERE BlogId = ?";
         PreparedStatement stmt2 = connection.prepareStatement(query2);
         stmt2.setInt(1, this.BlogId);
-        stmt2.executeUpdate();
-        stmt.close();
-        stmt2.close();
+        return  stmt2.executeUpdate();
     }
 
     public void update() throws SQLException {

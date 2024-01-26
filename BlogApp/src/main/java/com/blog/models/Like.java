@@ -14,6 +14,8 @@ public class Like {
 
     public Date CreatedAt;
 
+    public User Liker = null;
+
 
     private static final Connection connection = DBManager.getConnection();
     public static String schema(){
@@ -28,7 +30,16 @@ public class Like {
         return  query;
     }
 
-    public void create() throws SQLException, SQLException {
+    public static Like build(java.sql.ResultSet result) throws SQLException {
+        Like like = new Like();
+        like.UserId = result.getInt("UserId");
+        like.BlogId = result.getInt("BlogId");
+        like.CreatedAt = result.getDate("CreatedAt");
+        like.Liker = User.getById(like.UserId);
+        return like;
+    }
+
+    public int create() throws SQLException, SQLException {
         String query = "INSERT INTO likes(UserId, BlogId) VALUES(?,?)";
         PreparedStatement stmt = connection.prepareStatement(query);
         stmt.setInt(1, this.UserId);
@@ -37,12 +48,11 @@ public class Like {
         String query2 = "UPDATE blogs SET LikeCount = LikeCount + 1 WHERE BlogId = ?";
         PreparedStatement stmt2 = connection.prepareStatement(query2);
         stmt2.setInt(1, this.BlogId);
-        stmt2.executeUpdate();
-        stmt.close();
-        stmt2.close();
+        return stmt2.executeUpdate();
+
     }
 
-    public void delete() throws SQLException {
+    public int delete() throws SQLException {
         String query = "DELETE FROM likes WHERE UserId = ? AND BlogId = ?";
         PreparedStatement stmt = connection.prepareStatement(query);
         stmt.setInt(1, this.UserId);
@@ -51,9 +61,7 @@ public class Like {
         String query2 = "UPDATE blogs SET LikeCount = LikeCount - 1 WHERE BlogId = ?";
         PreparedStatement stmt2 = connection.prepareStatement(query2);
         stmt2.setInt(1, this.BlogId);
-        stmt2.executeUpdate();
-        stmt2.close();
-        stmt.close();
+        return  stmt2.executeUpdate();
     }
     public static boolean isLiked(int userId, int blogId) throws SQLException {
         String query = "SELECT * FROM likes WHERE UserId = ? AND BlogId = ?";
