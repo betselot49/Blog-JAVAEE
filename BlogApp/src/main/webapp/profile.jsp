@@ -18,30 +18,31 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <style>
-        .center-content {
-            display: flex;
-            /*align-items: center;*/
-            justify-content: center;
-            height: 100vh;
-            padding-top: 2rem;
+        body {
+            background-color: #f8f9fa;
         }
 
+        .center-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
 
         .profile-card {
-            border: 1px solid #ddd;
+            border: 1px solid #dee2e6;
             border-radius: 10px;
             padding: 20px;
-            margin-bottom: 20px;
+            margin: 20px;
             background-color: #fff;
-            width: 70%;
-            margin-left: 15%;
-            margin-top: 10px;
-            margin-bottom: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         .profile-picture {
             width: 200px;
             height: 200px;
+            max-width: 100%; /* Ensure the image does not exceed its container */
+            max-height: 100%; /* Ensure the image does not exceed its container */
             border-radius: 50%;
             object-fit: cover;
             margin-right: 20px;
@@ -51,6 +52,8 @@
             background-color: #f0f0f0;
             width: 200px;
             height: 200px;
+            max-width: 100%; /* Ensure the image does not exceed its container */
+            max-height: 100%; /* Ensure the image does not exceed its container */
             border-radius: 50%;
             object-fit: cover;
             display: flex;
@@ -63,37 +66,29 @@
             display: flex;
             flex-direction: column;
             align-items: flex-start;
-
         }
 
         .edit-button {
-            /*position: absolute;*/
-            bottom: 10px;
-            right: 10px;
+            margin-top: 20px;
         }
 
-        .modal-dialog {
-            max-width: 600px;
-        }
-        .wrapper{
-            display: flex;
-            align-items: center;
-            justify-content: space-around;
-        }
-
-        ul {
+        .blog-list {
             list-style-type: none;
             padding: 0;
         }
 
-        ul li {
+        .blog-item {
+            background-color: #fff;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
             margin-bottom: 10px;
+            padding: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
-
     </style>
 </head>
 <body class="center-content">
-<%
+    <%
     byte[] userProfilePicture = (byte[]) request.getAttribute("userProfilePicture");
     String img = userProfilePicture != null ? Base64.getEncoder().encodeToString(userProfilePicture) : "";
 %>
@@ -101,7 +96,7 @@
     <h2>User Profile</h2>
 
     <div class="profile-card">
-        <div class="wrapper">
+        <div class="d-flex align-items-center">
             <div class="profile-picture">
                 <% if (userProfilePicture != null) { %>
                 <img src="data:image/png;base64,<%=img%>" alt="Profile Picture">
@@ -114,7 +109,7 @@
             </div>
 
             <div class="user-details">
-                <label>Name: <%=request.getAttribute("userName") %></label><br>
+                <label class="mb-2">Name: <%=request.getAttribute("userName") %></label><br>
                 <label>Email: <%=request.getAttribute("userEmail") %></label><br>
             </div>
         </div>
@@ -126,7 +121,7 @@
     </div>
 
     <h3 class="mt-3">Your Blog Posts:</h3>
-    <ul>
+    <ul class="blog-list">
         <%
             User user = (User) request.getAttribute("user");
             ArrayList<Blog> userBlogs = (ArrayList<Blog>) request.getAttribute("blogs");
@@ -134,7 +129,10 @@
             if (userBlogs != null) {
                 for (Blog blog : userBlogs) {
         %>
-        <li><%= blog.Title %></li>
+        <li class="blog-item">
+            <h4><%= blog.Title %></h4>
+            <p><%= blog.Content %></p>
+        </li>
         <%
             }
         } else {
@@ -143,7 +141,6 @@
         <%
             }
         %>
-
     </ul>
 </div>
 
@@ -193,13 +190,5 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
-
 </body>
 </html>
-
-
-
-
-
-
-

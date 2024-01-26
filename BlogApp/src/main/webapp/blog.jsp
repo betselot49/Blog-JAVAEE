@@ -31,12 +31,13 @@
     ArrayList<Like> likes = (ArrayList<Like>) request.getAttribute("likes");
     %>
         <div class="container">
-            <div class="card" href="blog/<%=blog.Id%>">
+            <div class="card">
                 <div class="card-body">
-
-                    <h2 class="card-title"><%= blog.Title %></h2>
-                    <img src="data:image/png;base64,<%= Base64.getEncoder().encodeToString(blog.BlogPicture) %>" class="card-img-top blog-image" alt="Blog Image">
-                    <p class="card-text"><%= blog.Content %></p>
+                    <div href="blog/<%=blog.Id%>">
+                        <h2 class="card-title"><%= blog.Title %></h2>
+                        <img src="data:image/png;base64,<%= Base64.getEncoder().encodeToString(blog.BlogPicture) %>" class="card-img-top blog-image" alt="Blog Image">
+                        <p class="card-text"><%= blog.Content %></p>
+                    </div>
                     <div class="like-comment-row">
                         <div class="like-comment-icons">
                             <i class="far fa-thumbs-up like-comment-icon"></i>

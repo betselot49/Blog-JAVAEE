@@ -1,5 +1,6 @@
 <%@ page import="com.blog.models.Blog" %>
-<%@ page import="java.util.Base64" %><%--
+<%@ page import="java.util.Base64" %>
+<%@ page import="com.blog.models.User" %><%--
   Created by IntelliJ IDEA.
   User: fikre
   Date: 1/8/2024
@@ -54,30 +55,62 @@
         .like-comment-count {
             color: #888;
         }
+
+        .author-info {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .author-image {
+            width: 60px; /* Adjust the width of the profile picture */
+            height: 60px; /* Adjust the height of the profile picture */
+        }
     </style>
 </head>
 <body>
-<div class="container">
+<div class="container mx-auto" style="margin-top: 25px">
     <%
         Blog blog = (Blog) request.getAttribute("blog");
         String img = Base64.getEncoder().encodeToString(blog.BlogPicture);
     %>
-    <a class="card" href="blog/details?id=<%=blog.Id%>">
-        <div class="card-body">
 
-            <h2 class="card-title"><%= blog.Title %></h2>
-            <img src="data:image/png;base64,<%= img %>" class="card-img-top blog-image" alt="Blog Image">
-            <p class="card-text"><%= blog.Content %></p>
-            <div class="like-comment-row">
-                <div class="like-comment-icons">
-                    <i class="far fa-thumbs-up like-comment-icon"></i>
-                    <span class="like-comment-count"><%= blog.LikeCount %> Likes</span>
+    <div class="card-body" style="max-width: 1000px;">
+        <div class="row">
+            <div class="text-center">
+                <!-- Author Information Section -->
+                <div class="row author-info">
+                    <% if (blog.Poster != null && blog.Poster.ProfilePicture != null) { %>
+                    <img src="data:image/png;base64,<%= Base64.getEncoder().encodeToString(blog.Poster.ProfilePicture) %>" class="rounded-circle author-image" alt="Author Image">
+                    <% } else { %>
+                    <!-- Provide a default image or handle the case when ProfilePicture is null -->
+                    <img src="" class="rounded-circle author-image" alt="Default Image">
+                    <% } %>
+                    <h6 class="mt-2" style="margin-left: 20px"><%= blog.Poster != null ? blog.Poster.FullName : "Unknown Author" %></h6>
                 </div>
-                <div class="like-comment-icons">
-                    <i class="far fa-comment-alt like-comment-icon"></i>
-                    <span class="like-comment-count"><%= blog.CommentCount %> Comments</span>
+            </div>
+            <div class="col-md-10">
+                <!-- Blog Content Section -->
+                <a style="text-decoration: none; " href="blog/details?id=<%= blog.Id %>">
+                    <h4 class="card-title"><%= blog.Title %></h4>
+                    <img src="data:image/png;base64,<%= img %>" class="card-img-top blog-image" alt="Blog Image">
+                    <p style="margin-top: 15px" class="card-text"><%= blog.Content %></p>
+                </a>
+                <div class="like-comment-row">
+                    <!-- Like Count Section -->
+                    <div class="like-comment-icons">
+                        <i class="far fa-thumbs-up like-comment-icon"></i>
+                        <span class="like-comment-count"><%= blog.LikeCount %> Likes</span>
+                    </div>
+                    <!-- Comment Count Section -->
+                    <div class="like-comment-icons">
+                        <i class="far fa-comment-alt like-comment-icon"></i>
+                        <span class="like-comment-count"><%= blog.CommentCount %> Comments</span>
+                    </div>
                 </div>
             </div>
         </div>
-    </a>
+    </div>
 </div>
