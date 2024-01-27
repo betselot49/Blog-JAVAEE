@@ -116,4 +116,19 @@ public static User getById(int id) throws SQLException {
         return null;
     }
 
+
+    public static ArrayList<User> getAllUsers() throws SQLException {
+        String query = "SELECT * FROM users";
+        try (PreparedStatement stmt = connection.prepareStatement(query);
+             ResultSet result = stmt.executeQuery()) {
+            ArrayList<User> users = new ArrayList<>();
+            while (result.next()) {
+                users.add(build(result));
+            }
+            return users;
+        }
+    }
+
+
 }
+
