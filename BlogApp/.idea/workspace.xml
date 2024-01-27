@@ -10,9 +10,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b658c3e2-27bf-48d6-90f6-572987491378" name="Changes" comment="User table updated">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/blog/servlets/LogoutServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/blog/servlets/SaveServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/components/header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/components/header.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/blog/filters/AuthenticationFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blog/filters/AuthenticationFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/blog/models/Save.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blog/models/Save.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/blog/servlets/AdminBlogServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blog/servlets/AdminBlogServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/blog/servlets/AdminRegisterServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blog/servlets/AdminRegisterServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/blog/servlets/LibraryServlet.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/blog/servlets/LibrarySingleServlet.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/blog/servlets/StartServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blog/servlets/StartServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/components/adminheader.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/components/adminheader.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,7 +88,7 @@
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/fikre/OneDrive/Desktop/Projects/EnterpriseApplicationDevelopmentPractice/Exam/src/main/java/com/task/servlets/LogoutServlet.java",
+    "last_opened_file_path": "C:/Users/fikre/OneDrive/Desktop/Blog-JAVAEE/BlogApp/src/main/webapp",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -100,6 +107,9 @@
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\fikre\OneDrive\Desktop\Blog-JAVAEE\BlogApp\src\main\webapp" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\fikre\OneDrive\Desktop\Blog-JAVAEE\BlogApp\src\main\webapp\components" />
       <recent name="C:\Users\fikre\OneDrive\Desktop\Blog-JAVAEE\BlogApp\src\main\webapp\Components" />
@@ -249,7 +259,7 @@
       <workItem from="1706044206976" duration="719000" />
       <workItem from="1706295209060" duration="934000" />
       <workItem from="1706296173251" duration="5593000" />
-      <workItem from="1706337463155" duration="976000" />
+      <workItem from="1706337463155" duration="5098000" />
     </task>
     <task id="LOCAL-00001" summary="User table updated">
       <option name="closed" value="true" />
@@ -289,6 +299,51 @@
           <url>file://$PROJECT_DIR$/src/main/java/com/blog/models/Blog.java</url>
           <line>75</line>
           <option name="timeStamp" value="38" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/blog/servlets/StartServlet.java</url>
+          <line>21</line>
+          <option name="timeStamp" value="40" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/blog/filters/AuthenticationFilter.java</url>
+          <line>24</line>
+          <option name="timeStamp" value="43" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/blog/filters/AuthenticationFilter.java</url>
+          <line>26</line>
+          <option name="timeStamp" value="44" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/blog/filters/AuthenticationFilter.java</url>
+          <line>28</line>
+          <option name="timeStamp" value="45" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/blog/filters/AuthenticationFilter.java</url>
+          <line>30</line>
+          <option name="timeStamp" value="46" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/blog/servlets/AdminBlogServlet.java</url>
+          <line>15</line>
+          <option name="timeStamp" value="47" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/blog/servlets/AdminBlogServlet.java</url>
+          <line>14</line>
+          <option name="timeStamp" value="48" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/blog/servlets/AdminBlogServlet.java</url>
+          <line>16</line>
+          <option name="timeStamp" value="49" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/blog/servlets/AdminBlogServlet.java</url>
+          <line>17</line>
+          <option name="timeStamp" value="50" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
