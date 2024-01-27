@@ -1,12 +1,6 @@
 <%@ page import="com.blog.models.Blog" %>
 <%@ page import="java.util.Base64" %>
-<%@ page import="com.blog.models.User" %><%--
-  Created by IntelliJ IDEA.
-  User: fikre
-  Date: 1/8/2024
-  Time: 8:52 PM
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="com.blog.models.User" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <!DOCTYPE html>
@@ -68,6 +62,23 @@
             width: 60px; /* Adjust the width of the profile picture */
             height: 60px; /* Adjust the height of the profile picture */
         }
+
+        .see-more-content {
+            overflow: hidden;
+            position: relative;
+            max-height: 600px; /* Adjust the initial height to show */
+        }
+
+        .see-more-btn {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            background-color: white;
+            padding: 5px;
+            cursor: pointer;
+            text-decoration: underline;
+            color: blue;
+        }
     </style>
 </head>
 <body>
@@ -93,11 +104,14 @@
             </div>
             <div class="col-md-10">
                 <!-- Blog Content Section -->
-                <a style="text-decoration: none; " href="blog/details?id=<%= blog.Id %>">
-                    <h4 class="card-title"><%= blog.Title %></h4>
-                    <img src="data:image/png;base64,<%= img %>" class="card-img-top blog-image" alt="Blog Image">
-                    <p style="margin-top: 15px" class="card-text"><%= blog.Content %></p>
-                </a>
+                <div class="see-more-content">
+                    <a style="text-decoration: none; color: #212121" href="blog/details?id=<%= blog.Id %>">
+                        <h4 class="card-title"><%= blog.Title %></h4>
+                        <img src="data:image/png;base64,<%= img %>" class="card-img-top blog-image" alt="Blog Image">
+                        <p style="margin-top: 15px" class="card-text"><%= blog.Content %></p>
+                    </a>
+                    <div class="see-more-btn" onclick="toggleContent()">See More</div>
+                </div>
                 <div class="like-comment-row">
                     <!-- Like Count Section -->
                     <div class="like-comment-icons">
@@ -114,3 +128,20 @@
         </div>
     </div>
 </div>
+
+<script>
+    function toggleContent() {
+        var contentDiv = document.querySelector('.see-more-content');
+        var btn = document.querySelector('.see-more-btn');
+
+        if (contentDiv.style.maxHeight) {
+            contentDiv.style.maxHeight = '600px';
+            btn.innerText = 'See More';
+        } else {
+            contentDiv.style.maxHeight = contentDiv.scrollHeight + 'px';
+            btn.innerText = 'See Less';
+        }
+    }
+</script>
+</body>
+</html>

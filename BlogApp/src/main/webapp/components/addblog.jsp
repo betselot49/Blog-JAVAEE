@@ -59,7 +59,7 @@
     </div>
     <div class="form-group">
         <label for="content">Content:</label>
-        <input type="text" class="form-control" name="content" id="content" required>
+        <textarea style="height: 100px" type="text" class="form-control" name="content" id="content" required></textarea>
     </div>
     <div class="form-group">
         <label for="tags">Tags:</label>
