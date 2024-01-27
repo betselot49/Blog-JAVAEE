@@ -59,6 +59,9 @@
 			<li class="<%= request.getRequestURI().endsWith("/profile") ? "active" : "" %>">
 				<a href="profile">Profile</a>
 			</li>
+			<li class="<%= request.getRequestURI().endsWith("/logout") ? "active" : "" %>">
+				<a href="logout">Logout</a>
+			</li>
 			<% } %>
 		</ul>
 	</nav>
