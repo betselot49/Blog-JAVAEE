@@ -37,7 +37,7 @@
 	</style>
 </head>
 <body>
-<header class="fixed-top bg-dark" style="padding-top: 20px;">
+<header class="fixed-top bg-dark" style="padding-top: 20px; padding-bottom: 10px">
 	<nav class="container">
 		<ul>
 			<li class="<%= (request.getRequestURI().endsWith("/blog") || request.getRequestURI().equals("/")) ? "active" : "" %>">

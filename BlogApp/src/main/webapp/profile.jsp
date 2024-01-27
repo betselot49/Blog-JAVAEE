@@ -85,21 +85,67 @@
             padding: 10px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
+
+        .profile-card {
+            background-color: #fff;
+            border: 1px solid #dee2e6;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 20px;
+            max-width: 1000px;
+            width: 100%;
+        }
+
+        .profile-picture-container {
+            width: 120px;
+            height: 120px;
+            overflow: hidden;
+            border-radius: 50%;
+            margin-right: 20px;
+        }
+
+        .profile-picture {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .user-details h4 {
+            margin-bottom: 0;
+        }
+
+        .edit-button {
+            margin-top: 20px;
+        }
+
+        .blog-card {
+            border: 1px solid #dee2e6;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .blog-card:hover {
+            transform: scale(1.05);
+        }
+
     </style>
 </head>
 <body class="center-content">
+
     <%
     byte[] userProfilePicture = (byte[]) request.getAttribute("userProfilePicture");
     String img = userProfilePicture != null ? Base64.getEncoder().encodeToString(userProfilePicture) : "";
 %>
 <div class="container text-center">
-    <h2>User Profile</h2>
+    <h2 style="margin-top: 50px;">User Profile</h2>
 
     <div class="profile-card">
         <div class="d-flex align-items-center">
-            <div class="profile-picture">
+            <div class="profile-picture-container">
                 <% if (userProfilePicture != null) { %>
-                <img src="data:image/png;base64,<%=img%>" alt="Profile Picture">
+                <img src="data:image/png;base64,<%=img%>" class="profile-picture" alt="Profile Picture">
                 <% } else { %>
                 <div class="placeholder-profile">
                     <!-- Placeholder content (e.g., initials or icon) -->
@@ -108,40 +154,51 @@
                 <% } %>
             </div>
 
-            <div class="user-details">
-                <label class="mb-2">Name: <%=request.getAttribute("userName") %></label><br>
-                <label>Email: <%=request.getAttribute("userEmail") %></label><br>
+            <div class="user-details ml-4">
+                <h4 class="mb-2">Name: <%=request.getAttribute("userName") %></h4>
+                <p>Email: <%=request.getAttribute("userEmail") %></p>
             </div>
         </div>
 
         <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary edit-button" data-toggle="modal" data-target="#editProfileModal">
+        <button type="button" class="btn btn-primary edit-button mt-3" data-toggle="modal" data-target="#editProfileModal">
             Edit Profile
         </button>
     </div>
 
-    <h3 class="mt-3">Your Blog Posts:</h3>
-    <ul class="blog-list">
+
+    <h3 class="mb-3" style="margin-top: 50px">Your Blog Posts</h3>
+
+    <div class="row">
         <%
             User user = (User) request.getAttribute("user");
             ArrayList<Blog> userBlogs = (ArrayList<Blog>) request.getAttribute("blogs");
 
-            if (userBlogs != null) {
+            if (userBlogs != null && !userBlogs.isEmpty()) {
                 for (Blog blog : userBlogs) {
         %>
-        <li class="blog-item">
-            <h4><%= blog.Title %></h4>
-            <p><%= blog.Content %></p>
-        </li>
+        <div class="col-md-4">
+            <div class="card blog-card mb-4" style="height: 500px">
+                <img src="data:image/png;base64,<%= Base64.getEncoder().encodeToString(blog.BlogPicture) %>" class="card-img-top" alt="Blog Image">
+                <div class="card-body">
+                    <h5 class="card-title"><%= blog.Title %></h5>
+                    <p class="card-text"><%= blog.Content %></p>
+                    <a href="blog/details?id=<%= blog.Id %>" class="btn btn-primary">Read More</a>
+                </div>
+            </div>
+        </div>
         <%
             }
         } else {
         %>
-        <li>No blogs available</li>
+        <div class="col-12">
+            <p class="text-muted">No blogs available.</p>
+        </div>
         <%
             }
         %>
-    </ul>
+    </div>
+
 </div>
 
 <!-- Modal -->
