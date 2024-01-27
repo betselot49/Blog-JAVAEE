@@ -1,3 +1,4 @@
+<%@ page import="com.blog.models.User" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 		 pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -148,6 +149,8 @@
 <%
 	String error = (String) request.getAttribute("error");
 	String success = (String) request.getAttribute("success");
+	User use = (User) request.getAttribute("user");
+	String role = use != null && use.Role.equals("admin") ? "admin" : "user" ;
 %>
 
 <div class="container">
@@ -172,6 +175,8 @@
 				</div>
 				<label> Picture: </label>
 				<input type="file" name="profilePicture" accept="image/*" />
+				<input type="hidden" id="role" name="role" value=<%=role%> required>
+
 				<button type="submit" class="btn btn-primary">Register</button>
 				<div class="login-link">
 					<p>

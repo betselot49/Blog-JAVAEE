@@ -14,16 +14,14 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.Part;
 
-@WebServlet("/register")
+@WebServlet("admin/register")
 @MultipartConfig
-public class RegisterServlet extends HttpServlet {
+public class AdminRegisterServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("=========Register Servlet==============");
         request.getRequestDispatcher("register.jsp").forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("=========Register Servlet==============");
         String fullName = request.getParameter("fullName");
         String email = request.getParameter("email");
         String password = request.getParameter("password");
@@ -47,7 +45,6 @@ public class RegisterServlet extends HttpServlet {
             user.Role = role;
             user.ProfilePicture = buffer.toByteArray();
             int rowsAffected = user.create();
-            System.out.println("==============="+rowsAffected);
             if (rowsAffected > 0) {
                 request.setAttribute("success", "Successfully registered. Please login to continue.");
                 request.getRequestDispatcher("register.jsp").forward(request, response);
@@ -56,7 +53,6 @@ public class RegisterServlet extends HttpServlet {
                 request.getRequestDispatcher("register.jsp").forward(request, response);
             }
         } catch (Exception e) {
-            System.out.println("==============="+ "Exception Throwed");
             request.setAttribute("error", e.getMessage());
             request.getRequestDispatcher("register.jsp").forward(request, response);
             e.printStackTrace();
