@@ -26,7 +26,7 @@ public class Blog {
 
     public User Poster = null;
 
-    private static Connection connection = DBManager.connection;
+    private static Connection connection = DBManager.getConnection();
 
 
     public static String schema(){
