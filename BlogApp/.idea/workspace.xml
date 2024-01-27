@@ -10,14 +10,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b658c3e2-27bf-48d6-90f6-572987491378" name="Changes" comment="User table updated">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/blog/servlets/AdminBlogServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/blog/servlets/AdminRegisterServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/blog/servlets/AdminUserServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/components/adminheader.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/blog/servlets/RegisterServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blog/servlets/RegisterServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/blog/servlets/StartServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blog/servlets/StartServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/register.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/register.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
