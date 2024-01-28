@@ -1,9 +1,6 @@
 package com.blog.servlets;
 
-import com.blog.models.Blog;
-import com.blog.models.Like;
-import com.blog.models.Save;
-import com.blog.models.User;
+import com.blog.models.*;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
@@ -19,12 +16,12 @@ public class SaveServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         User user = (User) request.getAttribute("user");
         try {
-            ArrayList<Blog> library = Save.getMySavedBlogs(user.Id);
-            request.setAttribute("blogs", library);
-            request.setAttribute("success", "Successfully Loaded Saved Blogs");
+            ArrayList<ReadingList> library = ReadingList.getMyReadingList(user.Id);
+            request.setAttribute("readinglists", library);
         } catch (Exception throwables) {
             request.setAttribute("error", throwables.getMessage());
         }
-        request.getRequestDispatcher("blogs.jsp").forward(request, response);
+        request.getRequestDispatcher("librarys.jsp").forward(request, response);
     }
+
 }

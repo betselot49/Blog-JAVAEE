@@ -9,7 +9,8 @@
 <%@ page import="com.blog.models.Blog" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.Base64" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8"%>
 <html>
 <head>
 
@@ -133,6 +134,7 @@
     </style>
 </head>
 <body class="center-content">
+<%@ include file="components/header.jsp" %>
 
     <%
     byte[] userProfilePicture = (byte[]) request.getAttribute("userProfilePicture");

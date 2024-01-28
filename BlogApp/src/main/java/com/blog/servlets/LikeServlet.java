@@ -12,25 +12,27 @@ import java.io.IOException;
 @WebServlet("/like")
 @MultipartConfig
 public class LikeServlet extends HttpServlet {
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int blogId = Integer.parseInt(request.getParameter("blogId"));
         int userId = Integer.parseInt(request.getParameter("userId"));
         Like like = new Like();
-        System.out.println("==============Like Servlet================");
         like.BlogId = blogId;
         like.UserId = userId;
         try {
             int rowsAffected;
+            String msg;
             if (Like.isLiked(userId, blogId)) {
                 rowsAffected = like.delete();
+                msg = "Liked";
+
             } else {
                 rowsAffected = like.create();
+                msg = "Unliked";
             }
             if (rowsAffected > 0) {
-                System.out.println("==============Successfully Liked================");
-                request.setAttribute("success", "Successfully Liked");
+                request.setAttribute("success", "Successfully " + msg + " the Blog");
             } else {
-                System.out.println("==============Something went wrong. Please try again.================");
                 request.setAttribute("error", "Something went wrong. Please try again.");
             }
         } catch (Exception throwables) {
@@ -38,4 +40,5 @@ public class LikeServlet extends HttpServlet {
         }
         response.sendRedirect("/blog/details?id=" + blogId);
     }
+
 }

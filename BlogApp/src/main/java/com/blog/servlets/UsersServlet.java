@@ -11,8 +11,12 @@ import java.util.ArrayList;
 @WebServlet("/users")
 public class UsersServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String search = request.getParameter("search") != null ? request.getParameter("search") : "";
+        int pageNumber = request.getParameter("pageNumber") != null ? Integer.parseInt(request.getParameter("pageNumber")) : 0;
+        int pageSize = request.getParameter("pageSize") != null ? Integer.parseInt(request.getParameter("pageSize"))
+                : 150;
         try {
-            ArrayList<User> users = User.getAllUsers();
+            ArrayList<User> users = User.search(search, pageNumber, pageSize);
             request.setAttribute("peoples", users);
             request.setAttribute("success", "Successfully Loaded Users");
         } catch (Exception exception) {

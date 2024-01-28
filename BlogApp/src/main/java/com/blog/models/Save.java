@@ -12,6 +12,8 @@ import java.util.Date;
 public class Save {
     public int UserId;
     public int BlogId;
+
+    public int ReadingListId;
     public Date CreatedAt;
 
     public Blog Blog;
@@ -33,9 +35,11 @@ public class Save {
         String query = "CREATE TABLE IF NOT EXISTS saves(" +
                 "UserId INT NOT NULL," +
                 "BlogId INT NOT NULL," +
+                "ReadingListId INT NOT NULL," +
                 "CreatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP," +
-                "PRIMARY KEY (UserId, BlogId)," +
+                "PRIMARY KEY (UserId, BlogId, ReadingListId)," +
                 "FOREIGN KEY (UserId) REFERENCES users(Id) ON DELETE CASCADE," +
+                "FOREIGN KEY (ReadingListId) REFERENCES readinglists(Id) ON DELETE CASCADE," +
                 "FOREIGN KEY (BlogId) REFERENCES blogs(Id) ON DELETE CASCADE" +
                 ");";
         return  query;
@@ -53,10 +57,11 @@ public class Save {
         return saves;
     }
 
-    public  static ArrayList<com.blog.models.Blog> getMySavedBlogs(int userId) throws Exception {
-        String query = "SELECT * FROM saves WHERE UserId = ?";
+    public  static ArrayList<com.blog.models.Blog> getMySavedBlogs(int userId, int readingListId) throws Exception {
+        String query = "SELECT * FROM saves WHERE UserId = ? AND ReadingListId = ?";
         PreparedStatement stmt = connection.prepareStatement(query);
         stmt.setInt(1, userId);
+        stmt.setInt(2, readingListId);
         ArrayList<Blog> saves = new ArrayList<>();
         java.sql.ResultSet result = stmt.executeQuery();
         while (result.next()){
@@ -65,29 +70,37 @@ public class Save {
         return saves;
     }
 
-    public void create() throws SQLException {
-        String query = "INSERT INTO saves(UserId, BlogId) VALUES(?,?,?)";
+    public int create() throws SQLException {
+        String query = "INSERT INTO saves(UserId, BlogId, ReadingListId) VALUES(?,?,?)";
         PreparedStatement stmt = connection.prepareStatement(query);
         stmt.setInt(1, this.UserId);
         stmt.setInt(2, this.BlogId);
-        stmt.executeUpdate();
-        stmt.close();
+        stmt.setInt(3, this.ReadingListId);
+        String query2 = "UPDATE readinglists SET BlogCount = BlogCount + 1 WHERE Id = ?";
+        PreparedStatement stmt2 = connection.prepareStatement(query2);
+        stmt2.setInt(1, this.ReadingListId);
+        return  stmt.executeUpdate() + stmt2.executeUpdate();
     }
 
-    public void delete() throws SQLException {
-        String query = "DELETE FROM saves WHERE UserId = ? AND BlogId = ?";
+    public int delete() throws SQLException {
+        String query = "DELETE FROM saves WHERE UserId = ? AND BlogId = ? AND ReadingListId = ?";
         PreparedStatement stmt = connection.prepareStatement(query);
         stmt.setInt(1, this.UserId);
         stmt.setInt(2, this.BlogId);
-        stmt.executeUpdate();
-        stmt.close();
+        stmt.setInt(3, this.ReadingListId);
+        String query2 = "UPDATE readinglists SET BlogCount = BlogCount - 1 WHERE Id = ?";
+        PreparedStatement stmt2 = connection.prepareStatement(query2);
+        stmt2.setInt(1, this.ReadingListId);
+        return  stmt.executeUpdate() + stmt2.executeUpdate();
     }
 
-    public static boolean isSaved(int userId, int blogId) throws SQLException {
-        String query = "SELECT * FROM saves WHERE UserId = ? AND BlogId = ?";
+    public static boolean isSaved(int userId, int blogId, int readingListId) throws SQLException {
+        String query = "SELECT * FROM saves WHERE UserId = ? AND BlogId = ? AND ReadingListId = ?";
         PreparedStatement stmt = connection.prepareStatement(query);
         stmt.setInt(1, userId);
         stmt.setInt(2, blogId);
+        stmt.setInt(3, readingListId);
         return stmt.executeQuery().next();
     }
+
 }

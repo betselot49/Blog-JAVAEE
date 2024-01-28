@@ -1,8 +1,6 @@
-<%@ page import="com.blog.models.Blog" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.Base64" %>
-<%@ page import="com.blog.models.Comment" %>
-<%@ page import="com.blog.models.Like" %>
+<%@ page import="com.blog.models.*" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -116,14 +114,15 @@
         <form method="POST" action="/blog/like" class="like-form mx-3">
             <input name="blogId" type="hidden" value=<%=blog.Id%>>
             <input name="userId" type="hidden" value=<%=user.Id%>>
-            <% String msg = isLiked ? "Unlike" : "Like"; %>
+            <% String msg = isLiked ? "Dislike" : "Like"; %>
             <button type="submit" class="btn btn-primary"><%=msg%></button>
         </form>
-        <form method="POST" action="/blog/library" class="library-form mx-3">
-            <input name="blogId" type="hidden" value="<%=blog.Id%>">
-            <input name="userId" type="hidden" value=<%=user.Id%>>
-            <button type="submit" class="btn btn-primary">Add to Library</button>
-        </form>
+<%--        <form method="POST" action="/blog/library" class="library-form mx-3">--%>
+<%--            <input name="blogId" type="hidden" value="<%=blog.Id%>">--%>
+<%--            <input name="userId" type="hidden" value=<%=user.Id%>>--%>
+<%--            --%>
+<%--        </form>--%>
+
         <% if (user != null && (user.Id == blog.UserId || user.Role.equals("admin"))) { %>
         <form method="POST" action="/blog/blog/details" class="delete-blog-form mx-3">
             <input name="blogId" type="hidden" value="<%=blog.Id%>">
@@ -135,9 +134,31 @@
     </div>
 
 
+    <br/>
+
+
+    <form method="POST" action="/blog/library/details" class="library-form mx-3">
+        <input name="blogId" type="hidden" value="<%= blog.Id %>">
+        <input name="userId" type="hidden" value="<%= user.Id %>">
+        <%
+            ArrayList<ReadingList> readinglists = (ArrayList<ReadingList>) request.getAttribute("readinglists");
+            if (readinglists != null && readinglists.size() > 0){
+                for (ReadingList readinglist : readinglists) { %>
+        <br/>
+        <input type="checkbox" name="readinglist<%=readinglist.Id%>" value="<%=readinglist.Id%>" <% if ( (boolean)request.getAttribute("readinglist" + readinglist.Id)) { %>
+               checked
+            <% } %>> <%=readinglist.Name%></input>
+        <% } %>
+
+                <br/>
+        <button type="submit" class="btn btn-primary">Save to Library</button>
+        <% } %>
+
+    </form>
     <form method="POST" action="/blog/comment" class="comment-form">
         <input name="blogId" type="hidden" value=<%=blog.Id%>>
         <input name="userId" type="hidden" value=<%=user.Id%>>
+        <input name="method" type="hidden" value="post">
         <textarea name="comment" placeholder="Add a comment" rows="4"></textarea>
         <button type="submit" class="btn btn-primary">Add Comment</button>
     </form>
@@ -154,6 +175,7 @@
                 <form method="POST" action="/blog/comment" class="delete-comment-form">
                     <input name="commentId" type="hidden" value=<%=comment.Id%>>
                     <input name="blogId" type="hidden" value=<%=comment.BlogId%>>
+                    <input name="method" type="hidden" value="delete">
                     <button type="submit" class="btn btn-danger">Delete</button>
                 </form>
                 <% } %>

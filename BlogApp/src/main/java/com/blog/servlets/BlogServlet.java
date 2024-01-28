@@ -64,7 +64,7 @@ public class BlogServlet extends HttpServlet {
         } catch (Exception throwables) {
             request.setAttribute("error", throwables.getMessage());
         }
-        request.getRequestDispatcher("blogs.jsp").forward(request, response);
+        response.sendRedirect("/blog/blogs");
     }
 
 }
