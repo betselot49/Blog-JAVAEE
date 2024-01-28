@@ -15,21 +15,21 @@ import java.util.Objects;
 @WebServlet("/profile")
 public class ProfileServlet extends HttpServlet {
 
-    protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String method = request.getParameter("method");
-        if (method.equals("delete")){
-            doDelete(request, response);
-        }
-        else if (method.equals("put")){
-            doPut(request, response);
-        }
-        else if (method.equals("post")){
-            doPost(request, response);
-        }
-        else if (method.equals("get")){
-            doGet(request, response);
-        }
-    }
+//    protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//        String method = request.getParameter("method") != null ? request.getParameter("method") : request.getMethod();
+//        if (method.equals("delete")){
+//            doDelete(request, response);
+//        }
+//        else if (method.equals("put")){
+//            doPut(request, response);
+//        }
+//        else if (method.equals("post")){
+//            doPost(request, response);
+//        }
+//        else if (method.equals("get")){
+//            doGet(request, response);
+//        }
+//    }
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         System.out.println("=========Profile Servlet==============");
@@ -49,7 +49,7 @@ public class ProfileServlet extends HttpServlet {
         }
 
         // Forward the request to the profile.jsp page
-        request.getRequestDispatcher("/profile.jsp").forward(request, response);
+        request.getRequestDispatcher("profile.jsp").forward(request, response);
     }
 
     protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

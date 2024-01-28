@@ -207,5 +207,10 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
         integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+WyiflAZG5gH4Mxn3OyK02s2al29pi1wk2"
         crossorigin="anonymous"></script>
+<script>
+    var blogId = "<%=((Blog) request.getAttribute("blog")).Id%>";
+    var newUrl = "/blog/blog/details?id=" + blogId;
+    window.history.pushState({}, '', newUrl);
+</script>
 </body>
 </html>

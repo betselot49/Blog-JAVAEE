@@ -40,7 +40,9 @@ comment.Content = content;
         } catch (Exception throwables) {
             request.setAttribute("error", throwables.getMessage());
         }
-        request.getRequestDispatcher("blog.jsp").forward(request, response);
+        response.sendRedirect("/blog/blog/details?id=" + blogId);
+//        request.getRequestDispatcher("/blog/details?id=" + blogId).forward(request, response);
+//        request.getRequestDispatcher("blog.jsp").forward(request, response);
 //        response.sendRedirect("/blog/details?id=" + blogId);
     }
 
@@ -60,7 +62,8 @@ comment.Content = content;
         } catch (Exception throwables) {
             request.setAttribute("error", throwables.getMessage());
         }
-        request.getRequestDispatcher("blog.jsp").forward(request, response);
+        response.sendRedirect("/blog/blog/details?id=" + blogId);
+//        request.getRequestDispatcher("blog.jsp").forward(request, response);
 //        response.sendRedirect("/blog/details?id=" + comment.BlogId);
     }
 }

@@ -62,18 +62,6 @@ public class ReadingList {
         return  stmt.executeUpdate();
     }
 
-    public static ArrayList<Blog> getBlogs(int readingListId) throws Exception {
-        String query = "SELECT * FROM blogs WHERE Id IN (SELECT BlogId FROM readinglistblogs WHERE ReadingListId=?)";
-        PreparedStatement stmt = connection.prepareStatement(query);
-        stmt.setInt(1, readingListId);
-        ResultSet result2 = stmt.executeQuery();
-        ArrayList<Blog> blogs = new ArrayList<>();
-        while (result2.next()) {
-            blogs.add(Blog.build(result2));
-        }
-        stmt.close();
-        return blogs;
-    }
 
     public static ArrayList<ReadingList> getMyReadingList(int userId) throws Exception {
         String query = "SELECT * FROM readinglists WHERE UserId = ?";

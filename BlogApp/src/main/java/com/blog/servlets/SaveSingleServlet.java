@@ -16,13 +16,13 @@ public class SaveSingleServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         try {
-            int readingId = Integer.parseInt(request.getParameter("id"));
-            ArrayList<Blog> library = ReadingList.getBlogs(readingId);
+            int readingId = Integer.parseInt(request.getParameter("Id"));
+            ArrayList<Blog> library = Save.getBlogs(readingId);
             request.setAttribute("blogs", library);
         } catch (Exception throwables) {
             request.setAttribute("error", throwables.getMessage());
         }
-        request.getRequestDispatcher("librarys.jsp").forward(request, response);
+        request.getRequestDispatcher("../blogs.jsp").forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

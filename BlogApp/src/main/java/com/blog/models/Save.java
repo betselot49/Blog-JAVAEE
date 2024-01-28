@@ -94,6 +94,19 @@ public class Save {
         return  stmt.executeUpdate() + stmt2.executeUpdate();
     }
 
+    public static ArrayList<Blog> getBlogs(int readingListId) throws Exception {
+        String query = "SELECT * FROM blogs WHERE Id IN (SELECT BlogId FROM saves WHERE ReadingListId=?)";
+        PreparedStatement stmt = connection.prepareStatement(query);
+        stmt.setInt(1, readingListId);
+        ResultSet result2 = stmt.executeQuery();
+        ArrayList<Blog> blogs = new ArrayList<>();
+        while (result2.next()) {
+            blogs.add(com.blog.models.Blog.build(result2));
+        }
+        stmt.close();
+        return blogs;
+    }
+
     public static boolean isSaved(int userId, int blogId, int readingListId) throws SQLException {
         String query = "SELECT * FROM saves WHERE UserId = ? AND BlogId = ? AND ReadingListId = ?";
         PreparedStatement stmt = connection.prepareStatement(query);

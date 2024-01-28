@@ -38,7 +38,8 @@ public class LikeServlet extends HttpServlet {
         } catch (Exception throwables) {
             request.setAttribute("error", throwables.getMessage());
         }
-        response.sendRedirect("/blog/details?id=" + blogId);
+        response.sendRedirect("/blog/blog/details?id=" + blogId);
+//        response.sendRedirect("/blog/details?id=" + blogId);
     }
 
 }
