@@ -109,7 +109,7 @@
                     <a style="text-decoration: none; color: #212121" href="blog/details?id=<%= blog.Id %>">
                         <h4 class="card-title"><%= blog.Title %></h4>
                         <img src="data:image/png;base64,<%= img %>" class="card-img-top blog-image" alt="Blog Image">
-                        <p style="margin-top: 15px" class="card-text"><%= blog.Content %></p>
+                        <pre style="margin-top: 15px; white-space: pre-line" class="card-text"><%= blog.Content %></pre>
                     </a>
                     <div class="see-more-btn" onclick="toggleContent('<%= uniqueId %>')">See More</div>
                 </div>
