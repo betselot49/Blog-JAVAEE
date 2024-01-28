@@ -12,4 +12,11 @@ public class Helpers {
             }
             return null;
         }
+
+        public static  boolean isNotificationRequest(HttpServletRequest request){
+            if ( request.getAttribute("success") != null || request.getAttribute("error") != null){
+                return true;
+            }
+            return false;
+        }
 }

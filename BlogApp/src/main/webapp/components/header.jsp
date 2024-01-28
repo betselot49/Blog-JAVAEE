@@ -87,9 +87,12 @@
 					</div>
 					<button type="submit" class="btn btn-primary">Search</button>
 				</form>
+				<% if (user != null) {
+				%>
 				<form class="m-0 p-0" style="background-color: #343A40" action="/blog/logout" method="get">
 					<button type="submit" class="btn btn-primary ml-4">Logout</button>
 				</form>
+				<%}%>
 			</div>
 		</div>
 	</nav>

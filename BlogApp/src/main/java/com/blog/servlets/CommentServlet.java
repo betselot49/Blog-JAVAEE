@@ -33,14 +33,15 @@ comment.Content = content;
         try {
             int rowsAffected = comment.create();
             if (rowsAffected > 0) {
-                request.setAttribute("success", "Successfully Liked");
+                request.setAttribute("success", "Successfully Commented on the blog.");
             } else {
                 request.setAttribute("error", "Something went wrong. Please try again.");
             }
         } catch (Exception throwables) {
             request.setAttribute("error", throwables.getMessage());
         }
-        response.sendRedirect("/blog/details?id=" + blogId);
+        request.getRequestDispatcher("blog.jsp").forward(request, response);
+//        response.sendRedirect("/blog/details?id=" + blogId);
     }
 
     protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -59,6 +60,7 @@ comment.Content = content;
         } catch (Exception throwables) {
             request.setAttribute("error", throwables.getMessage());
         }
-        response.sendRedirect("/blog/details?id=" + comment.BlogId);
+        request.getRequestDispatcher("blog.jsp").forward(request, response);
+//        response.sendRedirect("/blog/details?id=" + comment.BlogId);
     }
 }

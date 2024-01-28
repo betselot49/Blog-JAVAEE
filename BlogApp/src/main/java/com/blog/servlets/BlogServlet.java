@@ -20,12 +20,11 @@ import java.io.InputStream;
 @MultipartConfig
 public class BlogServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("=========Blog Servlet==============");
         String queryParam = request.getParameter("search") == null ? "" : request.getParameter("search");
         try {
             request.setAttribute("blogs", Blog.search(queryParam));
-            request.setAttribute("success", "Successfully Loaded Blogs");
         }catch (Exception exception){
+            request.setAttribute("blogs", new ArrayList<Blog>());
             request.setAttribute("error", exception.getMessage());
         }
 		request.getRequestDispatcher("blogs.jsp").forward(request, response);
@@ -33,7 +32,6 @@ public class BlogServlet extends HttpServlet {
 
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("=========Blog Servlet==============");
         Blog blog = new Blog();
         blog.Content = request.getParameter("content");
         blog.Title = request.getParameter("title");
@@ -41,7 +39,7 @@ public class BlogServlet extends HttpServlet {
         blog.Tags = request.getParameter("tags");
         Part filePart = request.getPart("picture");
         InputStream fileContent = filePart.getInputStream();
-//        blog.BlogPicture = fileContent.readAllBytes();
+        //blog.BlogPicture = fileContent.readAllBytes();
 
         ByteArrayOutputStream buffer = new ByteArrayOutputStream();
         int nRead;
@@ -51,7 +49,6 @@ public class BlogServlet extends HttpServlet {
         }
         buffer.flush();
         blog.BlogPicture = buffer.toByteArray();
-
         String queryParam = request.getParameter("search") == null ? "" : request.getParameter("search");
         try {
             int rowsAffected = blog.create();
@@ -64,7 +61,7 @@ public class BlogServlet extends HttpServlet {
         } catch (Exception throwables) {
             request.setAttribute("error", throwables.getMessage());
         }
-        response.sendRedirect("/blog/blogs");
+        request.getRequestDispatcher("blogs.jsp").forward(request, response);
     }
 
 }
