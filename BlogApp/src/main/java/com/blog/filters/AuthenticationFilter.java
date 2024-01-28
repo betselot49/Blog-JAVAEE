@@ -21,6 +21,7 @@ public class AuthenticationFilter implements Filter {
         HttpSession session = httpRequest.getSession();
         User user;
         try {
+
             user = User.getByEmail((String) session.getAttribute("email"));
             System.out.println("===========" + user.Role + "===========");
             request.setAttribute("user", user);

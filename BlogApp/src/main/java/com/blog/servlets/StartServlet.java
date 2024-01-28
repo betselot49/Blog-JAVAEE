@@ -14,11 +14,12 @@ import java.io.IOException;
 @WebServlet("/")
 public class StartServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        User user = (User) request.getSession().getAttribute("user");
-        if (user != null && user.Role.equals("admin")){
-            response.sendRedirect("admin/blog");
-            return;
-        }
+//        User user = (User) request.getAttribute("user");
+//
+//        if (user != null && user.Role.equals("admin")){
+//            response.sendRedirect("admin/blog");
+//            return;
+//        }
         response.sendRedirect("blog");
     }
 }

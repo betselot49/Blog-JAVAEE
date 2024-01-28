@@ -1,29 +1,29 @@
 package com.blog.servlets;
 
 import com.blog.models.Blog;
+import com.blog.models.Like;
+import com.blog.models.Save;
+import com.blog.models.User;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 @WebServlet("/library")
-public class LibraryServlet extends HttpServlet {
+@MultipartConfig
+public class SaveServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("=========Blog Servlet==============");
-        String queryParam = request.getParameter("search");
-        if (queryParam == null)  {
-            queryParam = "";
-        }
+        User user = (User) request.getAttribute("user");
         try {
-            ArrayList<Blog> blogs = Blog.search(queryParam);
-            request.setAttribute("success", Blog.search(queryParam));
-        }catch (Exception exception){
-            request.setAttribute("error", exception.getMessage());
+            ArrayList<Blog> library = Save.getMySavedBlogs(user.Id);
+            request.setAttribute("blogs", library);
+            request.setAttribute("success", "Successfully Loaded Saved Blogs");
+        } catch (Exception throwables) {
+            request.setAttribute("error", throwables.getMessage());
         }
         request.getRequestDispatcher("blogs.jsp").forward(request, response);
     }

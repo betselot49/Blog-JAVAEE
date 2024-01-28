@@ -13,8 +13,9 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.Part;
+import org.mindrot.jbcrypt.BCrypt;
 
-@WebServlet("/admin/register")
+@WebServlet("/adminregister")
 @MultipartConfig
 public class AdminRegisterServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -25,6 +26,7 @@ public class AdminRegisterServlet extends HttpServlet {
         String fullName = request.getParameter("fullName");
         String email = request.getParameter("email");
         String password = request.getParameter("password");
+        String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
         Part filePart = request.getPart("profilePicture");
         InputStream fileContent = filePart.getInputStream();
 
@@ -41,7 +43,7 @@ public class AdminRegisterServlet extends HttpServlet {
             User user = new User();
             user.FullName = fullName;
             user.Email = email;
-            user.Password = password;
+            user.Password = hashedPassword;
             user.Role = role;
             user.ProfilePicture = buffer.toByteArray();
             int rowsAffected = user.create();

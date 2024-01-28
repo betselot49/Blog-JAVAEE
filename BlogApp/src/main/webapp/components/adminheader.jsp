@@ -46,20 +46,12 @@
             <li class="<%= request.getRequestURI().endsWith("/users") ? "active" : "" %>">
                 <a href="users">Users</a>
             </li>
-            <%
-                User user = (User)request.getAttribute("user");
-                if(user == null){ %>
-            <li class="<%= request.getRequestURI().endsWith("/login") ? "active" : "" %>">
-                <a href="login">Log in</a>
+            <li class="<%= request.getRequestURI().endsWith("/adminregister") ? "active" : "" %>">
+                <a href="users">Register an Admin</a>
             </li>
-            <% } else { %>
-            <li class="<%= request.getRequestURI().endsWith("/library") ? "active" : "" %>">
-                <a href="library">Libraries</a>
+            <li class="<%= request.getRequestURI().endsWith("/logout") ? "active" : "" %>">
+                <a href="logout">Logout</a>
             </li>
-            <li class="<%= request.getRequestURI().endsWith("/profile") ? "active" : "" %>">
-                <a href="profile">Profile</a>
-            </li>
-            <% } %>
         </ul>
     </nav>
 </header>

@@ -6,6 +6,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.mindrot.jbcrypt.BCrypt;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -30,7 +31,7 @@ public class LoginServlet extends HttpServlet {
 			}
 
 			String password = loggedInUser.Password;
-			if (Objects.equals(password, newPassword)) {
+			if (BCrypt.checkpw(newPassword, password)) {
 				request.getSession().setAttribute("email", loggedInUser.Email);
 				response.sendRedirect("blog");
 			} else {
