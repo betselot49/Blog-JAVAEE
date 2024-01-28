@@ -45,11 +45,11 @@ public class Like {
         stmt.setInt(1, this.UserId);
         stmt.setInt(2, this.BlogId);
         stmt.executeUpdate();
-        String query2 = "UPDATE blogs SET LikeCount = LikeCount + 1 WHERE BlogId = ?";
+        String query2 = "UPDATE blogs SET LikeCount = LikeCount + 1 WHERE Id = ?";
         PreparedStatement stmt2 = connection.prepareStatement(query2);
         stmt2.setInt(1, this.BlogId);
-        return stmt2.executeUpdate();
 
+        return stmt2.executeUpdate();
     }
 
     public int delete() throws SQLException {

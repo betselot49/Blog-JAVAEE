@@ -16,6 +16,7 @@ public class LikeServlet extends HttpServlet {
         int blogId = Integer.parseInt(request.getParameter("blogId"));
         int userId = Integer.parseInt(request.getParameter("userId"));
         Like like = new Like();
+        System.out.println("==============Like Servlet================");
         like.BlogId = blogId;
         like.UserId = userId;
         try {
@@ -26,8 +27,10 @@ public class LikeServlet extends HttpServlet {
                 rowsAffected = like.create();
             }
             if (rowsAffected > 0) {
+                System.out.println("==============Successfully Liked================");
                 request.setAttribute("success", "Successfully Liked");
             } else {
+                System.out.println("==============Something went wrong. Please try again.================");
                 request.setAttribute("error", "Something went wrong. Please try again.");
             }
         } catch (Exception throwables) {
