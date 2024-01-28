@@ -90,7 +90,7 @@
 <body>
 <%@include file="components/header.jsp"%>
 
-<div class="user-list">
+<div style="margin-top: 50px" class="user-list">
     <h2>User List</h2>
     <%
         ArrayList<User> peoples = (ArrayList<User>) request.getAttribute("peoples");
