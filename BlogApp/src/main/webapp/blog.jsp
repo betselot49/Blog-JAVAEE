@@ -119,14 +119,15 @@
             <% String msg = isLiked ? "Unlike" : "Like"; %>
             <button type="submit" class="btn btn-primary"><%=msg%></button>
         </form>
-        <form method="POST" action="/blog/addToLibrary" class="library-form mx-3">
+        <form method="POST" action="/blog/library" class="library-form mx-3">
             <input name="blogId" type="hidden" value="<%=blog.Id%>">
-            <input name="userId" type="hidden" value="<%=user.Id%>">
+            <input name="userId" type="hidden" value=<%=user.Id%>>
             <button type="submit" class="btn btn-primary">Add to Library</button>
         </form>
         <% if (user != null && (user.Id == blog.UserId || user.Role.equals("admin"))) { %>
-        <form method="POST" action="/blog/deleteBlog" class="delete-blog-form mx-3">
+        <form method="POST" action="/blog/blog/details" class="delete-blog-form mx-3">
             <input name="blogId" type="hidden" value="<%=blog.Id%>">
+            <input name="method" type="hidden" value="delete">
             <button type="submit" class="btn btn-danger">Delete</button>
         </form>
         <% } %>
@@ -150,8 +151,9 @@
 
                 <!-- Add delete button if conditions are met -->
                 <% if (user != null && (user.Id == comment.UserId || user.Role.equals("admin"))) { %>
-                <form method="POST" action="/blog/deleteComment" class="delete-comment-form">
+                <form method="POST" action="/blog/comment" class="delete-comment-form">
                     <input name="commentId" type="hidden" value=<%=comment.Id%>>
+                    <input name="blogId" type="hidden" value=<%=comment.BlogId%>>
                     <button type="submit" class="btn btn-danger">Delete</button>
                 </form>
                 <% } %>
@@ -160,15 +162,15 @@
         <% } %>
     </div>
 
-    <div class="like">
-        <% for (Like like : likes) { %>
-        <div class="card">
-            <div class="card-body">
-                <p><strong><%= like.Liker.FullName%></strong> liked this.</p>
-            </div>
-        </div>
-        <% } %>
-    </div>
+<%--    <div class="like">--%>
+<%--        <% for (Like like : likes) { %>--%>
+<%--        <div class="card">--%>
+<%--            <div class="card-body">--%>
+<%--                <p><strong><%= like.Liker.FullName%></strong> liked this.</p>--%>
+<%--            </div>--%>
+<%--        </div>--%>
+<%--        <% } %>--%>
+<%--    </div>--%>
 </div>
 <% } %>
 

@@ -66,4 +66,5 @@ public class BlogServlet extends HttpServlet {
         }
         request.getRequestDispatcher("blogs.jsp").forward(request, response);
     }
+
 }

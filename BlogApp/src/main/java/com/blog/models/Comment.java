@@ -62,7 +62,7 @@ public class Comment {
         stmt.close();
     }
 
-    public void delete() throws SQLException {
+    public int delete() throws SQLException {
         String query = "DELETE FROM comments WHERE Id = ?";
         PreparedStatement stmt = connection.prepareStatement(query);
         stmt.setInt(1, this.Id);
@@ -70,9 +70,7 @@ public class Comment {
         String query2 = "UPDATE blogs SET CommentCount = CommentCount - 1 WHERE BlogId = ?";
         PreparedStatement stmt2 = connection.prepareStatement(query2);
         stmt2.setInt(1, this.BlogId);
-        stmt2.executeUpdate();
-        stmt2.close();
-        stmt.close();
+        return stmt2.executeUpdate();
     }
 
     public static ArrayList<Comment> getComments(int blogId) throws SQLException {

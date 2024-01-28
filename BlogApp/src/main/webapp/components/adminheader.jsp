@@ -41,16 +41,16 @@
     <nav class="container">
         <ul>
             <li class="<%= (request.getRequestURI().endsWith("/blog") || request.getRequestURI().equals("/")) ? "active" : "" %>">
-                <a href="blogs">Blog</a>
+                <a href="/blog/blogs">Blog</a>
             </li>
             <li class="<%= request.getRequestURI().endsWith("/users") ? "active" : "" %>">
-                <a href="users">Users</a>
+                <a href="/blog/users">Users</a>
             </li>
             <li class="<%= request.getRequestURI().endsWith("/adminregister") ? "active" : "" %>">
-                <a href="users">Register an Admin</a>
+                <a href="/blog/adminregister">Register an Admin</a>
             </li>
             <li class="<%= request.getRequestURI().endsWith("/logout") ? "active" : "" %>">
-                <a href="logout">Logout</a>
+                <a href="/blog/logout">Logout</a>
             </li>
         </ul>
     </nav>

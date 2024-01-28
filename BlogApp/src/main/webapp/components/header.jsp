@@ -57,26 +57,26 @@
 	<nav class="container">
 		<ul>
 			<li class="<%= (request.getRequestURI().endsWith("/blog") || request.getRequestURI().equals("/")) ? "active" : "" %>">
-				<a href="blog">Home</a>
+				<a href="/blog/blog">Home</a>
 			</li>
 			<li class="<%= request.getRequestURI().endsWith("/users") ? "active" : "" %>">
-				<a href="users">Users</a>
+				<a href="/blog/users">Users</a>
 			</li>
 			<%
 				User user = (User)request.getAttribute("user");
 				if(user == null){ %>
 			<li class="<%= request.getRequestURI().endsWith("/login") ? "active" : "" %>">
-				<a href="login">Log in</a>
+				<a href="/blog/login">Log in</a>
 			</li>
 			<% } else { %>
 			<li class="<%= request.getRequestURI().endsWith("/library") ? "active" : "" %>">
-				<a href="library">Libraries</a>
+				<a href="/blog/library">Libraries</a>
 			</li>
 			<li class="<%= request.getRequestURI().endsWith("/profile") ? "active" : "" %>">
-				<a href="profile">Profile</a>
+				<a href="/blog/profile">Profile</a>
 			</li>
 			<li class="<%= request.getRequestURI().endsWith("/logout") ? "active" : "" %>">
-				<a href="logout">Logout</a>
+				<a href="/blog/logout">Logout</a>
 			</li>
 			<% } %>
 		</ul>

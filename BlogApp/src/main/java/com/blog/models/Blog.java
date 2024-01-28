@@ -88,11 +88,11 @@ public class Blog {
 //        stmt.close();
 //    }
 
-    public void delete() throws Exception {
+    public int delete() throws Exception {
         String query = "DELETE FROM blogs WHERE Id=?";
-        Statement stmt = connection.createStatement();
-        stmt.executeUpdate(query);
-        stmt.close();
+        PreparedStatement stmt = connection.prepareStatement(query);
+        stmt.setInt(1, this.Id);
+        return  stmt.executeUpdate();
     }
 
     public static Blog getById(int id) throws Exception {
