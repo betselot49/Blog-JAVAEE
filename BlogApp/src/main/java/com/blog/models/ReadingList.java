@@ -39,30 +39,27 @@ public class ReadingList {
         return readingList;
     }
 
-    public void create() throws Exception {
+    public int create() throws Exception {
         String query = "INSERT INTO readinglists(UserId, Name) VALUES(?,?)";
         PreparedStatement stmt = connection.prepareStatement(query);
         stmt.setInt(1, this.UserId);
         stmt.setString(2, this.Name);
-        stmt.executeUpdate();
-        stmt.close();
+        return stmt.executeUpdate();
     }
 
-    public void update() throws Exception {
+    public int update() throws Exception {
         String query = "UPDATE readinglists SET Name=? WHERE Id=?";
         PreparedStatement stmt = connection.prepareStatement(query);
         stmt.setString(1, this.Name);
         stmt.setInt(2, this.Id);
-        stmt.executeUpdate();
-        stmt.close();
+        return  stmt.executeUpdate();
     }
 
-    public void delete() throws Exception {
+    public int delete() throws Exception {
         String query = "DELETE FROM readinglists WHERE Id=?";
         PreparedStatement stmt = connection.prepareStatement(query);
         stmt.setInt(1, this.Id);
-        stmt.executeUpdate();
-        stmt.close();
+        return  stmt.executeUpdate();
     }
 
     public static ArrayList<Blog> getBlogs(int readingListId) throws Exception {
@@ -77,4 +74,18 @@ public class ReadingList {
         stmt.close();
         return blogs;
     }
+
+    public static ArrayList<ReadingList> getMyReadingList(int userId) throws Exception {
+        String query = "SELECT * FROM readinglists WHERE UserId = ?";
+        PreparedStatement stmt = connection.prepareStatement(query);
+        stmt.setInt(1, userId);
+        ResultSet result2 = stmt.executeQuery();
+        ArrayList<ReadingList> readingLists = new ArrayList<>();
+        while (result2.next()) {
+            readingLists.add(ReadingList.build(result2));
+        }
+        stmt.close();
+        return readingLists;
+    }
+
 }

@@ -1,9 +1,6 @@
 package com.blog.servlets;
 
-import com.blog.models.Blog;
-import com.blog.models.Comment;
-import com.blog.models.Like;
-import com.blog.models.User;
+import com.blog.models.*;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -11,6 +8,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 @WebServlet("/blog/details")
 public class BlogSingleServlet extends HttpServlet {
@@ -18,12 +16,20 @@ public class BlogSingleServlet extends HttpServlet {
         System.out.println("=========Blog Single Servlet==============");
         try {
             int blogId = Integer.parseInt(request.getParameter("id"));
-            User user = (User) request.getSession().getAttribute("user");
+            User user = (User) request.getAttribute("user");
             boolean isLiked = user != null ? Like.isLiked(user.Id, blogId) : false;
             request.setAttribute("blog", Blog.getById(blogId));
             request.setAttribute("isLiked", isLiked);
             request.setAttribute("comments", Comment.getComments(blogId));
             request.setAttribute("likes", Like.getLikers(blogId));
+            ArrayList<ReadingList> rls = ReadingList.getMyReadingList(user.Id);
+            request.setAttribute("readinglists", rls);
+
+            for (ReadingList rl : rls) {
+                request.setAttribute("readinglist" + rl.Id, Save.isSaved(user.Id, blogId, rl.Id));
+            }
+
+
         }catch (Exception exception){
             request.setAttribute("error", exception.getMessage());
         }
@@ -70,6 +76,7 @@ public class BlogSingleServlet extends HttpServlet {
             else {
                 request.setAttribute("success", "Successfully Deleted the Blog");
                 response.sendRedirect("/blog/blog");
+                return;
             }
 
         }catch (Exception exception){

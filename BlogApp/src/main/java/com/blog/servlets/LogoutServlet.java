@@ -17,6 +17,6 @@ public class LogoutServlet extends HttpServlet {
             throws ServletException, IOException {
         request.getSession().invalidate();
         request.setAttribute("success", "Loged out Successfully");
-        response.sendRedirect("blog");
+        response.sendRedirect("/blog/blog");
     }
 }

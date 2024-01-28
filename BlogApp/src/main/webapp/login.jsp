@@ -1,14 +1,17 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-		 pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+		 pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="ISO-8859-1">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<!-- Font Awesome Icons -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 	<title>Login</title>
 
 <%--	<link rel="stylesheet" href="css/bootstrap.css">--%>
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 	<style>
 		body {
 			background-color: #f7f8ff;
@@ -183,7 +186,7 @@
 				</form>
 			</div>
 			<div class="card-footer">
-				<p class="text-center">© 2023 BlogApp. All
+				<p class="text-center">Â© 2023 BlogApp. All
 					rights reserved.</p>
 			</div>
 		</div>

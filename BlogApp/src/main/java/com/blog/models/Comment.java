@@ -47,7 +47,7 @@ public class Comment {
         stmt.setInt(2, this.BlogId);
         stmt.setString(3, this.Content);
         stmt.executeUpdate();
-        String query2 = "UPDATE blogs SET CommentCount = CommentCount + 1 WHERE BlogId = ?";
+        String query2 = "UPDATE blogs SET CommentCount = CommentCount + 1 WHERE Id = ?";
         PreparedStatement stmt2 = connection.prepareStatement(query2);
         stmt2.setInt(1, this.BlogId);
         return  stmt2.executeUpdate();
@@ -66,11 +66,10 @@ public class Comment {
         String query = "DELETE FROM comments WHERE Id = ?";
         PreparedStatement stmt = connection.prepareStatement(query);
         stmt.setInt(1, this.Id);
-        stmt.executeUpdate();
-        String query2 = "UPDATE blogs SET CommentCount = CommentCount - 1 WHERE BlogId = ?";
+        String query2 = "UPDATE blogs SET CommentCount = CommentCount - 1 WHERE Id = ?";
         PreparedStatement stmt2 = connection.prepareStatement(query2);
         stmt2.setInt(1, this.BlogId);
-        return stmt2.executeUpdate();
+        return stmt.executeUpdate() + stmt2.executeUpdate();
     }
 
     public static ArrayList<Comment> getComments(int blogId) throws SQLException {

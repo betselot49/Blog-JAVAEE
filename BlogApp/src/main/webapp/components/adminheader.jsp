@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,31 +35,59 @@
         li a:hover {
             color: #adb5bd; /* Slightly lighter shade on hover */
         }
+
     </style>
 </head>
 <body>
-<header class="fixed-top bg-dark" style="padding-top: 20px;">
-    <nav class="container">
-        <ul>
-            <li class="<%= (request.getRequestURI().endsWith("/blog") || request.getRequestURI().equals("/")) ? "active" : "" %>">
-                <a href="/blog/blogs">Blog</a>
-            </li>
-            <li class="<%= request.getRequestURI().endsWith("/users") ? "active" : "" %>">
-                <a href="/blog/users">Users</a>
-            </li>
-            <li class="<%= request.getRequestURI().endsWith("/adminregister") ? "active" : "" %>">
-                <a href="/blog/adminregister">Register an Admin</a>
-            </li>
-            <li class="<%= request.getRequestURI().endsWith("/logout") ? "active" : "" %>">
-                <a href="/blog/logout">Logout</a>
-            </li>
-        </ul>
+<header class="fixed-top bg-dark" >
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container" >
+            <a class="navbar-brand"
+               href="#">Blog</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarNav" aria-controls="navbarNav"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <%User user = (User)request.getAttribute("user");%>
+                <ul class="navbar-nav">
+                    <li class="nav-item <%= (request.getRequestURI().endsWith("/blog") || request.getRequestURI().equals("/")) ? "active" : "" %>">
+                        <a class="nav-link" href="/blog/blog">Home</a>
+                    </li>
+                    <li class="nav-item <%= request.getRequestURI().endsWith("/users") ? "active" : "" %>">
+                        <a class="nav-link" href="/blog/users">Users</a>
+                    </li>
+                    <li class="nav-item <%= request.getRequestURI().endsWith("/library") ? "active" : "" %>">
+                        <a class="nav-link" href="/blog/library">Libraries</a>
+                    </li>
+                    <li class="nav-item <%= request.getRequestURI().endsWith("/profile") ? "active" : "" %>">
+                        <a class="nav-link" href="/blog/profile">Profile</a>
+                    </li>
+                    <li class="<%= request.getRequestURI().endsWith("/adminregister") ? "active" : "" %>">
+                        <a href="/blog/adminregister">Register an Admin</a>
+                    </li>
+                </ul>
+                <%
+                    String currentURI = request.getRequestURI();
+                    String[] splitURI = currentURI.split("\\.");
+                    String lastPart = splitURI[0];
+
+
+                %>
+                <form class="form-inline ml-auto p-0" style="background-color: #343A40" action="<%=lastPart%>">
+                    <div class="form-group mr-2 p-0">
+                        <input type="text" class="form-control" name="search" placeholder="Search">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </form>
+                <form class="m-0 p-0" style="background-color: #343A40" action="logout" method="get">
+                    <button type="submit" class="btn btn-primary ml-4">Logout</button>
+                </form>
+            </div>
+        </div>
     </nav>
 </header>
 
-<!-- Bootstrap JS and Popper.js (required for Bootstrap) -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
