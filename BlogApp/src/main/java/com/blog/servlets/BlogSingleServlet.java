@@ -4,7 +4,6 @@ import com.blog.models.Blog;
 import com.blog.models.Comment;
 import com.blog.models.Like;
 import com.blog.models.User;
-import com.blog.utils.Helpers;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -12,7 +11,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 @WebServlet("/blog/details")
 public class BlogSingleServlet extends HttpServlet {
@@ -72,7 +70,6 @@ public class BlogSingleServlet extends HttpServlet {
             else {
                 request.setAttribute("success", "Successfully Deleted the Blog");
                 response.sendRedirect("/blog/blog");
-                return;
             }
 
         }catch (Exception exception){

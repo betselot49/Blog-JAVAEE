@@ -124,6 +124,7 @@
             <input name="userId" type="hidden" value=<%=user.Id%>>
             <button type="submit" class="btn btn-primary">Add to Library</button>
         </form>
+
         <% if (user != null && (user.Id == blog.UserId || user.Role.equals("admin"))) { %>
         <form method="POST" action="/blog/blog/details" class="delete-blog-form mx-3">
             <input name="blogId" type="hidden" value="<%=blog.Id%>">
