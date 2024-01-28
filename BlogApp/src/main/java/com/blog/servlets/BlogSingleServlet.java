@@ -22,13 +22,18 @@ public class BlogSingleServlet extends HttpServlet {
             request.setAttribute("isLiked", isLiked);
             request.setAttribute("comments", Comment.getComments(blogId));
             request.setAttribute("likes", Like.getLikers(blogId));
+
+            if (request.getAttribute("user") == null) {
+                request.getRequestDispatcher("../blog.jsp").forward(request, response);
+                return;
+            }
+
             ArrayList<ReadingList> rls = ReadingList.getMyReadingList(user.Id);
             request.setAttribute("readinglists", rls);
 
             for (ReadingList rl : rls) {
                 request.setAttribute("readinglist" + rl.Id, Save.isSaved(user.Id, blogId, rl.Id));
             }
-
 
         }catch (Exception exception){
             request.setAttribute("error", exception.getMessage());
