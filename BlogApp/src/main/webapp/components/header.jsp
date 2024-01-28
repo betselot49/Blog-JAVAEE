@@ -79,6 +79,13 @@
 					String[] splitURI = currentURI.split("\\.");
 					String lastPart = splitURI[0];
 
+					String lastPart2 = lastPart.substring(lastPart.lastIndexOf("/") + 1);
+
+
+					int margin = 0;
+					if (lastPart2.equals("users") || lastPart2.equals("profile")) {
+						margin = 3;
+					}
 
 				%>
 				<form class="form-inline ml-auto p-0" style="background-color: #343A40" action="<%=lastPart%>">
@@ -88,9 +95,10 @@
 					<button type="submit" class="btn btn-primary">Search</button>
 				</form>
 				<% if (user != null) {
+
 				%>
-				<form class="m-0 p-0" style="background-color: #343A40" action="/blog/logout" method="get">
-					<button type="submit" class="btn btn-primary ml-4">Logout</button>
+				<form class="m-0 p-0 mb-<%=margin%>" style="background-color: #343A40" action="/blog/logout" method="get">
+					<button type="submit" class="btn btn-primary ml-5">Logout</button>
 				</form>
 				<%}%>
 			</div>
