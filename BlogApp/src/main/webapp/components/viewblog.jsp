@@ -86,6 +86,7 @@
     <%
         Blog blog = (Blog) request.getAttribute("blog");
         String img = Base64.getEncoder().encodeToString(blog.BlogPicture);
+        String uniqueId = "blog" + blog.Id; // Create a unique identifier for each blog
     %>
 
     <div class="card-body" style="max-width: 1000px;">
@@ -104,13 +105,13 @@
             </div>
             <div class="col-md-10">
                 <!-- Blog Content Section -->
-                <div class="see-more-content">
+                <div class="see-more-content" id="<%= uniqueId %>">
                     <a style="text-decoration: none; color: #212121" href="blog/details?id=<%= blog.Id %>">
                         <h4 class="card-title"><%= blog.Title %></h4>
                         <img src="data:image/png;base64,<%= img %>" class="card-img-top blog-image" alt="Blog Image">
                         <p style="margin-top: 15px" class="card-text"><%= blog.Content %></p>
                     </a>
-                    <div class="see-more-btn" onclick="toggleContent()">See More</div>
+                    <div class="see-more-btn" onclick="toggleContent('<%= uniqueId %>')">See More</div>
                 </div>
                 <div class="like-comment-row">
                     <!-- Like Count Section -->
@@ -130,9 +131,9 @@
 </div>
 
 <script>
-    function toggleContent() {
-        var contentDiv = document.querySelector('.see-more-content');
-        var btn = document.querySelector('.see-more-btn');
+    function toggleContent(uniqueId) {
+        var contentDiv = document.getElementById(uniqueId);
+        var btn = contentDiv.querySelector('.see-more-btn');
 
         if (contentDiv.style.maxHeight) {
             contentDiv.style.maxHeight = '600px';

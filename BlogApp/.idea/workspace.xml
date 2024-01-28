@@ -11,8 +11,11 @@
   <component name="ChangeListManager">
     <list default="true" id="b658c3e2-27bf-48d6-90f6-572987491378" name="Changes" comment="Blog">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/blogs.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/blogs.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/components/addblog.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/components/addblog.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/blog/models/Like.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blog/models/Like.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/blog/servlets/LikeServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blog/servlets/LikeServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/components/viewblog.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/components/viewblog.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/library.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/library.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/profile.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/profile.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -250,7 +253,8 @@
       <workItem from="1706295209060" duration="934000" />
       <workItem from="1706296173251" duration="9297000" />
       <workItem from="1706336551824" duration="2275000" />
-      <workItem from="1706338910201" duration="4974000" />
+      <workItem from="1706338910201" duration="9629000" />
+      <workItem from="1706421820279" duration="442000" />
     </task>
     <task id="LOCAL-00001" summary="User table updated">
       <option name="closed" value="true" />
