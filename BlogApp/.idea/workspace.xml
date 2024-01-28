@@ -11,13 +11,8 @@
   <component name="ChangeListManager">
     <list default="true" id="b658c3e2-27bf-48d6-90f6-572987491378" name="Changes" comment="User table updated">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/blog/models/ReadingList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blog/models/ReadingList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/blog/models/Save.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blog/models/Save.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/blog/servlets/CommentServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blog/servlets/CommentServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/blog/servlets/LikeServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blog/servlets/LikeServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/blog/servlets/ProfileServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blog/servlets/ProfileServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/blog/servlets/SaveSingleServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blog/servlets/SaveSingleServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/blog.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/blog.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/profile.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/profile.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,33 +72,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/fikre/OneDrive/Desktop/Blog-JAVAEE/BlogApp/src/main/webapp",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/fikre/OneDrive/Desktop/Blog-JAVAEE/BlogApp/src/main/webapp&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\fikre\OneDrive\Desktop\Blog-JAVAEE\BlogApp\src\main\webapp" />
@@ -260,6 +255,7 @@
       <workItem from="1706337463155" duration="5098000" />
       <workItem from="1706420927145" duration="1598000" />
       <workItem from="1706446399592" duration="637000" />
+      <workItem from="1706455601608" duration="652000" />
     </task>
     <task id="LOCAL-00001" summary="User table updated">
       <option name="closed" value="true" />
@@ -552,23 +548,38 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/blog/servlets/ProfileServlet.java</url>
-          <line>44</line>
+          <line>49</line>
           <option name="timeStamp" value="202" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/blog/servlets/ProfileServlet.java</url>
-          <line>45</line>
+          <line>50</line>
           <option name="timeStamp" value="203" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/blog/servlets/ProfileServlet.java</url>
-          <line>47</line>
+          <line>52</line>
           <option name="timeStamp" value="204" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/blog/servlets/ProfileServlet.java</url>
-          <line>51</line>
+          <line>56</line>
           <option name="timeStamp" value="205" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/blog/servlets/ProfileServlet.java</url>
+          <line>41</line>
+          <option name="timeStamp" value="206" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/blog/servlets/ProfileServlet.java</url>
+          <line>42</line>
+          <option name="timeStamp" value="207" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/blog/servlets/ProfileServlet.java</url>
+          <line>37</line>
+          <option name="timeStamp" value="208" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

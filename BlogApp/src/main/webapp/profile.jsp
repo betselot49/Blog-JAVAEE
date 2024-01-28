@@ -172,7 +172,7 @@
     </div>
 
 
-    <h3 class="mb-3" style="margin-top: 50px">Your Blog Posts</h3>
+    <h3 class="mb-3" style="margin-top: 50px">Blog Posts</h3>
 
     <div class="row">
         <%
