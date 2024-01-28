@@ -18,6 +18,8 @@ public class AuthenticationFilter implements Filter {
             throws IOException, ServletException {
         HttpServletRequest httpRequest = (HttpServletRequest) request;
         HttpServletResponse httpResponse = (HttpServletResponse) response;
+        String requestPath = httpRequest.getRequestURI();
+        String method = httpRequest.getMethod();
         HttpSession session = httpRequest.getSession();
         User user;
         try {
