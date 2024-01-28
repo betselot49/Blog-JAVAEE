@@ -11,15 +11,14 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("/users/*")
+@WebServlet("/users/details")
 public class UsersSingleServlet {
-
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         System.out.println("=========User Single Servlet==============");
-        int pageNumber = request.getParameter("pageNumber") != null ? Integer.parseInt(request.getParameter("pageNumber")) : 0;
-        int pageSize = request.getParameter("pageSize") != null ? Integer.parseInt(request.getParameter("pageSize")) : 15;
+        int userId = Integer.parseInt(request.getParameter("id"));
+//        int pageNumber = request.getParameter("pageNumber") != null ? Integer.parseInt(request.getParameter("pageNumber")) : 0;
+//        int pageSize = request.getParameter("pageSize") != null ? Integer.parseInt(request.getParameter("pageSize")) : 15;
         try {
-            int userId = Integer.parseInt(request.getPathInfo().substring(1));
             request.setAttribute("people", User.getById(userId));
             request.setAttribute("blogs", Blog.getByUserId(userId));
             request.setAttribute("success", "Successfully Loaded User");

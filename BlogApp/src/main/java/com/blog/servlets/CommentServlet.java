@@ -45,6 +45,7 @@ comment.Content = content;
 
     protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int commentId = Integer.parseInt(request.getParameter("commentId"));
+        int blogId = Integer.parseInt(request.getParameter("blogId"));
         Comment comment = new Comment();
         comment.Id = commentId;
         try {

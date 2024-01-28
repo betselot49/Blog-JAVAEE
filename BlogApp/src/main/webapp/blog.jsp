@@ -153,6 +153,7 @@
                 <% if (user != null && (user.Id == comment.UserId || user.Role.equals("admin"))) { %>
                 <form method="POST" action="/blog/comment" class="delete-comment-form">
                     <input name="commentId" type="hidden" value=<%=comment.Id%>>
+                    <input name="blogId" type="hidden" value=<%=comment.BlogId%>>
                     <button type="submit" class="btn btn-danger">Delete</button>
                 </form>
                 <% } %>

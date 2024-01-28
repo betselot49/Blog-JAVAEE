@@ -71,7 +71,7 @@ public class BlogSingleServlet extends HttpServlet {
             }
             else {
                 request.setAttribute("success", "Successfully Deleted the Blog");
-                response.getWriter().write("<script>window.history.back(); window.history.back();</script>");
+                response.sendRedirect("/blog/blog");
                 return;
             }
 

@@ -97,7 +97,7 @@
         User currentUser = (User) request.getSession().getAttribute("user");
         for (User people : peoples) {
     %>
-    <div class="user-box">
+    <a class="user-box" href="/blog/users/details?id=<%=people.Id%>">
         <% if (people.ProfilePicture != null) { %>
         <img class="user-profile" src="data:image/jpeg;base64,<%= new String(Base64.getEncoder().encode(people.ProfilePicture)) %>" alt="Profile Picture">
         <% } else { %>
@@ -116,7 +116,7 @@
             </form>
             <% } %>
         </div>
-    </div>
+    </a>
     <% } %>
 </div>
 </body>
