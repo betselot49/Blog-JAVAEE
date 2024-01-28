@@ -74,20 +74,22 @@ public class User {
         return  stmt.executeUpdate();
     }
 
-    public void delete() throws SQLException {
+    public int delete() throws SQLException {
         String query = "DELETE FROM users WHERE Id=?";
         PreparedStatement stmt = connection.prepareStatement(query);
         stmt.setInt(1, this.Id);
-        stmt.executeUpdate();
+        return  stmt.executeUpdate();
     }
 
     public  static ArrayList<User> search(String search, int pageNumber, int pageSize) throws SQLException {
-        String query = "SELECT * FROM users WHERE Fullname LIKE ? OR Email LIKE ? LIMIT ? OFFSET ? ORDER BY BlogCount DESC";
+        String query = "SELECT * FROM users WHERE Fullname LIKE ? OR Email LIKE ? ORDER BY BlogCount DESC LIMIT ? OFFSET ?";
         PreparedStatement stmt = connection.prepareStatement(query);
         stmt.setString(1, "%" + search + "%");
         stmt.setString(2, "%" + search + "%");
+        stmt.setInt(3, pageSize);
+        stmt.setInt(4, pageNumber * pageSize);
         ResultSet result = stmt.executeQuery();
-        ArrayList<User> users = new ArrayList<User>();
+        ArrayList<User> users = new ArrayList<>();
         while (result.next()) {
             users.add(User.build(result));
         }

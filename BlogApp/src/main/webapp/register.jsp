@@ -151,6 +151,7 @@
 	String success = (String) request.getAttribute("success");
 	User use = (User) request.getAttribute("user");
 	String role = use != null && use.Role.equals("admin") ? "admin" : "user" ;
+	String redirect = use != null && use.Role.equals("admin") ? "/blog/adminregister" : "/blog/register" ;
 %>
 
 <div class="container">
@@ -159,7 +160,7 @@
 			<h2 class="display-4">Registration</h2>
 		</div>
 		<div class="card-body">
-			<form class="register-form" action="register" method="POST" enctype="multipart/form-data">
+			<form class="register-form" action="<%=redirect%>" method="POST" enctype="multipart/form-data">
 				<h3 class="register-title">Create an Account</h3>
 				<div class="form-group">
 					<label for="fullName">Full Name</label>

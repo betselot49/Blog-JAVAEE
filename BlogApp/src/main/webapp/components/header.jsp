@@ -51,39 +51,43 @@
 			<div class="collapse navbar-collapse" id="navbarNav">
 				<ul class="navbar-nav">
 					<li class="nav-item <%= (request.getRequestURI().endsWith("/blog") || request.getRequestURI().equals("/")) ? "active" : "" %>">
-						<a class="nav-link" href="blog">Home</a>
+						<a class="nav-link" href="/blog/blog">Home</a>
 					</li>
 					<li class="nav-item <%= request.getRequestURI().endsWith("/users") ? "active" : "" %>">
-						<a class="nav-link" href="users">Users</a>
+						<a class="nav-link" href="/blog/users">Users</a>
 					</li>
 					<%
 						User user = (User)request.getAttribute("user");
 						if(user == null){ %>
 					<li class="nav-item <%= request.getRequestURI().endsWith("/login") ? "active" : "" %>">
-						<a class="nav-link" href="login">Log in</a>
+						<a class="nav-link" href="/blog/login">Log in</a>
 					</li>
 					<% } else { %>
 					<li class="nav-item <%= request.getRequestURI().endsWith("/library") ? "active" : "" %>">
-						<a class="nav-link" href="library">Libraries</a>
+						<a class="nav-link" href="/blog/library">Libraries</a>
 					</li>
 					<li class="nav-item <%= request.getRequestURI().endsWith("/profile") ? "active" : "" %>">
-						<a class="nav-link" href="profile">Profile</a>
+						<a class="nav-link" href="/blog/profile">Profile</a>
 					</li>
-					<% } %>
+					<% if (user.Role.equals("admin")) { %>
+					<li class="nav-item <%= request.getRequestURI().endsWith("/adminregister") ? "active" : "" %>">
+						<a class="nav-link" href="/blog/adminregister">Admin Register</a>
+					<% } }%>
 				</ul>
 				<%
 					String currentURI = request.getRequestURI();
 					String[] splitURI = currentURI.split("\\.");
+					String lastPart = splitURI[0];
+
 
 				%>
-				<form class="form-inline ml-auto p-0" style="background-color: #343A40" action="<%=splitURI[0]%>">
+				<form class="form-inline ml-auto p-0" style="background-color: #343A40" action="<%=lastPart%>">
 					<div class="form-group mr-2 p-0">
-						<input type="text" class="form-control" name="search"
-							   placeholder="Search">
+						<input type="text" class="form-control" name="search" placeholder="Search">
 					</div>
 					<button type="submit" class="btn btn-primary">Search</button>
 				</form>
-				<form class="m-0 p-0" style="background-color: #343A40" action="logout" method="get">
+				<form class="m-0 p-0" style="background-color: #343A40" action="/blog/logout" method="get">
 					<button type="submit" class="btn btn-primary ml-4">Logout</button>
 				</form>
 			</div>

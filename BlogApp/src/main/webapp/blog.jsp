@@ -74,6 +74,7 @@
     </style>
 </head>
 <body>
+
 <%@ include file="components/header.jsp" %>
 
 <% if (request.getAttribute(("error")) != null) { %>

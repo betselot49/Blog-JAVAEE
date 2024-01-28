@@ -166,6 +166,9 @@
         <button type="button" class="btn btn-primary edit-button mt-3" data-toggle="modal" data-target="#editProfileModal">
             Edit Profile
         </button>
+        <form method="post">
+
+        </form>
     </div>
 
 

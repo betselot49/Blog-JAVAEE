@@ -56,7 +56,6 @@ public class AdminRegisterServlet extends HttpServlet {
         } catch (Exception e) {
             request.setAttribute("error", e.getMessage());
             request.getRequestDispatcher("register.jsp").forward(request, response);
-            e.printStackTrace();
         }
 
     }
