@@ -34,6 +34,22 @@
 		li a:hover {
 			color: #adb5bd; /* Slightly lighter shade on hover */
 		}
+
+		.search-form {
+			display: inline-block;
+			margin-left: auto;
+		}
+
+		.search-input {
+			padding: 8px;
+			border: none;
+			border-radius: 5px;
+			margin-right: 10px;
+		}
+
+		.logout-btn {
+			margin-left: 20px; /* Adjust the margin as needed */
+		}
 	</style>
 </head>
 <body>

@@ -25,9 +25,9 @@
 </style>
 
 <!-- Add Post Button -->
-<button type="button" class="btn btn-primary sticky-add-button" data-toggle="modal" data-target="#addPostModal">
-    Add Post
-</button>
+
+
+
 
 <% if (request.getAttribute("error") != null) { %>
 <div class="alert alert-danger" role="alert">
@@ -45,6 +45,13 @@
             }
         }
     }
+%>
+
+<% if (user != null) { %> <!-- If user is logged in -->
+    <button type="button" class="btn btn-primary sticky-add-button px-4 py-2" data-toggle="modal" data-target="#addPostModal" style="font-size: 20px">
+    Add Post
+    </button>
+<% }
 %>
 
 <!-- Add Post Modal -->

@@ -190,7 +190,7 @@
 					<%
 						}
 					if (success != null) { %>
-					<div class="alert alert-danger">
+					<div class="alert alert-success">
 						<p> Successfully Registered <a href="/blog/login">Login Here</a></p>
 					</div>
 					<% } %>

@@ -9,7 +9,7 @@
 <%@ page import="com.blog.models.Blog" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.Base64" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <html>
 <head>
 
@@ -133,12 +133,13 @@
     </style>
 </head>
 <body class="center-content">
+<%@ include file="components/header.jsp" %>
 
     <%
     byte[] userProfilePicture = (byte[]) request.getAttribute("userProfilePicture");
     String img = userProfilePicture != null ? Base64.getEncoder().encodeToString(userProfilePicture) : "";
 %>
-<div class="container text-center">
+<div class="container text-center" style="margin-top: 40px">
     <h2 style="margin-top: 50px;">User Profile</h2>
 
     <div class="profile-card">
@@ -171,7 +172,7 @@
 
     <div class="row">
         <%
-            User user = (User) request.getAttribute("user");
+            User curr_user = (User) request.getAttribute("user");
             ArrayList<Blog> userBlogs = (ArrayList<Blog>) request.getAttribute("blogs");
             if (userBlogs != null && !userBlogs.isEmpty()) {
                 for (Blog blog : userBlogs) {
@@ -195,7 +196,6 @@
                 }
             }
         %>
-
 
         <%
             }
@@ -225,8 +225,8 @@
             <div class="modal-body">
                 <!-- Add your input fields for profile picture, name, and password here -->
                 <form action="EditProfileServlet" method="POST" enctype="multipart/form-data">
-                    <input type="hidden" name="userId" value="<%= user.Id %>">
-                    <input type="hidden" name="currentEmail" value="<%= user.Email %>">
+                    <input type="hidden" name="userId" value="<%= curr_user.Id %>">
+                    <input type="hidden" name="currentEmail" value="<%= curr_user.Email %>">
                     <div class="form-group">
                         <label for="profilePicture">Upload Profile Picture:</label>
                         <input type="file" class="form-control-file" id="profilePicture" name="profilePicture" type="image/*">

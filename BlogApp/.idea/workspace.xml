@@ -11,16 +11,19 @@
   <component name="ChangeListManager">
     <list default="true" id="b658c3e2-27bf-48d6-90f6-572987491378" name="Changes" comment="User table updated">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/blog/models/Like.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blog/models/Like.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/blog/servlets/LikeServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blog/servlets/LikeServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/components/viewblog.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/components/viewblog.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/library.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/library.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/blog/servlets/AdminRegisterServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blog/servlets/AdminRegisterServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/blogs.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/blogs.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/components/header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/components/header.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/profile.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/profile.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/register.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/register.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -257,7 +260,9 @@
       <workItem from="1706296173251" duration="9297000" />
       <workItem from="1706336551824" duration="2275000" />
       <workItem from="1706338910201" duration="9629000" />
-      <workItem from="1706421820279" duration="442000" />
+      <workItem from="1706421820279" duration="1449000" />
+      <workItem from="1706423296938" duration="51000" />
+      <workItem from="1706423384654" duration="1937000" />
     </task>
     <task id="LOCAL-00001" summary="User table updated">
       <option name="closed" value="true" />
