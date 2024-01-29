@@ -12,7 +12,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-4r1pNDzrLTU8KqShofj6SMgfWt0sF9bu8QdNsKoqu5tm2MW0s0zEkGJlI99lEVW3" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+WyiflAZG5gH4Mxn3OyK02s2al29pi1wk2" crossorigin="anonymous"></script>
 </head>
-<body>
+<body >
 <%@ include file="components/header.jsp" %>
 
 <style>
@@ -34,6 +34,7 @@
 </div>
 <% } %>
 
+
 <%
     if (request.getAttribute("error") == null) {
         ArrayList<Blog> items = (ArrayList<Blog>) request.getAttribute("blogs");
@@ -46,7 +47,6 @@
     }
 %>
 
-
 <% if (user != null) { %> <!-- If user is logged in -->
     <button type="button" class="btn btn-primary sticky-add-button px-4 py-2" data-toggle="modal" data-target="#addPostModal" style="font-size: 20px">
         Add Post
@@ -55,6 +55,7 @@
 %>
 <% if (Helpers.isNotificationRequest(request)) { %>
 <%@ include file="components/toastify.jsp" %>
+
 <% } %>
 
 <!-- Add Post Modal -->

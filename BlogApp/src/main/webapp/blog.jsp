@@ -13,6 +13,14 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    ...
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
     <style>
         body {
             padding: 20px;
@@ -118,11 +126,43 @@
             <% String msg = isLiked ? "Dislike" : "Like"; %>
             <button type="submit" class="btn btn-primary"><%=msg%></button>
         </form>
-<%--        <form method="POST" action="/blog/library" class="library-form mx-3">--%>
-<%--            <input name="blogId" type="hidden" value="<%=blog.Id%>">--%>
-<%--            <input name="userId" type="hidden" value=<%=user.Id%>>--%>
-<%--            --%>
-<%--        </form>--%>
+
+        <button class="btn btn-warning py-0" style="margin-top: 29px" data-toggle="modal" data-target="#editBlogModal">
+            Edit Blog
+        </button>
+
+        <div class="modal" id="editBlogModal" tabindex="-1" role="dialog" aria-labelledby="editBlogModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="editBlogModalLabel">Edit Blog</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- Add your form elements for editing the blog here -->
+                        <form action="EditBlogServlet" method="POST" enctype="multipart/form-data">
+                            <input type="hidden" name="id" value="<%= blog.Id %>">
+                            <div class="form-group">
+                                <label for="blogPicture">Upload Profile Picture:</label>
+                                <input type="file" class="form-control-file" id="blogPicture" name="profilePicture" type="image/*" value="<%=blog.BlogPicture%>">
+                            </div>
+                            <div class="form-group">
+                                <label for="title">Title</label>
+                                <input type="text" class="form-control" id="title" name="title"
+                                       value="<%=blog.Title %>">
+                            </div>
+                            <div class="form-group">
+                                <label for="content">Content</label>
+                                <textarea style="height: 200px" type="text" class="form-control" id="content" name="content" required><%=blog.Content%></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Save Changes</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <% if (user != null && (user.Id == blog.UserId || user.Role.equals("admin"))) { %>
         <form method="POST" action="/blog/blog/details" class="delete-blog-form mx-3">
@@ -185,18 +225,10 @@
         <% } %>
     </div>
 
-<%--    <div class="like">--%>
-<%--        <% for (Like like : likes) { %>--%>
-<%--        <div class="card">--%>
-<%--            <div class="card-body">--%>
-<%--                <p><strong><%= like.Liker.FullName%></strong> liked this.</p>--%>
-<%--            </div>--%>
-<%--        </div>--%>
-<%--        <% } %>--%>
-<%--    </div>--%>
 </div>
 <% } %>
 
+<!-- Bootstrap JS and jQuery -->
 <!-- Bootstrap JS and jQuery -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
@@ -207,10 +239,12 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
         integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+WyiflAZG5gH4Mxn3OyK02s2al29pi1wk2"
         crossorigin="anonymous"></script>
+
 <script>
     var blogId = "<%=((Blog) request.getAttribute("blog")).Id%>";
     var newUrl = "/blog/blog/details?id=" + blogId;
     window.history.pushState({}, '', newUrl);
 </script>
+
 </body>
 </html>

@@ -89,7 +89,7 @@
         String uniqueId = "blog" + blog.Id; // Create a unique identifier for each blog
     %>
 
-    <div class="card-body" style="max-width: 1000px;">
+    <div class="card-body" style="max-width: 1000px; background-color: #f5f5f5; border: #ececec solid 2px; border-radius: 10px">
         <div class="row">
             <div class="text-center">
                 <!-- Author Information Section -->
