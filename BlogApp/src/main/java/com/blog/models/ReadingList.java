@@ -64,7 +64,7 @@ public class ReadingList {
 
 
     public static ArrayList<ReadingList> getMyReadingList(int userId) throws Exception {
-        String query = "SELECT * FROM readinglists WHERE UserId = ?";
+        String query = "SELECT * FROM readinglists WHERE UserId = ? ORDER BY CreatedAt DESC";
         PreparedStatement stmt = connection.prepareStatement(query);
         stmt.setInt(1, userId);
         ResultSet result2 = stmt.executeQuery();

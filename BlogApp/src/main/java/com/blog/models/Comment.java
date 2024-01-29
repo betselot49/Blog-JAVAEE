@@ -73,7 +73,7 @@ public class Comment {
     }
 
     public static ArrayList<Comment> getComments(int blogId) throws SQLException {
-        String query = "SELECT * FROM comments WHERE BlogId = ?";
+        String query = "SELECT * FROM comments WHERE BlogId = ? ORDER BY CreatedAt DESC";
         PreparedStatement stmt = connection.prepareStatement(query);
         stmt.setInt(1, blogId);
         ArrayList<Comment> comments = new ArrayList<>();

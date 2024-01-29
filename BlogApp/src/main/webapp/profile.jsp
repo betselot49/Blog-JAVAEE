@@ -242,7 +242,7 @@
                     </div>
                     <div class="form-group">
                         <label for="newPassword">Change Password:</label>
-                        <input type="password" class="form-control" id="newPassword" name="newPassword" required>
+                        <input type="password" class="form-control" id="newPassword" name="newPassword">
                     </div>
                     <button type="submit" class="btn btn-primary">Save Changes</button>
                 </form>
