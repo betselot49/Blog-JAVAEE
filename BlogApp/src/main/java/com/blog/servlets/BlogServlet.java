@@ -20,6 +20,7 @@ import java.io.InputStream;
 @MultipartConfig
 public class BlogServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String getRequest = request.getRequestURI();
         String queryParam = request.getParameter("search") == null ? "" : request.getParameter("search");
         try {
             request.setAttribute("blogs", Blog.search(queryParam));

@@ -42,7 +42,7 @@
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 		<div class="container" >
 			<a class="navbar-brand"
-			   href="#">Blog</a>
+			   href="/blog/blog" style="margin-right: 150px; font-size: 24px; font-weight: bold; font-family: Bahnschrift;">AXON-BLOGS</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
 					data-target="#navbarNav" aria-controls="navbarNav"
 					aria-expanded="false" aria-label="Toggle navigation">
@@ -52,9 +52,6 @@
 				<ul class="navbar-nav">
 					<li class="nav-item <%= (request.getRequestURI().endsWith("/blog") || request.getRequestURI().equals("/")) ? "active" : "" %>">
 						<a class="nav-link" href="/blog/blog">Home</a>
-					</li>
-					<li class="nav-item <%= request.getRequestURI().endsWith("/users") ? "active" : "" %>">
-						<a class="nav-link" href="/blog/users">Users</a>
 					</li>
 					<%
 						User user = (User)request.getAttribute("user");
@@ -69,6 +66,8 @@
 					<li class="nav-item <%= request.getRequestURI().endsWith("/profile") ? "active" : "" %>">
 						<a class="nav-link" href="/blog/profile">Profile</a>
 					</li>
+					<li class="nav-item <%= request.getRequestURI().endsWith("/users") ? "active" : "" %>">
+						<a class="nav-link" href="/blog/users">Users</a>
 					<% if (user.Role.equals("admin")) { %>
 					<li class="nav-item <%= request.getRequestURI().endsWith("/adminregister") ? "active" : "" %>">
 						<a class="nav-link" href="/blog/adminregister">Admin Register</a>
@@ -81,6 +80,9 @@
 
 					String lastPart2 = lastPart.substring(lastPart.lastIndexOf("/") + 1);
 
+					// Get the current page url
+					String url = request.getContextPath().toString();
+					String[] newUrl =  url.split("/");
 
 					int margin = 0;
 					if (lastPart2.equals("users") || lastPart2.equals("profile")) {
@@ -88,12 +90,16 @@
 					}
 
 				%>
-				<form class="form-inline ml-auto p-0" style="background-color: #343A40" action="<%=lastPart%>">
+				<% if (!splitURI[splitURI.length-2].equals("/blog")) {%>
+
+				<form class="form-inline ml-auto p-0 mt-1" style="background-color: #343A40" action="<%=newUrl[0]%>">
 					<div class="form-group mr-2 p-0">
 						<input type="text" class="form-control" name="search" placeholder="Search">
 					</div>
 					<button type="submit" class="btn btn-primary">Search</button>
 				</form>
+
+				<%}%>
 				<% if (user != null) {
 
 				%>

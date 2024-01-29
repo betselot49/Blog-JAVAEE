@@ -26,7 +26,7 @@
             align-items: center;
             border: 1px solid #ddd;
             border-radius: 10px;
-            padding: 10px 20px 10px 20px;
+            padding: 2px 20px 2px 20px;
             margin: 10px;
             background-color: #fff;
             text-align: left;
@@ -38,7 +38,6 @@
             height: 50px;
             border-radius: 50%;
             object-fit: cover;
-            margin-bottom: 10px;
         }
 
         .placeholder {
@@ -60,9 +59,13 @@
         .user-details {
             display: flex;
             flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+
         }
 
         .user-name {
+            margin-top: 10px;
             font-weight: bold;
         }
 
