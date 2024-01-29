@@ -35,13 +35,18 @@ public class ProfileServlet extends HttpServlet {
         System.out.println("=========Profile Servlet==============");
         // Assuming you have a User class with the necessary fields
         User user = (User) request.getAttribute("user");
+        String Id = request.getParameter("Id");
 
-        // Set user details as request attributes for JSP to access
-        request.setAttribute("userName", user.FullName);
-        request.setAttribute("userEmail", user.Email);
-        request.setAttribute("userProfilePicture", user.ProfilePicture);
 
         try {
+            if (Id != null){
+                user = User.getById(Integer.parseInt(Id));
+            }
+
+            // Set user details as request attributes for JSP to access
+            request.setAttribute("userName", user.FullName);
+            request.setAttribute("userEmail", user.Email);
+            request.setAttribute("userProfilePicture", user.ProfilePicture);
             ArrayList<Blog> userBlogs = Blog.getByUserId(user.Id);
             request.setAttribute("blogs", userBlogs);
         } catch (Exception e) {
