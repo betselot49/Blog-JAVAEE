@@ -77,16 +77,16 @@ public class Blog {
     }
 
 
-//    public void update() throws Exception {
-//        String query = "UPDATE blogs SET Title=?, Content=?, Tags=?, BlogPicture=? WHERE Id=?";
-//        PreparedStatement stmt = connection.prepareStatement(query);
-//        stmt.setString(1, this.Title);
-//        stmt.setString(2, this.Content);
-//        stmt.setString(3, String.join(",", this.Tags));
-//        stmt.setBytes(4, this.BlogPicture);
-//        stmt.executeUpdate(query);
-//        stmt.close();
-//    }
+    public int update() throws Exception {
+        String query = "UPDATE blogs SET Title=?, Content=?, Tags=?, BlogPicture=? WHERE Id=?";
+        PreparedStatement stmt = connection.prepareStatement(query);
+        stmt.setString(1, this.Title);
+        stmt.setString(2, this.Content);
+        stmt.setString(3, String.join(",", this.Tags));
+        stmt.setBytes(4, this.BlogPicture);
+        stmt.setInt(5, this.Id);
+        return stmt.executeUpdate();
+    }
 
     public int delete() throws Exception {
         String query = "DELETE FROM blogs WHERE Id=?";

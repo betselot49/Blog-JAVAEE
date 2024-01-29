@@ -142,16 +142,22 @@
                     </div>
                     <div class="modal-body">
                         <!-- Add your form elements for editing the blog here -->
-                        <form action="EditBlogServlet" method="POST" enctype="multipart/form-data">
+                        <form action="/blog/blog/details" method="POST" enctype="multipart/form-data">
+                            <input type="hidden" name="method" value="put">
                             <input type="hidden" name="id" value="<%= blog.Id %>">
                             <div class="form-group">
-                                <label for="blogPicture">Upload Profile Picture:</label>
-                                <input type="file" class="form-control-file" id="blogPicture" name="profilePicture" type="image/*" value="<%=blog.BlogPicture%>">
+                                <label for="picture">Upload Profile Picture:</label>
+                                <input type="file" class="form-control-file" id="picture" name="picture" type="image/*">
                             </div>
                             <div class="form-group">
                                 <label for="title">Title</label>
                                 <input type="text" class="form-control" id="title" name="title"
                                        value="<%=blog.Title %>">
+                            </div>
+                            <div class="form-group">
+                                <label for="title">Tags</label>
+                                <input type="text" class="form-control" id="tags" name="tags"
+                                       value="<%=blog.Tags %>">
                             </div>
                             <div class="form-group">
                                 <label for="content">Content</label>
@@ -240,11 +246,11 @@
         integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+WyiflAZG5gH4Mxn3OyK02s2al29pi1wk2"
         crossorigin="anonymous"></script>
 
-<script>
-    var blogId = "<%=((Blog) request.getAttribute("blog")).Id%>";
-    var newUrl = "/blog/blog/details?id=" + blogId;
-    window.history.pushState({}, '', newUrl);
-</script>
+<%--<script>--%>
+<%--    var blogId = "<%=((Blog) request.getAttribute("blog")).Id%>";--%>
+<%--    var newUrl = "/blog/blog/details?id=" + blogId;--%>
+<%--    window.history.pushState({}, '', newUrl);--%>
+<%--</script>--%>
 
 </body>
 </html>

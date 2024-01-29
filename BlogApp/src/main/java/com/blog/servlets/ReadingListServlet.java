@@ -50,10 +50,9 @@ public class ReadingListServlet extends HttpServlet {
     }
 
     protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int userId = Integer.parseInt(request.getParameter("userId"));
-        int readinglistId = Integer.parseInt(request.getParameter("readingListId"));
+//        int userId = Integer.parseInt(request.getParameter("userId"));
+        int readinglistId = Integer.parseInt(request.getParameter("readingList"));
         ReadingList rl = new ReadingList();
-        rl.UserId = userId;
         rl.Id = readinglistId;
         try {
             int rowsAffected = rl.delete();

@@ -20,6 +20,7 @@ public class UsersServlet extends HttpServlet {
             request.setAttribute("peoples", users);
             request.setAttribute("success", "Successfully Loaded Users");
         } catch (Exception exception) {
+            request.setAttribute("peoples", new ArrayList<User>());
             request.setAttribute("error", exception.getMessage());
         }
         request.getRequestDispatcher("users.jsp").forward(request, response);

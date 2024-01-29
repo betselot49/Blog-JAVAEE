@@ -53,13 +53,14 @@ public class BlogServlet extends HttpServlet {
         String queryParam = request.getParameter("search") == null ? "" : request.getParameter("search");
         try {
             int rowsAffected = blog.create();
+            request.setAttribute("blogs", Blog.search(queryParam));
             if (rowsAffected > 0) {
-                request.setAttribute("blogs", Blog.search(queryParam));
                 request.setAttribute("success", "Successfully created Blog");
             } else {
                 request.setAttribute("error", "Something went wrong. Please try again.");
             }
         } catch (Exception throwables) {
+            request.setAttribute("blogs", new ArrayList<Blog>());
             request.setAttribute("error", throwables.getMessage());
         }
         request.getRequestDispatcher("blogs.jsp").forward(request, response);

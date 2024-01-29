@@ -93,6 +93,7 @@
         <div class="row">
             <div class="text-center">
                 <!-- Author Information Section -->
+                <a href="/blog/profile?Id?<%=blog.Poster.Id%>">
                 <div class="row author-info">
                     <% if (blog.Poster != null && blog.Poster.ProfilePicture != null) { %>
                     <img src="data:image/png;base64,<%= Base64.getEncoder().encodeToString(blog.Poster.ProfilePicture) %>" class="rounded-circle author-image" alt="Author Image">
@@ -102,11 +103,12 @@
                     <% } %>
                     <h6 class="mt-2" style="margin-left: 20px"><%= blog.Poster != null ? blog.Poster.FullName : "Unknown Author" %></h6>
                 </div>
+                </a>
             </div>
             <div class="col-md-10">
                 <!-- Blog Content Section -->
                 <div class="see-more-content" id="<%= uniqueId %>">
-                    <a style="text-decoration: none; color: #212121" href="blog/details?id=<%= blog.Id %>">
+                    <a style="text-decoration: none; color: #212121" href="/blog/blog/details?id=<%= blog.Id %>">
                         <h4 class="card-title"><%= blog.Title %></h4>
                         <img src="data:image/png;base64,<%= img %>" class="card-img-top blog-image" alt="Blog Image">
                         <pre style="margin-top: 15px; white-space: pre-line" class="card-text"><%= blog.Content %></pre>

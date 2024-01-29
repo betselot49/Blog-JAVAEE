@@ -76,4 +76,19 @@ public class ReadingList {
         return readingLists;
     }
 
+    public static ArrayList<ReadingList> search(int userId, String param) throws Exception {
+        System.out.println("=========Blog Model Search==============");
+        String query = "SELECT * FROM readinglists WHERE UserId = ? AND Name LIKE ? ORDER BY CreatedAt DESC";
+        PreparedStatement stmt = connection.prepareStatement(query);
+        stmt.setInt(1, userId);
+        stmt.setString(2, "%" + param + "%");
+        ResultSet result = stmt.executeQuery();
+        ArrayList<ReadingList> rls = new ArrayList<>();
+        while (result.next()) {
+            rls.add(ReadingList.build(result));
+        }
+        stmt.close();
+        return rls;
+    }
+
 }

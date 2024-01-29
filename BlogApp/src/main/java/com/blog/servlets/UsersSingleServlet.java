@@ -21,7 +21,6 @@ public class UsersSingleServlet {
         try {
             request.setAttribute("people", User.getById(userId));
             request.setAttribute("blogs", Blog.getByUserId(userId));
-            request.setAttribute("success", "Successfully Loaded User");
         }catch (Exception exception){
             request.setAttribute("error", exception.getMessage());
         }

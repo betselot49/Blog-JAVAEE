@@ -20,6 +20,7 @@ public class SaveSingleServlet extends HttpServlet {
             ArrayList<Blog> library = Save.getBlogs(readingId);
             request.setAttribute("blogs", library);
         } catch (Exception throwables) {
+            request.setAttribute("blogs", new ArrayList<Blog>());
             request.setAttribute("error", throwables.getMessage());
         }
         request.getRequestDispatcher("../blogs.jsp").forward(request, response);
@@ -42,7 +43,7 @@ public class SaveSingleServlet extends HttpServlet {
                     if (rowsAffected > 0) {
                         request.setAttribute("success", "Successfully added to Reading List");
                     } else {
-                        request.setAttribute("error", "Failed to add to Reading List");
+                        request.setAttribute("error", "Failed to update Reading List");
                     }
 
                 }
@@ -51,7 +52,7 @@ public class SaveSingleServlet extends HttpServlet {
                     if (rowsAffected > 0) {
                         request.setAttribute("success", "Successfully removed from Reading List");
                     } else {
-                         request.setAttribute("error", "Failed to remove from Reading List");
+                         request.setAttribute("error", "Failed to update Reading List");
                     }
 
                 }
