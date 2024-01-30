@@ -168,12 +168,21 @@
         </div>
 
         <!-- Button trigger modal -->
+        <% if (user.Email.equals(request.getAttribute("userEmail")))  {%>
         <button type="button" class="btn btn-primary edit-button mt-3" data-toggle="modal" data-target="#editProfileModal">
             Edit Profile
         </button>
+        <% } %>
+        <% if (user.Email.equals(request.getAttribute("userEmail")) || user.Role.equals("admin"))  {%>
         <form method="post">
-
+        <button type="button" class="btn btn-secondary edit-button mt-3" data-toggle="modal" data-target="#editProfileModal">
+            Delete Profile
+        </button>
         </form>
+
+        <% } %>
+
+
     </div>
 
 

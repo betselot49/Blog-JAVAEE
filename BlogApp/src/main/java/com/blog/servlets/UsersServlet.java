@@ -18,7 +18,6 @@ public class UsersServlet extends HttpServlet {
         try {
             ArrayList<User> users = User.search(search, pageNumber, pageSize);
             request.setAttribute("peoples", users);
-            request.setAttribute("success", "Successfully Loaded Users");
         } catch (Exception exception) {
             request.setAttribute("peoples", new ArrayList<User>());
             request.setAttribute("error", exception.getMessage());
