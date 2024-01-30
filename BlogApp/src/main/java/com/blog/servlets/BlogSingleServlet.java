@@ -104,9 +104,15 @@ public class BlogSingleServlet extends HttpServlet {
                 request.setAttribute("error", "Something Went Wrong");
             }
             else {
-                request.setAttribute("success", "Successfully Deleted the Blog");
-                response.sendRedirect("/blog/blog");
+                response.getWriter().println("" +
+                        "<script>\n" +
+                        "    window.history.back();\n" +
+                        "    location.reload();\n" +
+                        "</script>");
                 return;
+//                request.setAttribute("success", "Successfully Deleted the Blog");
+//                response.sendRedirect("/blog/blog");
+//                return;
             }
 
         }catch (Exception exception){
