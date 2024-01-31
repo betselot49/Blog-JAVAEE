@@ -56,8 +56,8 @@
             setTimeout(function () {
                 // Fix: Use 'toastContainer' instead of 'toast' for the element
                 toastContainer.style.opacity = 0;
-            }, 1000);
-        }, 100);
+            }, 2000);
+        }, 2000);
     }
 </script>
 </body>

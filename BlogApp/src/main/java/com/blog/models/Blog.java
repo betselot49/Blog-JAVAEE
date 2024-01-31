@@ -77,16 +77,16 @@ public class Blog {
     }
 
 
-//    public void update() throws Exception {
-//        String query = "UPDATE blogs SET Title=?, Content=?, Tags=?, BlogPicture=? WHERE Id=?";
-//        PreparedStatement stmt = connection.prepareStatement(query);
-//        stmt.setString(1, this.Title);
-//        stmt.setString(2, this.Content);
-//        stmt.setString(3, String.join(",", this.Tags));
-//        stmt.setBytes(4, this.BlogPicture);
-//        stmt.executeUpdate(query);
-//        stmt.close();
-//    }
+    public int update() throws Exception {
+        String query = "UPDATE blogs SET Title=?, Content=?, Tags=?, BlogPicture=? WHERE Id=?";
+        PreparedStatement stmt = connection.prepareStatement(query);
+        stmt.setString(1, this.Title);
+        stmt.setString(2, this.Content);
+        stmt.setString(3, String.join(",", this.Tags));
+        stmt.setBytes(4, this.BlogPicture);
+        stmt.setInt(5, this.Id);
+        return stmt.executeUpdate();
+    }
 
     public int delete() throws Exception {
         String query = "DELETE FROM blogs WHERE Id=?";
@@ -109,7 +109,7 @@ public class Blog {
     }
 
     public static ArrayList<Blog> getByUserId(int userId) throws Exception {
-        String query = "SELECT * FROM blogs WHERE UserId=?";
+        String query = "SELECT * FROM blogs WHERE UserId=? ORDER BY CreatedAt DESC";
         PreparedStatement stmt = connection.prepareStatement(query);
         stmt.setInt(1, userId);
         ResultSet result = stmt.executeQuery();
@@ -123,7 +123,7 @@ public class Blog {
 
 
     public static ArrayList<Blog> getAll() throws Exception {
-        String query = "SELECT * FROM blogs";
+        String query = "SELECT * FROM blogs ORDER BY CreatedAt DESC";
         Statement stmt = connection.createStatement();
         ResultSet result = stmt.executeQuery(query);
         ArrayList<Blog> blogs = new ArrayList<>();
@@ -136,7 +136,7 @@ public class Blog {
 
     public static ArrayList<Blog> search(String param) throws Exception {
         System.out.println("=========Blog Model Search==============");
-        String query = "SELECT * FROM blogs WHERE Content LIKE ? OR Tags LIKE ?";
+        String query = "SELECT * FROM blogs WHERE Content LIKE ? OR Tags LIKE ? ORDER BY CreatedAt DESC";
         PreparedStatement stmt = connection.prepareStatement(query);
         stmt.setString(1, "%" + param + "%");
         stmt.setString(2, "%" + param + "%");
@@ -150,7 +150,7 @@ public class Blog {
     }
 
     public static ArrayList<Blog> getByTag(String tag) throws Exception {
-        String query = "SELECT * FROM blogs WHERE Tags LIKE ?";
+        String query = "SELECT * FROM blogs WHERE Tags LIKE ? ORDER BY CreatedAt DESC";
         PreparedStatement stmt = connection.prepareStatement(query);
         stmt.setString(1, "%" + tag + "%");
         ResultSet result = stmt.executeQuery();

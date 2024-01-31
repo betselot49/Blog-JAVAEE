@@ -1,6 +1,7 @@
 <%@ page import="com.blog.models.Blog" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="com.blog.models.ReadingList" %>
+<%@ page import="com.blog.utils.Helpers" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,6 +18,11 @@
 <body>
 
 <%@ include file="components/header.jsp" %>
+
+<%
+if (Helpers.isNotificationRequest(request)) { %>
+<%@ include file="components/toastify.jsp" %>
+<%}%>
 
 <div class="container" style="margin-top: 100px">
     <form class="form-inline mb-4" method="post" action="/blog/readinglist">

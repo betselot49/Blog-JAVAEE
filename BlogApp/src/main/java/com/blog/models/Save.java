@@ -46,7 +46,7 @@ public class Save {
     }
 
     public static ArrayList<Save> getMySaves(int userId) throws Exception {
-        String query = "SELECT * FROM saves WHERE UserId = ?";
+        String query = "SELECT * FROM saves WHERE UserId = ? ORDER BY CreatedAt DESC";
         PreparedStatement stmt = connection.prepareStatement(query);
         stmt.setInt(1, userId);
         ArrayList<Save> saves = new ArrayList<>();
@@ -58,7 +58,7 @@ public class Save {
     }
 
     public  static ArrayList<com.blog.models.Blog> getMySavedBlogs(int userId, int readingListId) throws Exception {
-        String query = "SELECT * FROM saves WHERE UserId = ? AND ReadingListId = ?";
+        String query = "SELECT * FROM saves WHERE UserId = ? AND ReadingListId = ? ORDER BY CreatedAt DESC";
         PreparedStatement stmt = connection.prepareStatement(query);
         stmt.setInt(1, userId);
         stmt.setInt(2, readingListId);
@@ -95,7 +95,7 @@ public class Save {
     }
 
     public static ArrayList<Blog> getBlogs(int readingListId) throws Exception {
-        String query = "SELECT * FROM blogs WHERE Id IN (SELECT BlogId FROM saves WHERE ReadingListId=?)";
+        String query = "SELECT * FROM blogs WHERE Id IN (SELECT BlogId FROM saves WHERE ReadingListId=? ORDER BY CreatedAt DESC)";
         PreparedStatement stmt = connection.prepareStatement(query);
         stmt.setInt(1, readingListId);
         ResultSet result2 = stmt.executeQuery();

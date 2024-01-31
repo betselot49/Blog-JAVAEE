@@ -9,6 +9,7 @@
 <%@ page import="com.blog.models.Blog" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.Base64" %>
+<%@ page import="com.blog.utils.Helpers" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <html>
@@ -135,6 +136,10 @@
 </head>
 <body class="center-content">
 <%@ include file="components/header.jsp" %>
+<%
+    if (Helpers.isNotificationRequest(request)) { %>
+<%@ include file="components/toastify.jsp" %>
+<%}%>
 
     <%
     byte[] userProfilePicture = (byte[]) request.getAttribute("userProfilePicture");
@@ -163,12 +168,21 @@
         </div>
 
         <!-- Button trigger modal -->
+        <% if (user.Email.equals(request.getAttribute("userEmail")))  {%>
         <button type="button" class="btn btn-primary edit-button mt-3" data-toggle="modal" data-target="#editProfileModal">
             Edit Profile
         </button>
+        <% } %>
+        <% if (user.Email.equals(request.getAttribute("userEmail")) || user.Role.equals("admin"))  {%>
         <form method="post">
-
+        <button type="button" class="btn btn-secondary edit-button mt-3" data-toggle="modal" data-target="#editProfileModal">
+            Delete Profile
+        </button>
         </form>
+
+        <% } %>
+
+
     </div>
 
 
@@ -242,7 +256,7 @@
                     </div>
                     <div class="form-group">
                         <label for="newPassword">Change Password:</label>
-                        <input type="password" class="form-control" id="newPassword" name="newPassword" required>
+                        <input type="password" class="form-control" id="newPassword" name="newPassword">
                     </div>
                     <button type="submit" class="btn btn-primary">Save Changes</button>
                 </form>

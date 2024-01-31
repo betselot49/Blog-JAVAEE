@@ -10,6 +10,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.Part;
+import org.mindrot.jbcrypt.BCrypt;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -38,15 +39,13 @@ public class EditProfileServlet extends HttpServlet {
         String newName = request.getParameter("newName");
         String newPassword = request.getParameter("newPassword");
         String currentEmail = request.getParameter("currentEmail");
-        User user = new User();
-        user.Id = userId;
-        user.FullName = newName;
-        user.Email = currentEmail;
-        user.Password = newPassword;
-        user.ProfilePicture = buffer.toByteArray();
 
         try {
-                int rowsAffected = user.update();
+                User old = User.getById(userId);
+                if (newName.length() > 0) old.FullName = newName;
+                if (newPassword.length() > 0) old.Password = BCrypt.hashpw(newPassword, BCrypt.gensalt());
+                if (buffer.size() > 0) old.ProfilePicture = buffer.toByteArray();
+                int rowsAffected = old.update();
                 if (rowsAffected > 0) {
                     request.setAttribute("success", "Successfully updated profile");
                 } else {

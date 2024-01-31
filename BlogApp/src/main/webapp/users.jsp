@@ -1,6 +1,7 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="com.blog.models.User" %>
 <%@ page import="java.util.Base64" %>
+<%@ page import="com.blog.utils.Helpers" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <html>
@@ -86,6 +87,10 @@
 </head>
 <body>
 <%@include file="components/header.jsp"%>
+<%
+    if (Helpers.isNotificationRequest(request)) { %>
+<%@ include file="components/toastify.jsp" %>
+<%}%>
 
 <div style="margin-top: 50px" class="user-list container">
     <h2>User List</h2>
