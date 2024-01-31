@@ -10,15 +10,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b658c3e2-27bf-48d6-90f6-572987491378" name="Changes" comment="User table updated">
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/components/editblog.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/blog/models/ReadingList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blog/models/ReadingList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/blog/models/Save.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blog/models/Save.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/blog/servlets/CommentServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blog/servlets/CommentServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/blog/servlets/LikeServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blog/servlets/LikeServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/blog/servlets/ProfileServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blog/servlets/ProfileServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/blog/servlets/SaveSingleServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blog/servlets/SaveSingleServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/blog.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/blog.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -262,6 +254,8 @@
       <workItem from="1706337463155" duration="5098000" />
       <workItem from="1706420927145" duration="1598000" />
       <workItem from="1706446399592" duration="637000" />
+      <workItem from="1706515383835" duration="14000" />
+      <workItem from="1706517309906" duration="7000" />
     </task>
     <task id="LOCAL-00001" summary="User table updated">
       <option name="closed" value="true" />
@@ -449,22 +443,22 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/blog/servlets/ProfileServlet.java</url>
-          <line>44</line>
+          <line>49</line>
           <option name="timeStamp" value="202" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/blog/servlets/ProfileServlet.java</url>
-          <line>45</line>
+          <line>50</line>
           <option name="timeStamp" value="203" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/blog/servlets/ProfileServlet.java</url>
-          <line>47</line>
+          <line>52</line>
           <option name="timeStamp" value="204" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/blog/servlets/ProfileServlet.java</url>
-          <line>51</line>
+          <line>56</line>
           <option name="timeStamp" value="205" />
         </line-breakpoint>
       </breakpoints>
