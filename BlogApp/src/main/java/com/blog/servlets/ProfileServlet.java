@@ -57,10 +57,10 @@ public class ProfileServlet extends HttpServlet {
         request.getRequestDispatcher("profile.jsp").forward(request, response);
     }
 
-    protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int userId = Integer.parseInt(request.getParameter("userId"));
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String email = request.getParameter("email");
         User user = new User();
-        user.Id = userId;
+        user.Email = email;
         try {
             int rowsAffected = user.delete();
             if (rowsAffected > 0) {
