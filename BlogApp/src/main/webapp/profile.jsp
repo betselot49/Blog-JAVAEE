@@ -174,8 +174,10 @@
         </button>
         <% } %>
         <% if (user.Email.equals(request.getAttribute("userEmail")) || user.Role.equals("admin"))  {%>
-        <form method="post">
-        <button type="button" class="btn btn-secondary edit-button mt-3" data-toggle="modal" data-target="#editProfileModal">
+        <form method="post" action="/blog/profile">
+            <input type="hidden" name="email" value="<%=request.getAttribute("userEmail")%>"/>
+            <input type="hidden" name="method" value="delete"/>
+            <button type="submit" class="btn btn-secondary edit-button mt-3" >
             Delete Profile
         </button>
         </form>

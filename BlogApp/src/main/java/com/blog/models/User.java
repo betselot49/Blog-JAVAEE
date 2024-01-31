@@ -75,9 +75,9 @@ public class User {
     }
 
     public int delete() throws SQLException {
-        String query = "DELETE FROM users WHERE Id=?";
+        String query = "DELETE FROM users WHERE Email=?";
         PreparedStatement stmt = connection.prepareStatement(query);
-        stmt.setInt(1, this.Id);
+        stmt.setString(1, this.Email);
         return  stmt.executeUpdate();
     }
 

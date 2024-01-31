@@ -42,7 +42,7 @@
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 		<div class="container" >
 			<a class="navbar-brand"
-			   href="/blog/blog" style="margin-right: 150px; font-size: 24px; font-weight: bold; font-family: Bahnschrift;">AXON-BLOGS</a>
+			   href="/blog/blog" style="margin-right: 10px; font-size: 24px; font-weight: bold; font-family: Bahnschrift;">AXON-BLOGS</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
 					data-target="#navbarNav" aria-controls="navbarNav"
 					aria-expanded="false" aria-label="Toggle navigation">
