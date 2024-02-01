@@ -102,7 +102,7 @@
                 <h2 class="card-title"><%= blog.Title %></h2>
                 <img src="data:image/png;base64,<%= Base64.getEncoder().encodeToString(blog.BlogPicture) %>"
                      class="card-img-top blog-image" alt="Blog Image">
-                <p class="card-text"><%= blog.Content %></p>
+                <pre style="margin-top: 15px; white-space: pre-line" class="card-text"><%= blog.Content %></pre>
             </div>
             <div class="like-comment-row">
                 <div class="like-comment-icons">
@@ -127,9 +127,13 @@
             <button type="submit" class="btn btn-primary"><%=msg%></button>
         </form>
 
+        <% if (user != null && (user.Id == blog.UserId || user.Role.equals("admin"))) { %>
+
         <button class="btn btn-warning py-0" style="margin-top: 29px" data-toggle="modal" data-target="#editBlogModal">
             Edit Blog
         </button>
+        <%} %>
+
 
         <div class="modal" id="editBlogModal" tabindex="-1" role="dialog" aria-labelledby="editBlogModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">

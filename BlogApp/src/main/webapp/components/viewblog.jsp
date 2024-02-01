@@ -87,9 +87,12 @@
         Blog blog = (Blog) request.getAttribute("blog");
         String img = Base64.getEncoder().encodeToString(blog.BlogPicture);
         String uniqueId = "blog" + blog.Id; // Create a unique identifier for each blog
+        int m = 0;
+
+
     %>
 
-    <div class="card-body" style="max-width: 1000px; background-color: #f5f5f5; border: #ececec solid 2px; border-radius: 10px">
+    <div class="card-body" style="max-width: 1000px;margin-top: 25px; background-color: #f5f5f5; border: #ececec solid 2px; border-radius: 10px">
         <div class="row">
             <div class="text-center">
                 <!-- Author Information Section -->

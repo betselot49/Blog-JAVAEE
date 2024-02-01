@@ -34,6 +34,7 @@
 </div>
 <% } %>
 
+<div style="height: 500px"></div>
 
 <%
     if (request.getAttribute("error") == null) {
